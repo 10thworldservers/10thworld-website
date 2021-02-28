@@ -9,34 +9,32 @@ const Footer = () => (
       <FooterColumn>
         <span>Features</span>
         <ul>
-          <li>Automation</li>
-          <li>Rewards</li>
+          <li>Self-Hosting</li>
+          <li>Community</li>
         </ul>
       </FooterColumn>
       <FooterColumn>
         <span>Resources</span>
         <ul>
-          <li>Compare</li>
           <li>Blog</li>
         </ul>
       </FooterColumn>
       <FooterColumn>
-        <span>Company</span>
+        <span>The Service</span>
         <ul>
           <li>About Us</li>
-          <li>Careers</li>
         </ul>
       </FooterColumn>
       <FooterColumn>
         <span>Social</span>
         <ul>
-          <li>LinkedIn</li>
-          <li>Instagram</li>
+          <li>Forums</li>
+          <li>Reddit</li>
         </ul>
       </FooterColumn>
     </FooterColumnContainer>
     <BrandContainer>
-      <Logo>Finance</Logo>
+      <Logo>10th World Logo Here</Logo>
     </BrandContainer>
   </FooterWrapper>
 )

@@ -27,22 +27,16 @@ const Header = () => {
       <Container>
         <Flex>
           <HeaderTextGroup>
-            <Subtitle>Personal Finance</Subtitle>
-            <h1>
-              All your money,
-              <br />
-              one account
-            </h1>
+            <Subtitle>Valheim Servers</Subtitle>
             <h2>
-              We're building next generation personal finance tools. Sign up to
-              get early access.
+              Sign up for the ability to create and run your own server for Valheim
             </h2>
             <HeaderForm onSubmit={handleSubmit}>
               <HeaderInput placeholder="Your email" />
-              <HeaderButton>Early access</HeaderButton>
+              <HeaderButton>Submit</HeaderButton>
             </HeaderForm>
             <FormSubtitle>
-              Already have a beta account?{" "}
+              Already have an account?{" "}
               <FormSubtitleLink to="/">Sign in</FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>

@@ -23,8 +23,8 @@ const theme = {
   },
 
   color: {
-    primary: "#071435",
-    secondary: "#098c8c",
+    primary: "#2c2c2c",
+    secondary: "#2C2C2C",
     accent: "#cca86e",
     background: {
       white: "#ffffff",
@@ -33,7 +33,7 @@ const theme = {
     white: {
       regular: "#ffffff",
       lessdark: "#faf9f8",
-      dark: "#f6f6f6",
+      dark: "#2c2c2c",
       darker: "#eeeeee",
     },
     black: {

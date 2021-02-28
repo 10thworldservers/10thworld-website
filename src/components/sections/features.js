@@ -7,41 +7,40 @@ const Features = () => (
   <Section id="features">
     <StyledContainer>
       <Subtitle>Features</Subtitle>
-      <SectionTitle>Smart money management</SectionTitle>
+      <SectionTitle>Play with your friends</SectionTitle>
       <FeaturesGrid>
         <FeatureItem>
-          <FeatureTitle>Notifications</FeatureTitle>
+          <FeatureTitle>Persistent World</FeatureTitle>
           <FeatureText>
-            Receive budget and spending alerts based on your favorite triggers.
+            Valheim features an exiting persistent world with a high degree of unpredictability
           </FeatureText>
         </FeatureItem>
         <FeatureItem>
           <FeatureTitle>Security</FeatureTitle>
           <FeatureText>
-            Your data is always safe with us as we use the latest security
-            protocols.
+            Your data is secured with the reliability of Azure microservices
           </FeatureText>
         </FeatureItem>
         <FeatureItem>
           <FeatureTitle>Automation</FeatureTitle>
           <FeatureText>
-            Create smart automated workflows and triggers for your money.
+            Uptime is maximized
           </FeatureText>
         </FeatureItem>
         <FeatureItem>
-          <FeatureTitle>Aggregation</FeatureTitle>
+          <FeatureTitle>Flexibility</FeatureTitle>
           <FeatureText>
-            Easily link up to 5 banks to your finance account.
+            Host up to X-amount of servers per subscription
           </FeatureText>
         </FeatureItem>
         <FeatureItem>
           <FeatureTitle>Payments</FeatureTitle>
-          <FeatureText>Send money to friends and family with ease.</FeatureText>
+          <FeatureText>Billed monthly, cancel subcription at any time</FeatureText>
         </FeatureItem>
         <FeatureItem>
-          <FeatureTitle>Rewards</FeatureTitle>
+          <FeatureTitle>Participate</FeatureTitle>
           <FeatureText>
-            High interest and rewards for hitting your goals.
+            Take part in an exciting opportunity to witness the growth of one of the fastest selling early access survival game
           </FeatureText>
         </FeatureItem>
       </FeaturesGrid>
