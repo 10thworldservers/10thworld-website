@@ -4,9 +4,11 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter SaaS Marketing`,
-    description: `A simple one page marketing starter for saas companies.`,
-    author: `Keegan Burkett`,
+    title: `10th World Servers: Valheim Self-Hosting`,
+    description: `A SaaS product for self-hosted Valheim servers`,
+    author: `John David Fischer, Daniel Beccaria, Davis`,
+    keywords: `valheim, servers, self, hosting`,
+    siteUrl: `https://www.10th.world`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -35,8 +37,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `10th world servers`,
+        short_name: `10thworld`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
