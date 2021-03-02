@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-
+import logo1 from "../../images/10thWorldServers_sheildFull.png"
 import { Container } from "../global"
 
 const Footer = () => (
@@ -34,7 +34,7 @@ const Footer = () => (
       </FooterColumn>
     </FooterColumnContainer>
     <BrandContainer>
-      <Logo>10th World Logo Here</Logo>
+      <Logo><img src={logo1}/></Logo>
     </BrandContainer>
   </FooterWrapper>
 )

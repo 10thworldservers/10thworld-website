@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import Scrollspy from "react-scrollspy"
+import logo1 from "../../../images/10thWorldServers_sheildFull.png"
 import { Menu, X } from "react-feather"
 
 import { Container } from "../../global"
@@ -77,7 +78,7 @@ export default class Navigation extends Component {
           <Brand>
             <Scrollspy offset={-64} item={["top"]} currentClassName="active">
               <AnchorLink href="#top" onClick={this.closeMobileMenu}>
-                10thWorld Logo
+                <img src={logo1}/>
               </AnchorLink>
             </Scrollspy>
           </Brand>
