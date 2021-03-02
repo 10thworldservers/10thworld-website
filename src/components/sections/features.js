@@ -40,7 +40,7 @@ const Features = () => (
         <FeatureItem>
           <FeatureTitle>Participate</FeatureTitle>
           <FeatureText>
-            Take part in an exciting opportunity to witness the growth of one of the fastest selling early access survival game
+            Take part in an exciting opportunity to witness the growth of one of the fastest selling early access survival games
           </FeatureText>
         </FeatureItem>
       </FeaturesGrid>
