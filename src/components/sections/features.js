@@ -1,10 +1,13 @@
 import React from "react"
 import styled from "styled-components"
 
+
+import vikingBG from "../../images/vikinglandscape1.jpg"
+
 import { Section, Container } from "../global"
 
 const Features = () => (
-  <Section id="features">
+  <StyledSection id="features">
     <StyledContainer>
       <Subtitle>Features</Subtitle>
       <SectionTitle>Play with your friends</SectionTitle>
@@ -45,12 +48,21 @@ const Features = () => (
         </FeatureItem>
       </FeaturesGrid>
     </StyledContainer>
-  </Section>
+  </StyledSection>
 )
 
 export default Features
 
-const StyledContainer = styled(Container)``
+const StyledSection = styled(Section)`
+  background-image: url(${vikingBG});
+  background-position: center;
+  background-repeat: no-repeat;
+  /* object-fit: cover; */
+  padding: 25px 0;
+`
+
+const StyledContainer = styled(Container)`
+`
 
 const SectionTitle = styled.h3`
   color: ${props => props.theme.color.primary};
@@ -62,19 +74,19 @@ const SectionTitle = styled.h3`
 
 const Subtitle = styled.h5`
   font-size: 16px;
-  color: ${props => props.theme.color.accent};
+  color: ${props => props.theme.color.primary};
   letter-spacing: 0px;
   margin-bottom: 12px;
   text-align: center;
 `
 
 const FeaturesGrid = styled.div`
-  max-width: 670px;
+  max-width: 650px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 0px auto;
-  grid-column-gap: 40px;
-  grid-row-gap: 35px;
+  grid-column-gap: 25px;
+  grid-row-gap: 15px;
   @media (max-width: ${props => props.theme.screen.sm}) {
     grid-template-columns: 1fr;
     padding: 0 64px;
@@ -86,6 +98,10 @@ const FeatureItem = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 0 0.75rem 1.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #2c2c2c;
 `
 
 const FeatureTitle = styled.h4`
@@ -93,8 +109,10 @@ const FeatureTitle = styled.h4`
   letter-spacing: 0px;
   line-height: 30px;
   margin-bottom: 10px;
+  text-align: center;
 `
 
 const FeatureText = styled.p`
   text-align: center;
+  font-weight: 600;
 `

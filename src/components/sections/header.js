@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
-import viking_photo1 from "../../images/vikinglandscape1.jpg"
 
 import { Container } from "../global"
 
@@ -33,12 +32,12 @@ const Header = () => {
               Sign up for the ability to create and run your own server for Valheim
             </h2>
             <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput placeholder="Your email" />
-              <HeaderButton>Submit</HeaderButton>
+              <HeaderInput placeholder="Your email ghey" />
+              <HeaderButton>No U</HeaderButton>
             </HeaderForm>
             <FormSubtitle>
               Already have an account?{" "}
-              <FormSubtitleLink to="/">Sign in</FormSubtitleLink>
+              <FormSubtitleLink to="/">Hello FBI?</FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
           <ImageWrapper>
@@ -54,12 +53,7 @@ const Header = () => {
 export default Header
 
 const HeaderWrapper = styled.header`
-  background-color: #f8f8f8;
-  padding: 160px 0 80px 0;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
-  @media (max-width: ${props => props.theme.screen.md}) {
-  }
+margin-top: 10rem;
 `
 const Subtitle = styled.h5`
   font-size: 16px;

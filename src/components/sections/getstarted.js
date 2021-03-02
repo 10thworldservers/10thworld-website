@@ -61,9 +61,9 @@ const TryItButton = styled.button`
   }
 `
 
-const Subtitle = styled.span`
-  ${props => props.theme.font_size.xxsmall}
-  padding-top: 16px;
-  font-size: 14px;
-  color: ${props => props.theme.color.primary};
-`
+// const Subtitle = styled.span`
+//   ${props => props.theme.font_size.xxsmall}
+//   padding-top: 16px;
+//   font-size: 14px;
+//   color: ${props => props.theme.color.primary};
+// `

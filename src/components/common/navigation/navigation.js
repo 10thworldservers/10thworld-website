@@ -78,7 +78,7 @@ export default class Navigation extends Component {
           <Brand>
             <Scrollspy offset={-64} item={["top"]} currentClassName="active">
               <AnchorLink href="#top" onClick={this.closeMobileMenu}>
-                <img src={logo1}/>
+                <img src={logo1} alt="10th World Servers main logo"/>
               </AnchorLink>
             </Scrollspy>
           </Brand>

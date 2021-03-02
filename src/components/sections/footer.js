@@ -1,11 +1,14 @@
 import React from "react"
 import styled from "styled-components"
-import logo1 from "../../images/10thWorldServers_sheildFull.png"
 import { Container } from "../global"
+import vikingLogo2 from '../../images/10thShieldLogo.png';
 
 const Footer = () => (
   <FooterWrapper id="footer">
     <FooterColumnContainer>
+    <BrandContainer>
+        <LogoImg src={vikingLogo2} alt="10th world shield logo mini"/>
+    </BrandContainer>
       <FooterColumn>
         <span>Features</span>
         <ul>
@@ -33,9 +36,6 @@ const Footer = () => (
         </ul>
       </FooterColumn>
     </FooterColumnContainer>
-    <BrandContainer>
-      <Logo><img src={logo1}/></Logo>
-    </BrandContainer>
   </FooterWrapper>
 )
 
@@ -43,22 +43,6 @@ const FooterWrapper = styled.footer`
   background-color: white;
   margin: 80px 0 0;
   padding: 0 0 80px;
-`
-
-const Logo = styled.div`
-  font-family: ${props => props.theme.font.extrabold};
-  ${props => props.theme.font_size.regular};
-  color: ${props => props.theme.color.black.regular};
-  text-decoration: none;
-  letter-spacing: 1px;
-  margin: 0;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  z-index: 9;
-  text-decoration: none;
-  outline: 0px;
 `
 
 const BrandContainer = styled(Container)`
@@ -70,11 +54,16 @@ const BrandContainer = styled(Container)`
   @media (max-width: ${props => props.theme.screen.sm}) {
   }
 `
+const LogoImg = styled.img`
+  
+`
+
 const FooterColumnContainer = styled(Container)`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 32px;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
   @media (max-width: ${props => props.theme.screen.sm}) {
     grid-template-columns: 1fr 1fr;
     grid-gap: 32px;
