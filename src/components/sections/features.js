@@ -2,7 +2,6 @@ import React from "react"
 import styled from "styled-components"
 
 
-import vikingBG from "../../images/vikinglandscape1.jpg"
 
 import { Section, Container } from "../global"
 
@@ -54,7 +53,6 @@ const Features = () => (
 export default Features
 
 const StyledSection = styled(Section)`
-  background-image: url(${vikingBG});
   background-position: center;
   background-repeat: no-repeat;
   /* object-fit: cover; */
