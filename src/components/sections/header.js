@@ -53,7 +53,8 @@ const Header = () => {
 export default Header
 
 const HeaderWrapper = styled.header`
-margin-top: 10rem;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 `
 const Subtitle = styled.h5`
   font-size: 16px;
@@ -94,6 +95,7 @@ const Flex = styled.div`
   justify-content: space-between;
   align-content: center;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 80px;
   @media (max-width: ${props => props.theme.screen.md}) {
     grid-template-columns: 1fr;
     grid-gap: 64px;

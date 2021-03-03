@@ -82,8 +82,9 @@ const Subtitle = styled.h5`
 
 const FeaturesGrid = styled.div`
   max-width: 650px;
+  min-width: 450px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 200px 200px 200px;
   margin: 0px auto;
   grid-column-gap: 25px;
   grid-row-gap: 15px;
@@ -101,7 +102,7 @@ const FeatureItem = styled.div`
   padding: 0 0.75rem 1.5rem;
   border: 1px solid black;
   border-radius: 5px;
-  box-shadow: 1px 1px 2px #2c2c2c;
+  box-shadow: 1px 1px 5px #2c2c2c;
 `
 
 const FeatureTitle = styled.h4`
