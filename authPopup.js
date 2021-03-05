@@ -1,7 +1,15 @@
+// All these could be methods on a login component or contained within a functional login component
+
+// Ideally we take a functional approach as it is much clearer to deal with using hooks
+
+// instance of microsoft's authentication object
+// Possible to use this within a react component?
 const myMSALObj = new msal.PublicClientApplication(msalConfig);
 
+// the value of the username - empty string sent to the API that checks whether it exists against any other account names
 let username = "";
 
+// method or function contained within Login component
 function loadPage() {
   const currentAccounts = myMSALObj.getAllAccounts();
   if (currentAccounts === null) {
