@@ -1,7 +1,11 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
+
+// Azure B2C Auth/Graph Servs
+import AuthService from '../../services/auth.service';
+import GraphService from '../../services/graph.service';
 
 import { Container } from "../global"
 
@@ -17,10 +21,76 @@ const Header = () => {
       }
     }
   `)
+  const authService = new AuthService();
+  const graphService = new GraphService();
 
+  const [userState, setUserState] = useState({
+    user: null,
+    userInfo: null,
+    apiCallFailed: false,
+    loginFailed: false
+  });
+
+  const callAPI = () => {
+    setUserState({
+      apiCallFailed: false
+    });
+    authService.getToken().then(
+      token => {
+        graphService.getUserInfo(token).then(
+          data => {
+            setUserState({
+              userInfo: data
+            });
+          },
+          error => {
+            console.error(error);
+            setUserState({
+              apiCallFailed: true
+            })
+          }
+        )
+      }
+    )
+  };
+  
+  const logout = () => {
+    authService.logout();
+  };
+
+  const login = () => {
+    setUserState({
+      loginFailed: false
+    });
+    authService.login().then(
+      user => {
+        if (user) {
+          setUserState({
+            user: user
+          })
+        } else {
+          setUserState({
+            loginFailed: true
+          })
+        }
+      },
+      () => {
+        setUserState({
+          loginFailed: true
+        })
+      }
+    )
+  };
   const handleSubmit = event => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+    callAPI();
+  };
+
+
+  // console.log('The User state with useEffect = ', userState);
+  // console.log('The authentication service', authService);
+  // console.log('The graph api service', graphService);
+
 
   return (
     <HeaderWrapper id="top">
@@ -33,7 +103,7 @@ const Header = () => {
             </h2>
             <HeaderForm onSubmit={handleSubmit}>
               <HeaderInput placeholder="Your email ghey" />
-              <HeaderButton>No U</HeaderButton>
+              <HeaderButton>Submit</HeaderButton>
             </HeaderForm>
             <FormSubtitle>
               Already have an account?{" "}

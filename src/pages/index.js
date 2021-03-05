@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState, useEffect} from "react"
 
 import Layout from "../components/common/layout/layout"
 import SEO from "../components/common/layout/seo"
@@ -9,8 +9,9 @@ import Features from "../components/sections/features"
 import Footer from "../components/sections/footer"
 import GetStarted from "../components/sections/getstarted"
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = () => {
+  return (
+    <Layout>
     <SEO title="Home" />
     <Navigation />
     <Header />
@@ -18,6 +19,9 @@ const IndexPage = () => (
     <GetStarted />
     <Footer />
   </Layout>
-)
+  )
+}
+
+
 
 export default IndexPage
