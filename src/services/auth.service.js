@@ -14,7 +14,7 @@ export default class Authservice {
     this.app = new Msal.UserAgentApplication(
       this.applicationConfig.clientID,
       '', () => {
-        // login redirect
+        
       },
       {
         redirectUri
