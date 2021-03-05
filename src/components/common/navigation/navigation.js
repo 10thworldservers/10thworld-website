@@ -96,10 +96,7 @@ export default class Navigation extends Component {
             </button>
           </Mobile>
 
-          <Mobile hide>{this.getNavList({})}</Mobile>
-          <ActionsContainer>
-            <button>Sign up</button>
-          </ActionsContainer>          
+          <Mobile hide>{this.getNavList({})}</Mobile>        
         </StyledContainer>
         <Mobile>
           {mobileMenuOpen && (

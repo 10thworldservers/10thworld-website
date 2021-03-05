@@ -2,7 +2,7 @@ import * as Msal from 'msal';
 
 export default class Authservice {
   constructor() {
-    let PROD_REDIRECT_URI = "https://extensions.cpim.windows.net";
+    let PROD_REDIRECT_URI = "https://10th.world";
     let redirectUri = window.location.origin;
     if (window.location.hostname !== '127.0.0.1') {
       redirectUri = PROD_REDIRECT_URI;
