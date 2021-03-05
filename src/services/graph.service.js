@@ -1,6 +1,6 @@
 export default class GraphService {
   constructor() {
-    this.graphUrl = 'https://graph.microsoft.com/User.Read'
+    this.graphUrl = 'https://graph.microsoft.com/v1.0/'
   }
 
   getUserInfo = token => {

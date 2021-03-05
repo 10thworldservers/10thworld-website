@@ -27,7 +27,7 @@ const Features = () => (
         <FeatureItem>
           <FeatureTitle>Automation</FeatureTitle>
           <FeatureText>
-            Uptime is maximized
+            Uptime is maximized through the relability of the cloud
           </FeatureText>
         </FeatureItem>
         <FeatureItem>

@@ -2,19 +2,19 @@ import * as Msal from 'msal';
 
 export default class Authservice {
   constructor() {
-    let PROD_REDIRECT_URI = "https://10th.world";
+    let PROD_REDIRECT_URI = "https://extensions.cpim.windows.net";
     let redirectUri = window.location.origin;
     if (window.location.hostname !== '127.0.0.1') {
       redirectUri = PROD_REDIRECT_URI;
     }
     this.applicationConfig = {
-      clientID: 'd81e44a1-c513-4d80-b9f5-93e4533a94dd',
+      clientID: '9adea4fb-5456-4301-b007-b9b6c45e0eef',
       graphScopes: ['user.read']
     };
     this.app = new Msal.UserAgentApplication(
       this.applicationConfig.clientID,
       '', () => {
-        
+        return PROD_REDIRECT_URI;
       },
       {
         redirectUri
@@ -22,6 +22,7 @@ export default class Authservice {
     );
   }
 
+  // registration?
   login = () => {
     return this.app.loginPopup(this.applicationConfig.graphScopes).then(idToken => {
       const user = this.app.getAccount();

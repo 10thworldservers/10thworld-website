@@ -23,7 +23,7 @@ const Header = () => {
   `)
   const authService = new AuthService();
   const graphService = new GraphService();
-
+// 
   const [userState, setUserState] = useState({
     user: null,
     userInfo: null,
@@ -84,10 +84,10 @@ const Header = () => {
   //   } else {
   //     return
   //   }
-  
-  // }, [userState.user, callAPI])
+  // // 
+  // }, [])
 
-  const handleSubmit = event => {
+  const handleSubmit =  (event) => {
     event.preventDefault();
     login()
   };
