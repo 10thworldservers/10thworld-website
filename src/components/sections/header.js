@@ -53,10 +53,6 @@ const Header = () => {
       }
     )
   };
-  
-  const logout = () => {
-    authService.logout();
-  };
 
   const login = () => {
     setUserState({
@@ -81,9 +77,19 @@ const Header = () => {
       }
     )
   };
+
+  // useEffect(() => {
+  //   if (userState.user === null) {
+  //     callAPI();
+  //   } else {
+  //     return
+  //   }
+  
+  // }, [userState.user, callAPI])
+
   const handleSubmit = event => {
     event.preventDefault();
-    callAPI();
+    login()
   };
 
 
@@ -97,17 +103,17 @@ const Header = () => {
       <Container>
         <Flex>
           <HeaderTextGroup>
-            <Subtitle>Valheim Servers</Subtitle>
             <h2>
-              Sign up for the ability to create and run your own server for Valheim
+              Sign up to create your own Valheim Servers for you and ten others
             </h2>
             <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput placeholder="Your email ghey" />
-              <HeaderButton>Submit</HeaderButton>
+              <HeaderInput type="email" placeholder="Your email" />
+              <HeaderInput type="password" placeholder="Password" />
+              <HeaderButton>Sign Up</HeaderButton>
             </HeaderForm>
             <FormSubtitle>
               Already have an account?{" "}
-              <FormSubtitleLink to="/">Hello FBI?</FormSubtitleLink>
+              <FormSubtitleLink to="/">Sign In</FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
           <ImageWrapper>
@@ -124,12 +130,6 @@ export default Header
 
 const HeaderWrapper = styled.header`
 margin-top: 10rem;
-`
-const Subtitle = styled.h5`
-  font-size: 16px;
-  color: ${props => props.theme.color.accent};
-  letter-spacing: 0px;
-  margin-bottom: 16px;
 `
 
 const HeaderTextGroup = styled.div`
@@ -207,6 +207,7 @@ const HeaderInput = styled.input`
   border-radius: 4px;
   padding: 8px 16px;
   outline: 0px;
+  margin-left: 0.5rem;
   &:focus {
     box-shadow: inset ${props => props.theme.color.secondary} 0px 0px 0px 2px;
   }
