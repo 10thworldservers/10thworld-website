@@ -24,15 +24,26 @@ const AuthProvider = (props) => {
       storeAuthStateInCookie: true
     }
   });
+  
+  const getUserProfile = async () => {
+    try {
+      var accessToken = await getAccessToken(config.scopes);
 
-  useEffect(() => {
-    const accounts = publicClientApplication.getAllAccounts();
-
-    if (accounts && accounts.length > 0) {
-      this.getUserProfile();
+      if (accessToken) {
+        setUserState({
+          isAuthenticated: true,
+          user: {},
+          error: {message: 'Access token', debug: accessToken}
+        })
+      }
+    } catch (error) {
+      setUserState({
+        isAuthenticated: false,
+        user: {},
+        error: normalizeError(error)
+      })
     }
-
-  }, []);
+  };
 
   const login = async () => {
     try {
@@ -41,7 +52,7 @@ const AuthProvider = (props) => {
         prompt: 'select_account'
       });
 
-      await this.getUserProfile();
+      await getUserProfile();
 
     } catch (error) {
       setUserState({
@@ -55,25 +66,6 @@ const AuthProvider = (props) => {
   const logout = () => {
     publicClientApplication.logout()
   };
-
-  const getAccessToken = async (scopes) => {
-    try {
-      const accounts = publicClientApplication.getAllAccounts();
-
-      if (accounts.length <= 0) {
-        throw new Error('login_required')
-      }
-
-      var silentResult = await publicClientApplication.acquireTokenSilent({
-        scopes: scopes,
-        account: accounts[0]
-      });
-
-      return silentResult.accessToken;
-    } catch (error) {
-      
-    }
-  }
 
   const setErrorMessage = (message, debug) => {
     setUserState({
@@ -94,6 +86,55 @@ const AuthProvider = (props) => {
     );
   }
 
+  const getAccessToken = async (scopes) => {
+    try {
+      const accounts = publicClientApplication.getAllAccounts();
+
+      if (accounts.length <= 0) {
+        throw new Error('login_required')
+      }
+
+      var silentResult = await publicClientApplication.acquireTokenSilent({
+        scopes: scopes,
+        account: accounts[0]
+      });
+
+      return silentResult.accessToken;
+    } catch (error) {
+      if (isInteractionRequired(error)) {
+        var interactiveResult = await publicClientApplication
+          .acquireTokenPopup({ scopes: scopes });
+        return interactiveResult.accessToken;
+      } else {
+        throw error;
+      }
+    }
+  };
+
+  const normalizeError = (error) => {
+    var normalizedError = {};
+
+    if (typeof error === 'string') {
+      var errParts = error.split('|');
+      normalizedError = errParts.length > 1 ? {message: errParts[1], debug: errParts[0]} : {message: error}
+    } else {
+      normalizedError = {
+        message: error.message,
+        debug: JSON.stringify(error)
+      };
+    }
+    return normalizedError;
+  };
+
+  useEffect(() => {
+    const accounts = publicClientApplication.getAllAccounts();
+
+    if (accounts && accounts.length > 0) {
+      getUserProfile();
+    }
+
+  }, []);
+  
   return (
     <Wrapper
       error={error}
@@ -101,7 +142,7 @@ const AuthProvider = (props) => {
       user={user}
       login={ () => login() }
       logout={ () => logout() }
-      getAccessToken={ }
+      getAccessToken={ (scopes)=> getAccessToken(scopes) }
       setError={(message, debug) => setErrorMessage(message, debug)}
       {...props}
     >
