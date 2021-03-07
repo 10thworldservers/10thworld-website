@@ -1,7 +1,6 @@
 import { Configuration, LogLevel } from "@azure/msal-browser";
 
-const AzureActiveDirectoryAppClientId: any =
-  process.env.REACT_APP_AZURE_ACTIVE_DIRECTORY_APP_CLIENT_ID;
+const AzureActiveDirectoryAppClientId: string = 'd81e44a1-c513-4d80-b9f5-93e4533a94dd';
 
 export const MSAL_CONFIG: Configuration = {
   auth: {

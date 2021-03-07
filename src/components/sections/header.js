@@ -5,6 +5,9 @@ import Img from "gatsby-image"
 
 import { Container } from "../global"
 
+// Azure Authentication Button
+import AzureAuthenticationButton from '../../azure/azure-authentication.component';
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -29,15 +32,16 @@ const Header = () => {
           <HeaderTextGroup>
             <Subtitle>Valheim Servers</Subtitle>
             <h2>
-              Sign up for the ability to create and run your own server for Valheim
+              Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-            <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput placeholder="Your email ghey" />
-              <HeaderButton>No U</HeaderButton>
-            </HeaderForm>
+              <HeaderButton>
+                <AzureAuthenticationButton>Submit</AzureAuthenticationButton>
+              </HeaderButton>
             <FormSubtitle>
               Already have an account?{" "}
-              <FormSubtitleLink to="/">Hello FBI?</FormSubtitleLink>
+              <FormSubtitleLink to="/">
+              <AzureAuthenticationButton>Sign In</AzureAuthenticationButton>
+              </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
           <ImageWrapper>
@@ -162,7 +166,7 @@ const HeaderButton = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  background: ${props => props.theme.color.secondary};
+  background: ${props => props.theme.color.primary};
   border-radius: 4px;
   padding: 0px 40px;
   border-width: 0px;
