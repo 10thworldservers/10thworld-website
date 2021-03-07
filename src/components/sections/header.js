@@ -9,10 +9,13 @@ import GraphService from '../../services/graph.service';
 
 import { Container } from "../global"
 
+// Azure Authentication Button
+import AzureAuthenticationButton from '../../azure/azure-authentication.component';
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(sourceInstanceName: { eq: "product" }, name: { eq: "cloudserver1" }) {
+      file(sourceInstanceName: { eq: "product" }, name: { eq: "cloudserver1_cut" }) {
         childImageSharp {
           fluid(maxWidth: 1000) {
             ...GatsbyImageSharpFluid_tracedSVG
@@ -21,99 +24,22 @@ const Header = () => {
       }
     }
   `)
-  const authService = new AuthService();
-  const graphService = new GraphService();
-// 
-  const [userState, setUserState] = useState({
-    user: null,
-    userInfo: null,
-    apiCallFailed: false,
-    loginFailed: false
-  });
-
-  const callAPI = () => {
-    setUserState({
-      apiCallFailed: false
-    });
-    authService.getToken().then(
-      token => {
-        graphService.getUserInfo(token).then(
-          data => {
-            setUserState({
-              userInfo: data
-            });
-          },
-          error => {
-            console.error(error);
-            setUserState({
-              apiCallFailed: true
-            })
-          }
-        )
-      }
-    )
-  };
-
-  const login = () => {
-    setUserState({
-      loginFailed: false
-    });
-    authService.login().then(
-      user => {
-        if (user) {
-          setUserState({
-            user: user
-          })
-        } else {
-          setUserState({
-            loginFailed: true
-          })
-        }
-      },
-      () => {
-        setUserState({
-          loginFailed: true
-        })
-      }
-    )
-  };
-
-  // useEffect(() => {
-  //   if (userState.user === null) {
-  //     callAPI();
-  //   } else {
-  //     return
-  //   }
-  // // 
-  // }, [])
-
-  const handleSubmit =  (event) => {
-    event.preventDefault();
-    login()
-  };
-
-
-  // console.log('The User state with useEffect = ', userState);
-  // console.log('The authentication service', authService);
-  // console.log('The graph api service', graphService);
-
-
   return (
     <HeaderWrapper id="top">
       <Container>
         <Flex>
           <HeaderTextGroup>
             <h2>
-              Sign up to create your own Valheim Servers for you and ten others
+              Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-            <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput type="email" placeholder="Your email" />
-              <HeaderInput type="password" placeholder="Password" />
-              <HeaderButton>Sign Up</HeaderButton>
-            </HeaderForm>
+              <HeaderButton>
+                <AzureAuthenticationButton>Submit</AzureAuthenticationButton>
+              </HeaderButton>
             <FormSubtitle>
               Already have an account?{" "}
-              <FormSubtitleLink to="/">Sign In</FormSubtitleLink>
+              <FormSubtitleLink to="/">
+              <AzureAuthenticationButton>Sign In</AzureAuthenticationButton>
+              </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
           <ImageWrapper>
@@ -129,7 +55,8 @@ const Header = () => {
 export default Header
 
 const HeaderWrapper = styled.header`
-margin-top: 10rem;
+  margin-top: 20rem;
+  margin-bottom: 20rem;
 `
 
 const HeaderTextGroup = styled.div`
@@ -164,19 +91,10 @@ const Flex = styled.div`
   justify-content: space-between;
   align-content: center;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 80px;
   @media (max-width: ${props => props.theme.screen.md}) {
     grid-template-columns: 1fr;
     grid-gap: 64px;
-  }
-`
-
-const HeaderForm = styled.form`
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 16px;
-
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    flex-direction: column;
   }
 `
 
@@ -191,35 +109,6 @@ const FormSubtitleLink = styled(Link)`
   text-decoration: none;
   border-bottom: 1px solid ${props => props.theme.color.secondary};
 `
-
-const HeaderInput = styled.input`
-  font-weight: 500;
-  font-size: 16px;
-  color: ${props => props.theme.color.primary};
-  line-height: 42px;
-  width: 100%;
-  text-align: left;
-  height: 60px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${props => props.theme.color.secondary};
-  border-image: initial;
-  border-radius: 4px;
-  padding: 8px 16px;
-  outline: 0px;
-  margin-left: 0.5rem;
-  &:focus {
-    box-shadow: inset ${props => props.theme.color.secondary} 0px 0px 0px 2px;
-  }
-  @media (max-width: ${props => props.theme.screen.md}) {
-    margin-bottom: 8px;
-  }
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    display: block;
-    width: 100%;
-  }
-`
-
 const HeaderButton = styled.button`
   font-weight: 500;
   font-size: 14px;
@@ -227,11 +116,11 @@ const HeaderButton = styled.button`
   letter-spacing: 1px;
   height: 60px;
   display: block;
-  margin-left: 8px;
+  /* margin-left: 8px; */
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  background: ${props => props.theme.color.secondary};
+  background: #ffffff;
   border-radius: 4px;
   padding: 0px 40px;
   border-width: 0px;
