@@ -9,14 +9,7 @@ import {
 
 import { MSAL_CONFIG } from "./azure-authentication-config";
 
-const checkIfWindowExists = () => {
-  let location = null;
-  
-  if (window !== undefined) {
-    location = window.location.href;
-  }
-  return location;
-}
+const location = typeof window !== `undefined` ? window : null;
 
 export class AzureAuthenticationContext {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(
@@ -45,7 +38,7 @@ export class AzureAuthenticationContext {
 
     this.loginRedirectRequest = {
       ...this.loginRequest,
-      redirectStartPage: checkIfWindowExists(),
+      redirectStartPage: location,
     };
   }
 
