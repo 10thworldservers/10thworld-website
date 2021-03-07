@@ -3,10 +3,24 @@ import AzureAuthenticationContext from "./azure-authentication-context";
 import { AccountInfo } from "@azure/msal-browser";
 import styled from 'styled-components';
 
-const ua = window.navigator.userAgent;
-const msie = ua.indexOf("MSIE ");
-const msie11 = ua.indexOf("Trident/");
-const isIE = msie > 0 || msie11 > 0;
+
+const checkIfWindowExists = () => {
+  let isIE: any;
+  let ua: any;
+  let msie: any;
+  let msie11: any;
+
+  if (window !== undefined) {
+    ua = window.navigator.userAgent;
+    msie = ua.indexOf("MSIE ");
+    msie11 = ua.indexOf("Trident/");
+    isIE = msie > 0 || msie11 > 0;
+  }
+  
+  return isIE;
+}
+
+
 
 // Log In, Log Out button
 const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
@@ -18,7 +32,7 @@ const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
 
   const logIn = (method: string): any => {
     const typeName = "loginPopup";
-    const logInType = isIE ? "loginRedirect" : typeName;
+    const logInType = checkIfWindowExists() ? "loginRedirect" : typeName;
 
     // Azure Login
     authenticationModule.login(logInType, returnedAccountInfo);
