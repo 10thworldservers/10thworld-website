@@ -63,7 +63,7 @@ const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
   };
 
   return (
-    <div id="authentication">
+    <div>
       {authenticationModule.isAuthenticationConfigured ? (
         showButton()
       ) : (
