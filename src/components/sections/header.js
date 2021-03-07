@@ -5,6 +5,9 @@ import Img from "gatsby-image"
 
 import { Container } from "../global"
 
+// Azure Authentication Button
+import AzureAuthenticationButton from '../../azure/azure-authentication.component';
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -18,10 +21,6 @@ const Header = () => {
     }
   `)
 
-  const handleSubmit = event => {
-    event.preventDefault()
-  }
-
   return (
     <HeaderWrapper id="top">
       <Container>
@@ -29,15 +28,16 @@ const Header = () => {
           <HeaderTextGroup>
             <Subtitle>Valheim Servers</Subtitle>
             <h2>
-              Sign up for the ability to create and run your own server for Valheim
+              Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-            <HeaderForm onSubmit={handleSubmit}>
-              <HeaderInput placeholder="Your email ghey" />
-              <HeaderButton>No U</HeaderButton>
-            </HeaderForm>
+              <HeaderButton>
+                <AzureAuthenticationButton>Submit</AzureAuthenticationButton>
+              </HeaderButton>
             <FormSubtitle>
               Already have an account?{" "}
-              <FormSubtitleLink to="/">Hello FBI?</FormSubtitleLink>
+              <FormSubtitleLink to="/">
+              <AzureAuthenticationButton>Sign In</AzureAuthenticationButton>
+              </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
           <ImageWrapper>
@@ -102,16 +102,6 @@ const Flex = styled.div`
   }
 `
 
-const HeaderForm = styled.form`
-  display: flex;
-  flex-direction: row;
-  padding-bottom: 16px;
-
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    flex-direction: column;
-  }
-`
-
 const FormSubtitle = styled.span`
   ${props => props.theme.font_size.xxsmall}
 `
@@ -124,33 +114,6 @@ const FormSubtitleLink = styled(Link)`
   border-bottom: 1px solid ${props => props.theme.color.secondary};
 `
 
-const HeaderInput = styled.input`
-  font-weight: 500;
-  font-size: 16px;
-  color: ${props => props.theme.color.primary};
-  line-height: 42px;
-  width: 100%;
-  text-align: left;
-  height: 60px;
-  border-width: 1px;
-  border-style: solid;
-  border-color: ${props => props.theme.color.secondary};
-  border-image: initial;
-  border-radius: 4px;
-  padding: 8px 16px;
-  outline: 0px;
-  &:focus {
-    box-shadow: inset ${props => props.theme.color.secondary} 0px 0px 0px 2px;
-  }
-  @media (max-width: ${props => props.theme.screen.md}) {
-    margin-bottom: 8px;
-  }
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    display: block;
-    width: 100%;
-  }
-`
-
 const HeaderButton = styled.button`
   font-weight: 500;
   font-size: 14px;
@@ -158,11 +121,11 @@ const HeaderButton = styled.button`
   letter-spacing: 1px;
   height: 60px;
   display: block;
-  margin-left: 8px;
+  /* margin-left: 8px; */
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
-  background: ${props => props.theme.color.secondary};
+  background: #ffffff;
   border-radius: 4px;
   padding: 0px 40px;
   border-width: 0px;
