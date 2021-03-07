@@ -74,7 +74,7 @@ const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
 };
 
 const LoginButton = styled.button`
-  color:white;
+  color: hsl(193, 100, 20);
   font-size: 24px;
 `
 
