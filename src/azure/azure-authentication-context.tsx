@@ -9,6 +9,8 @@ import {
 
 import { MSAL_CONFIG } from "./azure-authentication-config";
 
+const location = typeof window !== `undefined` ? window : null;
+
 export class AzureAuthenticationContext {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(
     MSAL_CONFIG
@@ -36,7 +38,7 @@ export class AzureAuthenticationContext {
 
     this.loginRedirectRequest = {
       ...this.loginRequest,
-      redirectStartPage: window.location.href,
+      redirectStartPage: location,
     };
   }
 
