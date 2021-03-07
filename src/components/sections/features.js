@@ -54,7 +54,7 @@ const Features = () => (
 export default Features
 
 const StyledSection = styled(Section)`
-  background-image: url(${vikingBG});
+  /* background-image: url(${vikingBG});*/
   background-position: center;
   background-repeat: no-repeat;
   /* object-fit: cover; */
