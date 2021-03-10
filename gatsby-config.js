@@ -43,7 +43,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/10thShieldLogo.png`,
+        icon: `src/images/ShieldOnlyBlue.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

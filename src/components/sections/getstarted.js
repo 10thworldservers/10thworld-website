@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components"
+import SkyBackGround from "../../images/landscape-darkblue-lower.png"
 
 import { Container, Section } from "../global"
 
@@ -15,8 +16,9 @@ const GetStarted = () => (
 export default GetStarted
 
 const StyledSection = styled(Section)`
-  background-color: ${props => props.theme.color.background.light};
+  
   clip-path: polygon(0 0, 100% 14%, 100% 100%, 0% 100%);
+  background-image: url(${SkyBackGround});
 `
 
 const GetStartedContainer = styled(Container)`

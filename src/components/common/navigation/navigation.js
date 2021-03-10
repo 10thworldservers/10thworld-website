@@ -1,8 +1,9 @@
 import React, { Component } from "react"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import Scrollspy from "react-scrollspy"
-import logo1 from "../../../images/10thWorldServers_sheildFull.png"
+import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
+import { Router, Link } from "@reach/router"
 
 import { Container } from "../../global"
 import {
@@ -16,7 +17,7 @@ import {
   ActionsContainer,
 } from "./style"
 
-const NAV_ITEMS = ["Features", "Product", "Pricing", ""]
+const NAV_ITEMS = ["Features", "Product", "Pricing", "Community", "About"]
 
 export default class Navigation extends Component {
   state = {
@@ -96,6 +97,7 @@ export default class Navigation extends Component {
           </Mobile>
 
           <Mobile hide>{this.getNavList({})}</Mobile>
+          <Link to="welcome">Welcome</Link>
           <ActionsContainer>
             <button>Sign up</button>
           </ActionsContainer>          
@@ -108,6 +110,8 @@ export default class Navigation extends Component {
           )}
         </Mobile>
       </Nav>
+
+      
     )
   }
 }

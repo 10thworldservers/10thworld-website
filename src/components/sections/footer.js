@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { Container } from "../global"
-import vikingLogo2 from '../../images/10thShieldLogo.png';
+import vikingLogo2 from '../../images/ShieldNameBlue.png';
+
 
 const Footer = () => (
   <FooterWrapper id="footer">
