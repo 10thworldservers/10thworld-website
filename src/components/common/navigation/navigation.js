@@ -3,6 +3,7 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
+import styled from 'styled-components';
 
 import { Container } from "../../global"
 import {
@@ -78,7 +79,9 @@ export default class Navigation extends Component {
           <Brand>
             <Scrollspy offset={-64} item={["top"]} currentClassName="active">
               <AnchorLink href="#top" onClick={this.closeMobileMenu}>
-                <img src={logo1} alt="10th World Servers main logo"/>
+                <ImgContainer>
+                  <img src={logo1} alt="10th World Servers main logo"/>
+                </ImgContainer>                
               </AnchorLink>
             </Scrollspy>
           </Brand>
@@ -110,3 +113,10 @@ export default class Navigation extends Component {
     )
   }
 }
+
+
+const ImgContainer = styled.div`
+  box-shadow: 1px 1px 5px black;
+  border-radius: 10px;
+  padding: 0.75rem;
+`
