@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
-import SkyBackGround from "../../images/landscape-darkblue-upper.svg"
+import SkyBackGround from "../../images/landscape-darkblue-upper-cloud.svg"
 
 import { Container } from "../global"
 
@@ -12,7 +12,7 @@ import AzureAuthenticationButton from '../../azure/azure-authentication.componen
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      file(sourceInstanceName: { eq: "product" }, name: { eq: "cloudserver1_cut" }) {
+      file(sourceInstanceName: { eq: "product" }, name: { eq: "cloudserver1" }) {
         childImageSharp {
           fluid(maxWidth: 1000) {
             ...GatsbyImageSharpFluid_tracedSVG
@@ -42,10 +42,10 @@ const Header = () => {
               </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
-          <ImageWrapper>
+          {/* <ImageWrapper>
             <StyledImage fluid={data.file.childImageSharp.fluid} />
             <br />
-          </ImageWrapper>
+          </ImageWrapper> */}
         </Flex>
       </Container>
     </HeaderWrapper>
