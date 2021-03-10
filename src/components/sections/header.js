@@ -31,13 +31,14 @@ const Header = () => {
             <h2>
               Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-              <HeaderButton>
-                <AzureAuthenticationButton>Submit</AzureAuthenticationButton>
-              </HeaderButton>
+            <SignUpButton>
+            <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>              
+            </SignUpButton>
+              
             <FormSubtitle>
               Already have an account?{" "}
-              <FormSubtitleLink to="/">
-              <AzureAuthenticationButton>Sign In</AzureAuthenticationButton>
+              <FormSubtitleLink>
+                <AzureAuthenticationButton text="Sign In"/>
               </FormSubtitleLink>
             </FormSubtitle>
           </HeaderTextGroup>
@@ -61,7 +62,7 @@ const HeaderWrapper = styled.header`
 `
 const Subtitle = styled.h5`
   font-size: 16px;
-  color: ${props => props.theme.color.accent};
+  color: ${props => props.theme.color.primary};
   letter-spacing: 0px;
   margin-bottom: 16px;
 `
@@ -106,25 +107,24 @@ const Flex = styled.div`
 `
 
 const FormSubtitle = styled.span`
+  margin-top: 1.75rem;
   ${props => props.theme.font_size.xxsmall}
 `
 
 const FormSubtitleLink = styled(Link)`
-  color: ${props => props.theme.color.secondary};
-  padding-bottom: 1px;
-  margin-left: 8px;
+  color: #ffffff;
   text-decoration: none;
   border-bottom: 1px solid ${props => props.theme.color.secondary};
 `
 
-const HeaderButton = styled.button`
+const SignUpButton = styled.button`
   font-weight: 500;
   font-size: 14px;
-  color: white;
+  color: ${props => props.signUp ? `white` : `black`};
   letter-spacing: 1px;
   height: 60px;
   display: block;
-  /* margin-left: 8px; */
+  margin-top: 8px;
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;

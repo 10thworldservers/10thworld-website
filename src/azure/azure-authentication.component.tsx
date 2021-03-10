@@ -23,7 +23,7 @@ const checkIfWindowExists = () => {
 
 
 // Log In, Log Out button
-const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
+const AzureAuthenticationButton = ({ onAuthenticated, text }: any): JSX.Element => {
   // Azure client context
   const authenticationModule: AzureAuthenticationContext = new AzureAuthenticationContext();
 
@@ -55,7 +55,7 @@ const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
   const showLogInButton = (): any => {
     return (
       <LoginButton onClick={() => logIn("loginPopup")}>
-        Sign Up
+        {text}
       </LoginButton>
     );
   };
@@ -88,8 +88,9 @@ const AzureAuthenticationButton = ({ onAuthenticated }: any): JSX.Element => {
 };
 
 const LoginButton = styled.button`
-  color: hsl(193, 100, 20);
   font-size: 24px;
+  border-radius: 10px;
+ 
 `
 
 export default AzureAuthenticationButton;

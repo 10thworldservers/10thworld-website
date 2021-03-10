@@ -104,11 +104,6 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
   }
 
-  button:hover {
-    background-color: #2c2c2c;
-    transition: background-color 0.5s ease;
-  }
-
   a {
     cursor: pointer;
   }
