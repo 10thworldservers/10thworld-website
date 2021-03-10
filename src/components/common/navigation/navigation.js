@@ -116,7 +116,7 @@ export default class Navigation extends Component {
 
 
 const ImgContainer = styled.div`
-  box-shadow: 1px 1px 5px black;
+  box-shadow: .25px .25px 3px black;
   border-radius: 10px;
   padding: 0.75rem;
 `
