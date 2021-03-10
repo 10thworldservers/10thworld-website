@@ -33,7 +33,7 @@ export default class Navigation extends Component {
   handleScroll = event => {
     const scrollTop = window.pageYOffset
 
-    if (scrollTop > 32) {
+    if (scrollTop > 10) {
       this.setState({ hasScrolled: true })
     } else {
       this.setState({ hasScrolled: false })
@@ -51,8 +51,9 @@ export default class Navigation extends Component {
   }
 
   getNavAnchorLink = item => {
+    console.log(this.hasScrolled);
     return (
-    <Link href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
+      <Link style={{color: `${this.state.hasScrolled ? 'black' : 'white'}`}} href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
       {item}
     </Link>
   )
@@ -119,7 +120,8 @@ export default class Navigation extends Component {
 
 
 const ImgContainer = styled.div`
-  box-shadow: .25px .25px 3px black;
+  box-shadow: .25px .25px 5px black;
   border-radius: 10px;
   padding: 0.75rem;
+  background-color: ${props => props.theme.color.white.regular};
 `

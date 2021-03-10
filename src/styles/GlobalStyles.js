@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
   
   body {
     font-family: ${props => props.theme.font.primary};
+    background-color: ${props => props.theme.color.primary};
   }
 
   

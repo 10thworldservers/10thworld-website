@@ -54,19 +54,18 @@ const Features = () => (
 export default Features
 
 const StyledSection = styled(Section)`
-  /* background-image: url(${vikingBG});*/
   background-position: center;
   background-repeat: no-repeat;
-  /* object-fit: cover; */
   padding: 25px 0;
   margin-bottom: 5rem;
+  background-color: ${props => props.theme.color.primary};
 `
 
 const StyledContainer = styled(Container)`
 `
 
 const SectionTitle = styled.h3`
-  color: ${props => props.theme.color.primary};
+  color: ${props => props.theme.color.white.regular};
   display: flex;
   justify-content: center;
   margin: 0 auto 40px;
@@ -75,7 +74,7 @@ const SectionTitle = styled.h3`
 
 const Subtitle = styled.h5`
   font-size: 16px;
-  color: ${props => props.theme.color.primary};
+  color: ${props => props.theme.color.white.lessdark};
   letter-spacing: 0px;
   margin-bottom: 12px;
   text-align: center;
@@ -103,7 +102,8 @@ const FeatureItem = styled.div`
   padding: 0 0.75rem 1.5rem;
   border: 1px solid black;
   border-radius: 5px;
-  box-shadow: 1px 1px 5px #2c2c2c;
+  box-shadow: 1px 1px 5px ${props => props.theme.color.white.regular};
+  background: ${props => props.theme.color.background.white}
 `
 
 const FeatureTitle = styled.h4`
