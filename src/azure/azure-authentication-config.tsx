@@ -5,7 +5,9 @@ const AzureActiveDirectoryAppClientId: string = '7b9232dc-de44-48d6-b490-6a55791
 export const MSAL_CONFIG: Configuration = {
   auth: {
     clientId: AzureActiveDirectoryAppClientId,
-    redirectUri: 'https://victorious-forest-0f1514b10.azurestaticapps.net/'
+
+    redirectUri: 'https://victorious-forest-0f1514b10.azurestaticapps.net'
+
   },
   cache: {
     cacheLocation: "sessionStorage",
