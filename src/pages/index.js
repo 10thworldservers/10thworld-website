@@ -10,6 +10,7 @@ import Footer from "../components/sections/footer"
 import GetStarted from "../components/sections/getstarted"
 import AzureAuthenticationContext from '../azure/azure-authentication-context';
 import Welcome from "../components/sections/welcome"
+import Checkout from "../components/sections/checkout"
 
 const IndexPage = () => { 
   let azureAuthContext = new AzureAuthenticationContext();
@@ -25,6 +26,7 @@ const IndexPage = () => {
       <Header />
       { account !== null ?  <Welcome /> : <Features />}
     <GetStarted />
+    <Checkout />
     <Footer />
    </Layout>
   
