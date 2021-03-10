@@ -1,4 +1,4 @@
-import React ,{ useState } from "react"
+import React ,{ useState, useEffect } from "react"
 
 import Layout from "../components/common/layout/layout"
 import SEO from "../components/common/layout/seo"
@@ -12,27 +12,18 @@ import AzureAuthenticationContext from '../azure/azure-authentication-context';
 import Welcome from "../components/sections/welcome"
 
 const IndexPage = () => { 
-  const azureAuthContext = new AzureAuthenticationContext();
+  let azureAuthContext = new AzureAuthenticationContext();
 
-  // const [showWelcome, setShowWelcome] = useState({
-  //   showWelcome: azureAuthContext.account
-  // });
-
-  // console.log(showWelcome);
-
-  // const showWelcomeButton = () => {
+  const { account } = azureAuthContext;
+ 
+  console.log('The auth context account', account);
   
-     
-  //     {azureAuthContext.account === null ? (<Welcome />) : null}
-    
-  // }
-
   return (
     <Layout>
     <SEO title="Home" />
     <Navigation />
       <Header />
-      {azureAuthContext.account === null ? <Features /> : <Welcome />}
+      { account !== null ?  <Welcome /> : <Features />}
     <GetStarted />
     <Footer />
    </Layout>
