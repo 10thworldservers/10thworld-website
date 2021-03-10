@@ -58,7 +58,8 @@ const HeaderWrapper = styled.header`
   margin-top: 20rem;
   margin-bottom: 5rem;
   padding: 10rem;
-  background-image: url(${SkyBackGround})
+  background-image: url(${SkyBackGround});
+  box-shadow: inset 0 0 0 2000px rgba(235, 242, 250, 0.3);
 `
 const Subtitle = styled.h5`
   font-size: 16px;
