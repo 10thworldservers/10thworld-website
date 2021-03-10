@@ -59,6 +59,7 @@ const StyledSection = styled(Section)`
   background-repeat: no-repeat;
   /* object-fit: cover; */
   padding: 25px 0;
+  margin-bottom: 5rem;
 `
 
 const StyledContainer = styled(Container)`

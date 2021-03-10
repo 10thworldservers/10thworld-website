@@ -3,7 +3,6 @@ import AnchorLink from "react-anchor-link-smooth-scroll"
 import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
-import { Router, Link } from "@reach/router"
 
 import { Container } from "../../global"
 import {

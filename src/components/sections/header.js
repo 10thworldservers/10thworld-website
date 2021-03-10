@@ -55,7 +55,8 @@ export default Header
 
 const HeaderWrapper = styled.header`
   margin-top: 20rem;
-  margin-bottom: 20rem;
+  margin-bottom: 5rem;
+  padding: 10rem;
   background-image: url(${SkyBackGround})
 `
 const Subtitle = styled.h5`
@@ -66,7 +67,7 @@ const Subtitle = styled.h5`
 `
 
 const HeaderTextGroup = styled.div`
-  margin: 0;
+  margin: 2.5rem;
 
   > div {
     width: 120%;

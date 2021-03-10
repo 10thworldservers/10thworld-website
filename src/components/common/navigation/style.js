@@ -8,7 +8,7 @@ export const Nav = styled.nav`
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: ${props => (props.scrolled ? `white` : null)};
+  background: ${props => (props.scrolled ? `#1282A2` : `#FFFFFF` )};
   transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 `
 
