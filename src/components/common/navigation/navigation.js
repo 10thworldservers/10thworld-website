@@ -14,7 +14,6 @@ import {
   NavListWrapper,
   MobileMenu,
   Mobile,
-  ActionsContainer,
 } from "./style"
 
 const NAV_ITEMS = ["Features", "Product", "Pricing", "Community", "About"]

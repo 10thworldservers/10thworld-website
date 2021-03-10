@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import SkyBackGround from "../../images/landscape-darkblue-lower.png"
+import SkyBackGround from "../../images/landscape-darkblue-lower.svg"
 
 import { Container, Section } from "../global"
 
@@ -62,10 +62,3 @@ const TryItButton = styled.button`
     margin-left: 0;
   }
 `
-
-// const Subtitle = styled.span`
-//   ${props => props.theme.font_size.xxsmall}
-//   padding-top: 16px;
-//   font-size: 14px;
-//   color: ${props => props.theme.color.primary};
-// `

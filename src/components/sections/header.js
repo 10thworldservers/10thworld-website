@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
-import SkyBackGround from "../../images/landscape-darkblue-upper.png"
+import SkyBackGround from "../../images/landscape-darkblue-upper.svg"
 
 import { Container } from "../global"
 
