@@ -1,14 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import SkyBackGround from "../../images/landscape-darkblue-lower.svg"
-
 import { Container, Section } from "../global"
+import AzureAuthenticationComponent from '../../azure/azure-authentication.component';
 
 const GetStarted = () => (
   <StyledSection>
     <GetStartedContainer>
       <GetStartedTitle>Be the first create your world</GetStartedTitle>
-      <TryItButton>Start crafting your adventure</TryItButton>
+      <AzureAuthenticationComponent text="Start Your Adventure"/>
     </GetStartedContainer>
   </StyledSection>
 )

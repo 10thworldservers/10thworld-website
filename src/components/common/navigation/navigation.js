@@ -4,6 +4,8 @@ import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
 import styled from 'styled-components';
+import Link from 'gatsby-link';
+
 
 import { Container } from "../../global"
 import {
@@ -16,7 +18,7 @@ import {
   Mobile,
 } from "./style"
 
-const NAV_ITEMS = ["Features", "Product", "Pricing", "Community", "About"]
+const NAV_ITEMS = ["Features", "About"]
 
 export default class Navigation extends Component {
   state = {
@@ -48,11 +50,13 @@ export default class Navigation extends Component {
     }
   }
 
-  getNavAnchorLink = item => (
-    <AnchorLink href={`#${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
+  getNavAnchorLink = item => {
+    return (
+    <Link href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
       {item}
-    </AnchorLink>
+    </Link>
   )
+}
 
   getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>

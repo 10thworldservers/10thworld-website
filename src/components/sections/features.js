@@ -9,8 +9,8 @@ import { Section, Container } from "../global"
 const Features = () => (
   <StyledSection id="features">
     <StyledContainer>
-      <Subtitle>Features</Subtitle>
-      <SectionTitle>Play with your friends</SectionTitle>
+      <Subtitle>At A Glance</Subtitle>
+      <SectionTitle>Features</SectionTitle>
       <FeaturesGrid>
         <FeatureItem>
           <FeatureTitle>Persistent World</FeatureTitle>
