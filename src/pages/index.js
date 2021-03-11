@@ -27,7 +27,7 @@ const IndexPage = () => {
   useEffect(() => {
     isTheUserThere()
     console.log('Is the user there?', user);
-  }, [user]);
+  }, []);
 
   return (
     <Layout>
