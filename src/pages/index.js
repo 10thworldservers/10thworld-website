@@ -11,11 +11,13 @@ import GetStarted from "../components/sections/getstarted"
 import AzureAuthenticationContext from '../azure/azure-authentication-context';
 import Welcome from "../components/sections/welcome"
 
-const auth = new AzureAuthenticationContext;
+const IndexPage = () => {
+  
+const auth = new AzureAuthenticationContext();
 const { account } = auth;
 
 console.log(account);
-const IndexPage = () => { 
+  
   return (
     <Layout>
     <SEO title="Home" />
