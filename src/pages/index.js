@@ -9,8 +9,14 @@ import Features from "../components/sections/features"
 import Footer from "../components/sections/footer"
 import GetStarted from "../components/sections/getstarted"
 import AzureAuthenticationContext from '../azure/azure-authentication-context';
-import Welcome from "../components/sections/welcome"
+
+//import Welcome from "../components/sections/welcome"
 import Checkout from "../components/sections/checkout"
+
+import Welcome from "../components/sections/header"
+import Purchase from "../components/sections/header"
+
+
 
 const IndexPage = () => { 
   let azureAuthContext = new AzureAuthenticationContext();
@@ -23,10 +29,16 @@ const IndexPage = () => {
     <Layout>
     <SEO title="Home" />
     <Navigation />
+
       <Header />
       { account !== null ?  <Welcome /> : <Features />}
-    <GetStarted />
-    <Checkout />
+      <GetStarted />
+
+
+      { account !== null ?  <Welcome /> : <Header />}
+      { account !== null ?  <Checkout /> : <Features />}
+      { account !== null ?  <Features /> : <GetStarted />}
+
     <Footer />
    </Layout>
   
