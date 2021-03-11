@@ -1,12 +1,13 @@
 import { Configuration, LogLevel } from "@azure/msal-browser";
 
-const AzureActiveDirectoryAppClientId: string = '7b9232dc-de44-48d6-b490-6a557913ecd2';
+//testApp
+const AzureActiveDirectoryAppClientId: string = '97e55fe7-ef1a-4892-ae76-59eba5fa4837';
+//10thWorldServers
+//const AzureActiveDirectoryAppClientId: string = '7b9232dc-de44-48d6-b490-6a557913ecd2';
 
 export const MSAL_CONFIG: Configuration = {
   auth: {
     clientId: AzureActiveDirectoryAppClientId,
-
-    redirectUri: 'https://victorious-forest-0f1514b10.azurestaticapps.net'
 
   },
   cache: {

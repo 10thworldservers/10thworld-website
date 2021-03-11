@@ -52,6 +52,7 @@ export class AzureAuthenticationContext {
         .catch((err) => {
           console.error(err);
         });
+        console.log(this.myMSALObj.getAllAccounts());
     } else if (signInType === "loginRedirect") {
       this.myMSALObj.loginRedirect(this.loginRedirectRequest);
     }

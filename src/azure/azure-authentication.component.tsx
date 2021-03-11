@@ -39,7 +39,7 @@ const AzureAuthenticationButton = ({ onAuthenticated, text }: any): JSX.Element 
   };
   const logOut = (): any => {
     if (user) {
-      onAuthenticated(undefined);
+      onAuthenticated= undefined;
       // Azure Logout
       authenticationModule.logout(user);
     }
@@ -48,7 +48,7 @@ const AzureAuthenticationButton = ({ onAuthenticated, text }: any): JSX.Element 
   const returnedAccountInfo = (user: AccountInfo) => {
     // set state
     setAuthenticated(user?.name ? true : false);
-    onAuthenticated(user);
+    onAuthenticated = user;
     setUser(user);
   };
 
