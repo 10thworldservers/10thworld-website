@@ -17,7 +17,7 @@ const IndexPage = () => {
   const authMethods = new AzureAuthContext();
 
   const isTheUserThere = () => {
-    if (authMethods.getAccount() !== undefined) {
+    if (authMethods.getAccount() === undefined) {
       setUser(authMethods.getAccount());
     } else {
       setUser(null)
@@ -27,7 +27,7 @@ const IndexPage = () => {
   useEffect(() => {
     isTheUserThere()
     console.log('Is the user there?', user);
-  }, []);
+  }, [user]);
 
   return (
     <Layout>
