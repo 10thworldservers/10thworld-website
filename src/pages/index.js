@@ -14,6 +14,7 @@ import Welcome from "../components/sections/welcome"
 const auth = new AzureAuthenticationContext;
 const { account } = auth;
 
+console.log(account);
 const IndexPage = () => { 
   return (
     <Layout>
