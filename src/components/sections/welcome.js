@@ -18,7 +18,6 @@ export default Welcome
 const StyledSection = styled(Section)`
   background-position: center;
   background-repeat: no-repeat;
-  /* object-fit: cover; */
   padding: 25px 0;
 `
 

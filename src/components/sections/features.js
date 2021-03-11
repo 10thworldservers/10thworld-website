@@ -1,9 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-
-import vikingBG from "../../images/vikinglandscape1.jpg"
-
 import { Section, Container } from "../global"
 
 const Features = () => (
