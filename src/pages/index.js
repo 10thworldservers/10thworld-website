@@ -11,13 +11,12 @@ import GetStarted from "../components/sections/getstarted"
 import AzureAuthenticationContext from '../azure/azure-authentication-context';
 import Welcome from "../components/sections/welcome"
 
-const IndexPage = () => { 
-  let azureAuthContext = new AzureAuthenticationContext();
+const auth = new AzureAuthenticationContext;
+const { account } = auth;
 
-  const { account } = azureAuthContext;
- 
-  console.log('The auth context account', account);
-  
+console.log('The account value outside the component', account);
+
+const IndexPage = () => { 
   return (
     <Layout>
     <SEO title="Home" />

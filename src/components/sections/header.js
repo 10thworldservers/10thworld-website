@@ -31,16 +31,7 @@ const Header = () => {
             <h2>
               Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-            <SignUpButton>
-            <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>              
-            </SignUpButton>
-              
-            <FormSubtitle>
-              Already have an account?{" "}
-              <FormSubtitleLink>
-                <AzureAuthenticationButton text="Sign In"/>
-              </FormSubtitleLink>
-            </FormSubtitle>
+            <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>                           
           </HeaderTextGroup>
           <ImageWrapper>
             <StyledImage fluid={data.file.childImageSharp.fluid} />
@@ -118,20 +109,20 @@ const FormSubtitleLink = styled(Link)`
   border-bottom: 1px solid ${props => props.theme.color.secondary};
 `
 
-const SignUpButton = styled.button`
+const SignUpButton = styled.div`
   font-weight: 500;
   font-size: 14px;
   color: ${props => props.signUp ? `white` : `black`};
   letter-spacing: 1px;
-  height: 60px;
-  display: block;
-  margin-top: 8px;
+  display: inline-block;
+  /* margin-top: 8px; */
+  width: 15%;
   text-transform: uppercase;
   cursor: pointer;
   white-space: nowrap;
   background: #ffffff;
   border-radius: 4px;
-  padding: 0px 40px;
+  /* padding: 0px 40px; */
   border-width: 0px;
   border-style: initial;
   border-color: initial;

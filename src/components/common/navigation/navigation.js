@@ -51,9 +51,8 @@ export default class Navigation extends Component {
   }
 
   getNavAnchorLink = item => {
-    console.log(this.hasScrolled);
     return (
-      <Link style={{color: `${this.state.hasScrolled ? 'black' : 'white'}`}} href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
+      <Link to={`${item.toLowerCase()}`} style={{color: `${this.state.hasScrolled ? 'black' : 'white'}`}} href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
       {item}
     </Link>
   )
