@@ -8,7 +8,7 @@ export const Container = styled.div`
 
   @media (min-width: ${props => props.theme.screen.xs}) {
     max-width: 540px;
-  }
+  } 
 
   @media (min-width: ${props => props.theme.screen.sm}) {
     max-width: 720px;

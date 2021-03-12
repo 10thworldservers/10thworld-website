@@ -18,7 +18,7 @@ import {
   Mobile,
 } from "./style"
 
-const NAV_ITEMS = ["Features", "About"]
+const NAV_ITEMS = ["Features", "About", "Dashboard"]
 
 export default class Navigation extends Component {
   state = {
@@ -81,11 +81,11 @@ export default class Navigation extends Component {
         <StyledContainer>
           <Brand>
             <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-              <AnchorLink href="#top" onClick={this.closeMobileMenu}>
+              <Link to="/">
                 <ImgContainer>
                   <img src={logo1} alt="10th World Servers main logo"/>
                 </ImgContainer>                
-              </AnchorLink>
+              </Link>
             </Scrollspy>
           </Brand>
           <Mobile>

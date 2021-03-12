@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useState } from "react"
 
 import Layout from "../components/common/layout/layout"
 import SEO from "../components/common/layout/seo"
@@ -16,20 +16,24 @@ const IndexPage = () => {
   const [user, setUser] = useState(null);
   const authMethods = new AzureAuthContext();
 
-  const isTheUserThere = () => {
-    if (authMethods.getAccount() === undefined) {
-      console.log('authMethods === undefined', authMethods);
-      setUser(authMethods.getAccount());
-    } else {
-      console.log('authMethods !== undefined', authMethods);
-      setUser(null)
-    }
-  };
 
-  useEffect(() => {
-    isTheUserThere()
-    console.log('Is the user there?', user);
-  }, [user]);
+  console.log(authMethods);
+
+  console.log(setUser);
+  // const isTheUserThere = () => {
+  //   if (authMethods.getAccount() === undefined) {
+  //     console.log('authMethods === undefined', authMethods);
+  //     setUser(authMethods.getAccount());
+  //   } else {
+  //     console.log('authMethods !== undefined', authMethods);
+  //     setUser(null)
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   isTheUserThere()
+  //   console.log('Is the user there?', user);
+  // }, [user, isTheUserThere]);
 
   return (
     <Layout>
