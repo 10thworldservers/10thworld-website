@@ -18,8 +18,10 @@ const IndexPage = () => {
 
   const isTheUserThere = () => {
     if (authMethods.getAccount() === undefined) {
+      console.log('authMethods === undefined', authMethods);
       setUser(authMethods.getAccount());
     } else {
+      console.log('authMethods !== undefined', authMethods);
       setUser(null)
     }
   };
