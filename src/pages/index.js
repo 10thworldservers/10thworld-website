@@ -35,8 +35,9 @@ const IndexPage = () => {
     <Layout>
         <SEO title="Home" />
         <Navigation />
-        <Header />
-        {user !== null ? <Welcome /> : <Features />}
+        {user !== null ? <Welcome /> : <Header />}
+
+        <Features />
         <GetStarted />
         <Footer />
     </Layout>

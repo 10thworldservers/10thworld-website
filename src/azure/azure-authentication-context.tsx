@@ -48,6 +48,8 @@ export class AzureAuthenticationContext {
         .loginPopup(this.loginRequest)
         .then((resp: AuthenticationResult) => {
           this.handleResponse(resp, setUser);
+
+
         })
         .catch((err) => {
           console.error(err);
@@ -68,7 +70,24 @@ export class AzureAuthenticationContext {
     if(response !==null && response.account !==null) {
       this.account = response.account;
       console.log("10thWorldAcc: ", this.account);
-      window.localStorage.setItem("10thWorldAcc", JSON.stringify(this.account));
+      const accessTokenRequest = {
+        scopes: ["user.read"]
+    }
+       this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+       let accessToken = accessTokenResponse.accessToken;
+       console.log('Access token acquired (silent): ', accessToken);
+     }).catch(function (error) {
+      //Acquire token silent failure, and send an interactive request
+      if (error.errorMessage.indexOf("interaction_required") !== -1) {
+         this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
+              // Acquire token interactive success
+          }).catch(function(error) {
+              // Acquire token interactive failure
+              console.log(error);
+          });
+      }
+    });
+        
     } else {
       this.account = this.getAccount();
     }
