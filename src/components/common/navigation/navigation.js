@@ -1,5 +1,4 @@
-import React, { Component } from "react"
-import AnchorLink from "react-anchor-link-smooth-scroll"
+import React, { useState, useEffect } from "react"
 import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
@@ -20,45 +19,40 @@ import {
 
 const NAV_ITEMS = ["Features", "About", "Dashboard"]
 
-export default class Navigation extends Component {
-  state = {
-    mobileMenuOpen: false,
-    hasScrolled: false,
-  }
+export const Navigation = (props) => {
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll)
-  }
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
-  handleScroll = event => {
+  const handleScroll = event => {
     const scrollTop = window.pageYOffset
 
     if (scrollTop > 10) {
-      this.setState({ hasScrolled: true })
+      setHasScrolled({ hasScrolled: true })
     } else {
-      this.setState({ hasScrolled: false })
+      setHasScrolled({ hasScrolled: false })
     }
   }
 
-  toggleMobileMenu = () => {
-    this.setState(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
   }
 
-  closeMobileMenu = () => {
-    if (this.state.mobileMenuOpen) {
-      this.setState({ mobileMenuOpen: false })
+  const closeMobileMenu = () => {
+    if (mobileMenuOpen) {
+      setMobileMenuOpen({ mobileMenuOpen: false })
     }
   }
 
-  getNavAnchorLink = item => {
+  const getNavAnchorLink = item => {
     return (
-      <Link to={`${item.toLowerCase()}`} style={{color: `${this.state.hasScrolled ? 'black' : 'white'}`}} href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
-      {item}
-    </Link>
-  )
-}
+      <Link to={`${item.toLowerCase()}`} style={{ color: `${hasScrolled ? 'black' : 'white'}` }} href={`/${item.toLowerCase()}`} onClick={() => closeMobileMenu()}>
+        {item}
+      </Link>
+    )
+  }
 
-  getNavList = ({ mobile = false }) => (
+  const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
         items={NAV_ITEMS.map(item => item.toLowerCase())}
@@ -67,54 +61,54 @@ export default class Navigation extends Component {
         offset={-64}
       >
         {NAV_ITEMS.map(navItem => (
-          <NavItem key={navItem}>{this.getNavAnchorLink(navItem)}</NavItem>
+          <NavItem key={navItem}>{getNavAnchorLink(navItem)}</NavItem>
         ))}
       </Scrollspy>
     </NavListWrapper>
   )
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+  }, [])
 
-  render() {
-    const { mobileMenuOpen } = this.state
-
-    return (
-      <Nav {...this.props} scrolled={this.state.hasScrolled}>
-        <StyledContainer>
-          <Brand>
-            <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-              <Link to="/">
-                <ImgContainer>
-                  <img src={logo1} alt="10th World Servers main logo"/>
-                </ImgContainer>                
-              </Link>
-            </Scrollspy>
-          </Brand>
-          <Mobile>
-            <button
-              style={{ color: "black", background: "none" }}
-            >
-              {this.state.mobileMenuOpen ? (
-                <X size={24} alt="close menu" />
-              ) : (
-                <Menu size={24} alt="open menu" />
-              )}
-            </button>
-          </Mobile>
-
-          <Mobile hide>{this.getNavList({})}</Mobile>      
-        </StyledContainer>
+  return (
+    <Nav {...props} scrolled={hasScrolled}>
+      <StyledContainer>
+        <Brand>
+          <Scrollspy offset={-64} item={["top"]} currentClassName="active">
+            <Link to="/">
+              <ImgContainer>
+                <img src={logo1} alt="10th World Servers main logo" />
+              </ImgContainer>
+            </Link>
+          </Scrollspy>
+        </Brand>
         <Mobile>
-          {mobileMenuOpen && (
-            <MobileMenu>
-              <Container>{this.getNavList({ mobile: true })}</Container>
-            </MobileMenu>
-          )}
+          <button
+            style={{ color: "black", background: "none" }}
+          >
+            {mobileMenuOpen ? (
+              <X size={24} alt="close menu" />
+            ) : (
+              <Menu size={24} alt="open menu" />
+            )}
+          </button>
         </Mobile>
-      </Nav>
 
-      
-    )
-  }
+        <Mobile hide>{getNavList({})}</Mobile>
+      </StyledContainer>
+      <Mobile>
+        {mobileMenuOpen && (
+          <MobileMenu>
+            <Container>{getNavList({ mobile: true })}</Container>
+          </MobileMenu>
+        )}
+      </Mobile>
+    </Nav>
+
+
+  )
 }
+
 
 
 const ImgContainer = styled.div`

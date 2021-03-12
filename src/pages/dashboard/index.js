@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../../components/common/layout/layout';
-import Navigation from '../../components/common/navigation/navigation';
+import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
 import styled from 'styled-components';
 import { dummyServer } from '../../dummydata/server-info';
@@ -22,10 +22,11 @@ const DashBoard = () => {
       setActive(false)
     }
   };
-  
+
   useEffect(() => {
     isSubActive();
   }, [active])
+  
   return (
     <Layout>
       <SEO title="Dashboard" />
@@ -36,7 +37,7 @@ const DashBoard = () => {
             <DataTitle>User Name</DataTitle>
             <Row>
               <DataUser>
-                <h4 style={{margin: '0 0 0.25rem'}}>{dummyUser.username}</h4>
+                <h4 style={{ margin: '0 0 0.25rem' }}>{dummyUser.username}</h4>
               </DataUser>
             </Row>
             <DataTitle>Date</DataTitle>

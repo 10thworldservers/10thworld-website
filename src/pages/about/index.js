@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Layout from '../../components/common/layout/layout';
-import Navigation from '../../components/common/navigation/navigation';
+import {Navigation} from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
 
 const About = () => {
