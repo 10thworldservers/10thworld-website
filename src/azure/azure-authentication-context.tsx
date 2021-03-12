@@ -67,6 +67,8 @@ export class AzureAuthenticationContext {
   handleResponse(response: AuthenticationResult, incomingFunction: any) {
     if(response !==null && response.account !==null) {
       this.account = response.account;
+      console.log("10thWorldAcc: ", this.account);
+      window.localStorage.setItem("10thWorldAcc", JSON.stringify(this.account));
     } else {
       this.account = this.getAccount();
     }
