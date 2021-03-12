@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '../../components/common/layout/layout';
 import Navigation from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
@@ -9,11 +9,23 @@ import { dummyUser } from '../../dummydata/user-info';
 
 import {
   Container,
-  Section
 } from '../../components/global';
 
 // Dummy Data being used
 const DashBoard = () => {
+  const [active, setActive] = useState();
+
+  const isSubActive = () => {
+    if (dummyUser.subscribed === 'Active') {
+      setActive(true)
+    } else {
+      setActive(false)
+    }
+  };
+  
+  useEffect(() => {
+    isSubActive();
+  }, [active])
   return (
     <Layout>
       <SEO title="Dashboard" />
@@ -24,22 +36,37 @@ const DashBoard = () => {
             <DataTitle>User Name</DataTitle>
             <Row>
               <DataUser>
-                <h4>{dummyUser.username}</h4>
+                <h4 style={{margin: '0 0 0.25rem'}}>{dummyUser.username}</h4>
               </DataUser>
             </Row>
             <DataTitle>Date</DataTitle>
             <Row>
-              <DataDate>
+              <DataInfo>
                 {dummyServer[0].date}
-              </DataDate>
+              </DataInfo>
+            </Row>
+            <DataTitle>Time</DataTitle>
+            <Row>
+              <DataInfo>
+                {dummyServer[0].time}
+              </DataInfo>
+            </Row>
+            <DataTitle>Subscription</DataTitle>
+            <Row>
+              {active ? <SubActive>Active</SubActive> : <SubInactive>Inactive</SubInactive>}
             </Row>
           </DataSection>
-          <ServerContainer>
-            <SectionTitle>Server Info</SectionTitle>
-            <ServerInfo>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <ServerContainer>
+              <SectionTitle>Server Info</SectionTitle>
+              <ServerInfo></ServerInfo>
+            </ServerContainer>
+            <SubContainer>
+              <SectionTitle>Subscription Info</SectionTitle>
+              <SubInfo></SubInfo>
+            </SubContainer>
+          </div>
 
-            </ServerInfo>
-          </ServerContainer>
         </UserDashBoard>
       </Container>
     </Layout>
@@ -47,6 +74,10 @@ const DashBoard = () => {
 }
 const ServerContainer = styled.div`
   margin-top: 12rem;
+  margin-left: 2rem;
+`
+const SubContainer = styled.div`
+  margin-top: 2rem;
   margin-left: 2rem;
 `
 const SectionTitle = styled.h1`
@@ -66,6 +97,13 @@ const ServerInfo = styled.section`
   border-radius: 10px;
   color: white;
 `
+const SubInfo = styled.section`
+  width: 750px;
+  height: 250px;
+  border: 1px solid white;
+  border-radius: 10px;
+  color: white;
+`
 
 const DataTitle = styled.h4`
   color: white;
@@ -80,16 +118,28 @@ const DataSection = styled.section`
   border-right: 5px solid red;
   border-radius: 10px;
   width: 15%;
-  height: 1200px;
+  height: 100%;
 `
 const Row = styled.div`
   display: flex;
   flex-direction: row;
 `
-const DataDate = styled.article`
+const DataInfo = styled.article`
   margin-top: .5rem;
   color: white;
   border: 1px solid white;
+  padding: 0.75rem;
+`
+const SubActive = styled.article`
+  margin-top: .5rem;
+  color: white;
+  border: 1px solid green;
+  padding: 0.75rem;
+`
+const SubInactive = styled.article`
+  margin-top: .5rem;
+  color: white;
+  border: 1px solid red;
   padding: 0.75rem;
 `
 

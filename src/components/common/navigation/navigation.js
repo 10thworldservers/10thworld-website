@@ -90,7 +90,6 @@ export default class Navigation extends Component {
           </Brand>
           <Mobile>
             <button
-              onClick={this.toggleMobileMenu}
               style={{ color: "black", background: "none" }}
             >
               {this.state.mobileMenuOpen ? (
