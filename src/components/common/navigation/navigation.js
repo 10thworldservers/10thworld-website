@@ -3,7 +3,7 @@ import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 
 
 import { Container } from "../../global"
@@ -17,22 +17,12 @@ import {
   Mobile,
 } from "./style"
 
-const NAV_ITEMS = ["Features", "About", "Dashboard"]
+const NAV_ITEMS = ["Features", "Connect", "Dashboard"]
 
-export const Navigation = (props) => {
+export const Navigation = ({scrolled}) => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-
-  const handleScroll = event => {
-    const scrollTop = window.pageYOffset
-
-    if (scrollTop > 10) {
-      setHasScrolled({ hasScrolled: true })
-    } else {
-      setHasScrolled({ hasScrolled: false })
-    }
-  }
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
@@ -65,13 +55,27 @@ export const Navigation = (props) => {
         ))}
       </Scrollspy>
     </NavListWrapper>
-  )
+  );
+
+  const handleScroll = () => {
+    const scrollTop = window.pageYOffset
+
+    if (scrollTop > 10) {
+      setHasScrolled({ hasScrolled: true })
+    } else {
+      setHasScrolled({ hasScrolled: false })
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
-  }, [])
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasScrolled])
 
+  console.log(hasScrolled);
+  
   return (
-    <Nav {...props} scrolled={hasScrolled}>
+    <Nav {...scrolled} scrolled={hasScrolled}>
       <StyledContainer>
         <Brand>
           <Scrollspy offset={-64} item={["top"]} currentClassName="active">

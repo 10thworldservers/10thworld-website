@@ -8,7 +8,7 @@ export const Nav = styled.nav`
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: ${props => (props.scrolled ? `#EBF2FA` : `${props => props.theme.color.primary}` )};
+  background: ${props => (props.scrolled ? `#E1E1E1` : `${props => props.theme.color.primary}` )};
   transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 `
 
@@ -22,7 +22,7 @@ export const NavListWrapper = styled.div`
   ul {
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: .5rem;
     display: flex;
     flex-direction: row;
 
@@ -54,6 +54,7 @@ export const NavItem = styled.li`
   &.active {
     a {
       opacity: 1;
+      border: 1px solid black;
     }
   }
 `
