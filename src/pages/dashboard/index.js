@@ -62,7 +62,6 @@ const DashBoard = () => {
               <SubInfo></SubInfo>
             </SubContainer>
           </div>
-
         </UserDashBoard>
       </Container>
       <Footer />
