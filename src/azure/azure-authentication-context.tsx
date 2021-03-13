@@ -11,6 +11,10 @@ import { MSAL_CONFIG } from "./azure-authentication-config";
 
 const location = typeof window !== `undefined` ? window : null;
 
+const loginRequestRedirect = {
+  scopes: ["User.ReadWrite"]
+}
+
 export class AzureAuthenticationContext {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(
     MSAL_CONFIG
@@ -18,6 +22,7 @@ export class AzureAuthenticationContext {
   private account?: AccountInfo;
   private loginRedirectRequest?: RedirectRequest;
   private loginRequest?: PopupRequest;
+  private loginRequestRedirect?: RedirectRequest;
 
   public isAuthenticationConfigured = false;
 
@@ -40,7 +45,14 @@ export class AzureAuthenticationContext {
       ...this.loginRequest,
       redirectStartPage: location,
     };
+    this.loginRequestRedirect = {
+      scopes: ["User.ReadWrite"]
+    }
+
+    
   }
+
+  
 
   login(signInType: string, setUser: any): void {
     if (signInType === "loginPopup") {
@@ -48,13 +60,21 @@ export class AzureAuthenticationContext {
         .loginPopup(this.loginRequest)
         .then((resp: AuthenticationResult) => {
           this.handleResponse(resp, setUser);
+
+
         })
         .catch((err) => {
           console.error(err);
         });
         console.log(this.myMSALObj.getAllAccounts());
     } else if (signInType === "loginRedirect") {
-      this.myMSALObj.loginRedirect(this.loginRedirectRequest);
+      this.myMSALObj.handleRedirectPromise().then((resp: AuthenticationResult) => { 
+        this.handleResponse(resp, setUser)
+      })
+      .catch((err)=> {
+        console.error(err);
+      });
+      this.myMSALObj.loginRedirect(this.loginRequestRedirect);
     }
   }
 
@@ -68,6 +88,25 @@ export class AzureAuthenticationContext {
   handleResponse(response: AuthenticationResult, incomingFunction: any) {
     if(response !==null && response.account !==null) {
       this.account = response.account;
+      console.log("10thWorldAcc: ", this.account);
+      const accessTokenRequest = {
+        scopes: ["user.read"]
+    }
+       this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+       let accessToken = accessTokenResponse.accessToken;
+       console.log('Access token acquired (silent): ', accessToken);
+     }).catch(function (error) {
+      //Acquire token silent failure, and send an interactive request
+      if (error.errorMessage.indexOf("interaction_required") !== -1) {
+         this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
+              // Acquire token interactive success
+          }).catch(function(error) {
+              // Acquire token interactive failure
+              console.log(error);
+          });
+      }
+    });
+        
     } else {
       this.account = this.getAccount();
     }

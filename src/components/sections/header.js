@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { graphql, useStaticQuery, Link } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import SkyBackGround from "../../images/landscape-darkblue-upper-cloud.svg"
 
@@ -31,21 +31,8 @@ const Header = () => {
             <h2>
               Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-            <SignUpButton>
-            <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>              
-            </SignUpButton>
-              
-            <FormSubtitle>
-              Already have an account?{" "}
-              <FormSubtitleLink>
-                <AzureAuthenticationButton text="Sign In"/>
-              </FormSubtitleLink>
-            </FormSubtitle>
+            <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>                           
           </HeaderTextGroup>
-          {/* <ImageWrapper>
-            <StyledImage fluid={data.file.childImageSharp.fluid} />
-            <br />
-          </ImageWrapper> */}
         </Flex>
       </Container>
     </HeaderWrapper>
@@ -104,46 +91,6 @@ const Flex = styled.div`
   @media (max-width: ${props => props.theme.screen.md}) {
     grid-template-columns: 1fr;
     grid-gap: 64px;
-  }
-`
-
-const FormSubtitle = styled.span`
-  margin-top: 1.75rem;
-  ${props => props.theme.font_size.xxsmall}
-`
-
-const FormSubtitleLink = styled(Link)`
-  color: #ffffff;
-  text-decoration: none;
-  border-bottom: 1px solid ${props => props.theme.color.secondary};
-`
-
-const SignUpButton = styled.button`
-  font-weight: 500;
-  font-size: 14px;
-  color: ${props => props.signUp ? `white` : `black`};
-  letter-spacing: 1px;
-  height: 60px;
-  display: block;
-  margin-top: 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-  background: #ffffff;
-  border-radius: 4px;
-  padding: 0px 40px;
-  border-width: 0px;
-  border-style: initial;
-  border-color: initial;
-  border-image: initial;
-  outline: 0px;
-  &:hover {
-    box-shadow: rgba(110, 120, 152, 0.22) 0px 2px 10px 0px;
-  }
-  @media (max-width: ${props => props.theme.screen.md}) {
-  }
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    margin-left: 0;
   }
 `
 const ImageWrapper = styled.div`

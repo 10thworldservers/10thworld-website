@@ -12,9 +12,9 @@ const theme = {
     extrabold: `'HK Grotesk Extra Bold'`,
   },
   font_size: {
-    xxxsmall: "font-size: 12px;",
-    xxsmall: "font-size: 14px;",
-    xsmall: "font-size: 16px;",
+    xxxsmall: "font-size: 16px;",
+    xxsmall: "font-size: 18px;",
+    xsmall: "font-size: 20px;",
     small: "font-size: 17px;",
     regular: "font-size: 22px; line-height: 30px;",
     large: "font-size: 28px; line-height: 30px;",

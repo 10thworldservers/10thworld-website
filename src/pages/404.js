@@ -2,12 +2,17 @@ import React from "react"
 
 import Layout from "../components/common/layout/layout"
 import SEO from "../components/common/layout/seo"
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
 const NotFoundPage = () => (
   <Layout>
     <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <div style={{display: 'flex', flexDirection: 'column', width: '33%', margin: 'auto'}}>
+      <h1 style={{ color: 'white' }}>It seems we've hit a snag</h1>
+      <Link to="/" style={{color: 'white', fontSize: '18px'}}>Return Home</Link>
+    </div>
+
   </Layout>
 )
 

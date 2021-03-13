@@ -1,49 +1,51 @@
-import React,{useContext} from "react"
+import React, { useState } from "react"
 
 import Layout from "../components/common/layout/layout"
 import SEO from "../components/common/layout/seo"
-import Navigation from "../components/common/navigation/navigation"
+import {Navigation} from "../components/common/navigation/navigation"
 
 import Header from "../components/sections/header"
 import Features from "../components/sections/features"
 import Footer from "../components/sections/footer"
 import GetStarted from "../components/sections/getstarted"
-import AzureAuthenticationContext from '../azure/azure-authentication-context';
-
 import Welcome from "../components/sections/welcome"
+import AzureAuthContext from '../azure/azure-authentication-context';
 import Checkout from "../components/sections/checkout"
+// import { authContext } from '../hooks/use-auth';
 
-//import Welcome from "../components/sections/header"
-import Purchase from "../components/sections/header"
+const IndexPage = () => {
+  const [user, setUser] = useState(null);
+  const authMethods = new AzureAuthContext();
 
 
+  console.log(authMethods);
 
-const IndexPage = () => { 
-  let azureAuthContext = new AzureAuthenticationContext();
-  //let authContext = new AzureAuthenticationContext();
-  //const AzureAuthContext = useContext(authContext);
-  
-  //console.log("authContext is:", authContext);
-  //console.log("AzureAuthContext is:", AzureAuthContext);
+  console.log(setUser);
+  // const isTheUserThere = () => {
+  //   if (authMethods.getAccount() === undefined) {
+  //     console.log('authMethods === undefined', authMethods);
+  //     setUser(authMethods.getAccount());
+  //   } else {
+  //     console.log('authMethods !== undefined', authMethods);
+  //     setUser(null)
+  //   }
+  // };
 
-  const { account } = azureAuthContext;
-  
- 
-  console.log('The auth context account', account);
-  
+  // useEffect(() => {
+  //   isTheUserThere()
+  //   console.log('Is the user there?', user);
+  // }, [user, isTheUserThere]);
+
   return (
     <Layout>
-    <SEO title="Home" />
-    <Navigation />
+        <SEO title="Home" />
+        <Navigation />
+        {user !== null ? <Welcome /> : <Header />}
 
-
-      { account !== null ?  <Welcome /> : <Header />}
-      { account !== null ?  <Welcome /> : <Features />}
-      <GetStarted />
-
-
-    <Footer />
-   </Layout>
+        <Features />
+        <GetStarted />
+        <Footer />
+    </Layout>
   
   )
 }

@@ -1,11 +1,11 @@
-import React, { Component } from "react"
-import AnchorLink from "react-anchor-link-smooth-scroll"
+import React, { useState, useEffect } from "react"
 import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
 import styled from 'styled-components';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 
+import Checkout from '../../sections/checkout';
 
 import { Container } from "../../global"
 import {
@@ -18,50 +18,32 @@ import {
   Mobile,
 } from "./style"
 
-import AzureAuthenticationButton from "../../../azure/azure-authentication.component"
+const NAV_ITEMS = ["Features", "Connect", "Dashboard"]
 
-const NAV_ITEMS = ["Features", "About"]
+export const Navigation = ({scrolled}) => {
 
-export default class Navigation extends Component {
-  state = {
-    mobileMenuOpen: false,
-    hasScrolled: false,
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
   }
 
-  componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll)
-  }
-
-  handleScroll = event => {
-    const scrollTop = window.pageYOffset
-
-    if (scrollTop > 10) {
-      this.setState({ hasScrolled: true })
-    } else {
-      this.setState({ hasScrolled: false })
+  const closeMobileMenu = () => {
+    if (mobileMenuOpen) {
+      setMobileMenuOpen({ mobileMenuOpen: false })
     }
   }
 
-  toggleMobileMenu = () => {
-    this.setState(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
-  }
-
-  closeMobileMenu = () => {
-    if (this.state.mobileMenuOpen) {
-      this.setState({ mobileMenuOpen: false })
-    }
-  }
-
-  getNavAnchorLink = item => {
-    console.log(this.hasScrolled);
+  const getNavAnchorLink = item => {
     return (
-      <Link style={{color: `${this.state.hasScrolled ? 'black' : 'white'}`}} href={`/${item.toLowerCase()}`} onClick={this.closeMobileMenu}>
-      {item}
-    </Link>
-  )
-}
+      <Link to={`${item.toLowerCase()}`} style={{ color: `${hasScrolled ? 'black' : 'white'}` }} href={`/${item.toLowerCase()}`} onClick={() => closeMobileMenu()}>
+        {item}
+      </Link>
+    )
+  }
 
-  getNavList = ({ mobile = false }) => (
+  const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
         items={NAV_ITEMS.map(item => item.toLowerCase())}
@@ -70,60 +52,75 @@ export default class Navigation extends Component {
         offset={-64}
       >
         {NAV_ITEMS.map(navItem => (
-          <NavItem key={navItem}>{this.getNavAnchorLink(navItem)}</NavItem>
+          <NavItem key={navItem}>{getNavAnchorLink(navItem)}</NavItem>
         ))}
       </Scrollspy>
     </NavListWrapper>
-  )
+  );
 
-  render() {
-    const { mobileMenuOpen } = this.state
 
-    return (
-      <Nav {...this.props} scrolled={this.state.hasScrolled}>
-        <StyledContainer>
-          <Brand>
-            <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-              <AnchorLink href="#top" onClick={this.closeMobileMenu}>
-                <ImgContainer>
-                  <img src={logo1} alt="10th World Servers main logo"/>
-                </ImgContainer>                
-              </AnchorLink>
-            </Scrollspy>
-          </Brand>
-          <Mobile>
-            <button
-              onClick={this.toggleMobileMenu}
-              style={{ color: "black", background: "none" }}
-            >
-              {this.state.mobileMenuOpen ? (
-                <X size={24} alt="close menu" />
-              ) : (
-                <Menu size={24} alt="open menu" />
-              )}
-            </button>
-          </Mobile>
 
-          <Mobile hide>{this.getNavList({})}</Mobile>
-          {/* <LogOutButton>
-            <AzureAuthenticationButton text="Log Out"></AzureAuthenticationButton>              
-            </LogOutButton> */}
-        </StyledContainer>
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset
+      console.log(window.pageYOffset);
+      if (scrollTop > 10) {
+        setHasScrolled({ hasScrolled: true })
+      } else {
+        setHasScrolled({ hasScrolled: false })
+      }
+    };
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [hasScrolled])
+
+  console.log(hasScrolled);
+  
+  return (
+    <Nav {...scrolled} scrolled={hasScrolled}>
+      <StyledContainer>
+        <Brand>
+          <Scrollspy offset={-64} item={["top"]} currentClassName="active">
+            <Link to="/">
+              <ImgContainer>
+                <img src={logo1} alt="10th World Servers main logo" />
+              </ImgContainer>
+            </Link>
+          </Scrollspy>
+        </Brand>
         <Mobile>
-          {mobileMenuOpen && (
-            <MobileMenu>
-              <Container>{this.getNavList({ mobile: true })}</Container>
-            </MobileMenu>
-          )}
+          <button
+            style={{ color: "black", background: "none" }}
+          >
+            {mobileMenuOpen ? (
+              <X size={24} alt="close menu" />
+            ) : (
+              <Menu size={24} alt="open menu" />
+            )}
+          </button>
         </Mobile>
-        
 
-      </Nav>
+        <Mobile hide>
+          {getNavList({})}
+          <Checkout/>
+        </Mobile>
+      </StyledContainer>
+      <Mobile>
+        {mobileMenuOpen && (
+          <MobileMenu>
+            <Container>{
+              getNavList({ mobile: true })}
+              <Checkout/>
+            </Container>
+          </MobileMenu>
+        )}
+      </Mobile>
+    </Nav>
 
-      
-    )
-  }
+
+  )
 }
+
 
 
 const ImgContainer = styled.div`

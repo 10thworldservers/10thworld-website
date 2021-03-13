@@ -46,7 +46,7 @@ const Checkout = () => {
       }
       onClick={redirectToCheckout}
     >
-      Buy your server now!
+      Buy Now!
     </button>
   )
 }
