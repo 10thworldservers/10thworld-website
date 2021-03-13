@@ -33,10 +33,6 @@ const Header = () => {
             </h2>
             <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>                           
           </HeaderTextGroup>
-          <ImageWrapper>
-            <StyledImage fluid={data.file.childImageSharp.fluid} />
-            <br />
-          </ImageWrapper>
         </Flex>
       </Container>
     </HeaderWrapper>
