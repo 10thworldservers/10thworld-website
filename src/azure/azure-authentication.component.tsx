@@ -31,7 +31,7 @@ const AzureAuthenticationButton = ({ onAuthenticated, text }: any): JSX.Element 
   const [user, setUser] = useState<AccountInfo>();
 
   const logIn = (method: string): any => {
-    const typeName = "loginPopup";
+    const typeName = "loginRedirect";
     const logInType = checkIfWindowExists() ? "loginRedirect" : typeName;
 
     // Azure Login
@@ -54,7 +54,8 @@ const AzureAuthenticationButton = ({ onAuthenticated, text }: any): JSX.Element 
 
   const showLogInButton = (): any => {
     return (
-      <LoginButton onClick={() => logIn("loginPopup")}>
+      //<LoginButton onClick={() => logIn("loginPopup")}>
+        <LoginButton onClick={() => logIn("loginRedirect")}>
         {text}
       </LoginButton>
     );
