@@ -5,7 +5,8 @@ import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
 import Footer from "../../components/sections/footer"
 import { Container } from '../../components/global';
-const About = () => {
+
+const Connect = () => {
   return (
     <Layout>
       <SEO title="About" />
@@ -69,4 +70,4 @@ const InstText = styled.p`
   color: white;
 `
 
-export default About
+export default Connect;
