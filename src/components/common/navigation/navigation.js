@@ -57,17 +57,18 @@ export const Navigation = ({scrolled}) => {
     </NavListWrapper>
   );
 
-  const handleScroll = () => {
-    const scrollTop = window.pageYOffset
 
-    if (scrollTop > 10) {
-      setHasScrolled({ hasScrolled: true })
-    } else {
-      setHasScrolled({ hasScrolled: false })
-    }
-  };
 
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset
+      console.log(window.pageYOffset);
+      if (scrollTop > 10) {
+        setHasScrolled({ hasScrolled: true })
+      } else {
+        setHasScrolled({ hasScrolled: false })
+      }
+    };
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener('scroll', handleScroll);
   }, [hasScrolled])
