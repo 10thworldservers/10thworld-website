@@ -33,6 +33,7 @@
     "react-feather": "^2.0.8",
     "react-helmet": "^6.1.0",
     "react-scrollspy": "^3.4.3",
+    "react-spring": "^8.0.27",
     "stripe": "^8.138.0",
     "styled-components": "^5.1.1",
     "use-shopping-cart": "^3.0.0-beta.3",
