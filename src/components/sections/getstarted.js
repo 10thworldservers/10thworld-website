@@ -7,8 +7,8 @@ import AzureAuthenticationComponent from '../../azure/azure-authentication.compo
 const GetStarted = () => (
   <StyledSection>
     <GetStartedContainer>
-      <GetStartedTitle>Be the first create your world</GetStartedTitle>
-      <AzureAuthenticationComponent text="Start Your Adventure"/>
+      <GetStartedTitle>Be the first to create your world</GetStartedTitle>
+      <GetStartedSignup text="Start Your Adventure"/>
     </GetStartedContainer>
   </StyledSection>
 )
@@ -32,6 +32,11 @@ const GetStartedContainer = styled(Container)`
 const GetStartedTitle = styled.h3`
   margin: 0 auto 32px;
   text-align: center;
+`
+
+const GetStartedSignup = styled(AzureAuthenticationComponent)`
+  margin: 0 auto 32px;
+  text-salign: center;
 `
 
 // const TryItButton = styled.button`
