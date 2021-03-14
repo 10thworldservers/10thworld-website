@@ -11,11 +11,8 @@ import { MSAL_CONFIG } from "./azure-authentication-config";
 
 const location = typeof window !== `undefined` ? window : null;
 
-const loginRequestRedirect = {
-  scopes: ["User.ReadWrite"]
-}
 
-export class AzureAuthenticationContext {
+export class AzureAuthenticationContext  {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(
     MSAL_CONFIG
   );
@@ -51,8 +48,6 @@ export class AzureAuthenticationContext {
     };
   }
 
-  
-
   login(signInType: string, setUser: any): void {
     if (signInType === "loginPopup") {
       this.myMSALObj
@@ -65,6 +60,7 @@ export class AzureAuthenticationContext {
         .catch((err) => {
           console.error(err);
         });
+        console.log(this.myMSALObj.getAllAccounts());
     } else if (signInType === "loginRedirect") {
       this.myMSALObj.handleRedirectPromise().then((resp: AuthenticationResult) => { 
         this.handleResponse(resp, setUser)

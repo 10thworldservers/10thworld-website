@@ -1,15 +1,19 @@
 import styled from "styled-components"
-
 import { Container } from "../../global"
 
 export const Nav = styled.nav`
-  padding: ${props => (props.scrolled ? `16px 0` : `24px 0`)};
+  padding: ${props => props.isVisible ? `16px 0` : `24px 0`};
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: ${props => (props.scrolled ? `#E1E1E1` : `${props => props.theme.color.primary}` )};
+  background: ${props => props.theme.color.primary};
   transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: ${props => props.isVisible ? 'translateY(0)' : 'translateY(-100%)'};
+  transition: transform 0.5s ease-out;
 `
 
 export const StyledContainer = styled(Container)`
@@ -21,11 +25,11 @@ export const StyledContainer = styled(Container)`
 export const NavListWrapper = styled.div`
   ul {
     list-style: none;
-    margin: 0;
+    margin-right: 1.75rem;
     padding: .5rem;
     display: flex;
     flex-direction: row;
-
+    align-items: center;
     ${({ mobile }) =>
       mobile &&
       `

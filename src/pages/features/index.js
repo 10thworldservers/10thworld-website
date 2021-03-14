@@ -4,12 +4,15 @@ import {Navigation} from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
 import Footer from "../../components/sections/footer"
 import styled from 'styled-components';
-
+import { ScrollProvider } from '../../context/ScrollProvider';
+import { HeaderProvider } from '../../context/HeaderProvider.js';
 const features = [1,2,3]
 
 const Features = () => {
   return (
-    <Layout>
+    <ScrollProvider>
+      <HeaderProvider>
+      <Layout>
       <SEO title="Features" />
       <Navigation />
       <FeatureContainer>
@@ -23,6 +26,8 @@ const Features = () => {
       </FeatureContainer>
       <Footer />
     </Layout>
+      </HeaderProvider>
+    </ScrollProvider>
   )
 }
 
