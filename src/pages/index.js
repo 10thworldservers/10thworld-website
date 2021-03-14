@@ -24,7 +24,7 @@ const IndexPage = () => {
                 <>
                   <SEO title="Home" />
                   <Navigation />
-                  {context.user !== null ? <Welcome /> : <Header />}
+                   <Header />
                   <Features />
                   <GetStarted />
                   <Footer />
