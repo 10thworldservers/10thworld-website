@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Layout from "../components/common/layout/layout";
 import SEO from "../components/common/layout/seo";
@@ -8,15 +8,12 @@ import Features from "../components/sections/features";
 import Footer from "../components/sections/footer";
 import GetStarted from "../components/sections/getstarted";
 import Welcome from "../components/sections/welcome";
-import AzureAuthContext from '../azure/azure-authentication-context';
 import { ScrollProvider } from '../context/ScrollProvider';
 import { HeaderProvider } from '../context/HeaderProvider.js';
-
-// import { authContext } from '../hooks/use-auth';
+import { authContext } from '../hooks/use-auth';
 
 const IndexPage = () => {
-  const [user, setUser] = useState(null);
-  const authMethods = new AzureAuthContext();
+  // const [user, setUser] = useState(null);
 
   // const isTheUserThere = () => {
   //   if (authMethods.getAccount() === undefined) {
@@ -36,15 +33,23 @@ const IndexPage = () => {
   return (
     <ScrollProvider>
       <HeaderProvider>
-      <Layout>
-      <SEO title="Home" />
-      <Navigation />
-      {user !== null ? <Welcome /> : <Header />}
-
-      <Features />
-      <GetStarted />
-      <Footer />
-    </Layout>
+        <Layout>
+          <authContext.Consumer>
+            {context => {
+              console.log(context)
+              return (
+                <>
+                  <SEO title="Home" />
+                  <Navigation />
+                  {context.user !== null ? <Welcome /> : <Header />}
+                  <Features />
+                  <GetStarted />
+                  <Footer />
+                </>
+              )
+            }}
+          </authContext.Consumer>
+        </Layout>
       </HeaderProvider>
     </ScrollProvider>
   )

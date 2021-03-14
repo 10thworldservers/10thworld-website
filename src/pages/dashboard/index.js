@@ -6,7 +6,8 @@ import styled from 'styled-components';
 import { dummyServer } from '../../dummydata/server-info';
 import { dummyUser } from '../../dummydata/user-info';
 import Footer from "../../components/sections/footer"
-
+import { ScrollProvider } from '../../context/ScrollProvider';
+import { HeaderProvider } from '../../context/HeaderProvider.js';
 
 import {
   Container,
@@ -29,43 +30,48 @@ const DashBoard = () => {
   }, [active])
 
   return (
-    <Layout>
-      <SEO title="Dashboard" />
-      <Navigation />
-      <Container>
-        <UserDashBoard>
-          <DataSection>
-            <DataTitle>User Name</DataTitle>
-            <Row>
-              <DataUser>
-                <h4 style={{ margin: '.75rem 0 0.75rem 0rem' }}>{dummyUser.username}</h4>
-              </DataUser>
-            </Row>
-            <DataTitle>Date</DataTitle>
-            <Row>
-              <DataInfo>
-                {dummyServer[0].date}
-              </DataInfo>
-            </Row>  
-            <DataTitle>Subscription</DataTitle>
-            <Row>
-              {active ? <SubActive>Active</SubActive> : <SubInactive>Inactive</SubInactive>}
-            </Row>
-          </DataSection>
-          <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5rem' }}>
-            <ServerContainer>
-              <SectionTitle>Server Info</SectionTitle>
-              <ServerInfo></ServerInfo>
-            </ServerContainer>
-            <SubContainer>
-              <SectionTitle>Subscription Info</SectionTitle>
-              <SubInfo></SubInfo>
-            </SubContainer>
-          </div>
-        </UserDashBoard>
-      </Container>
-      <Footer />
-    </Layout>
+    <ScrollProvider>
+      <HeaderProvider>
+        <Layout>
+          <SEO title="Dashboard" />
+          <Navigation />
+          <Container>
+            <UserDashBoard>
+              <DataSection>
+                <DataTitle>User Name</DataTitle>
+                <Row>
+                  <DataUser>
+                    <h4 style={{ margin: '.75rem 0 0.75rem 0rem' }}>{dummyUser.username}</h4>
+                  </DataUser>
+                </Row>
+                <DataTitle>Date</DataTitle>
+                <Row>
+                  <DataInfo>
+                    {dummyServer[0].date}
+                  </DataInfo>
+                </Row>
+                <DataTitle>Subscription</DataTitle>
+                <Row>
+                  {active ? <SubActive>Active</SubActive> : <SubInactive>Inactive</SubInactive>}
+                </Row>
+              </DataSection>
+              <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5rem' }}>
+                <ServerContainer>
+                  <SectionTitle>Server Info</SectionTitle>
+                  <ServerInfo></ServerInfo>
+                </ServerContainer>
+                <SubContainer>
+                  <SectionTitle>Subscription Info</SectionTitle>
+                  <SubInfo></SubInfo>
+                </SubContainer>
+              </div>
+            </UserDashBoard>
+          </Container>
+          <Footer />
+        </Layout>
+      </HeaderProvider>
+    </ScrollProvider>
+
   )
 }
 const ServerContainer = styled.div`

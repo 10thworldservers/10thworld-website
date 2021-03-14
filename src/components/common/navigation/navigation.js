@@ -1,13 +1,11 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
 import styled from 'styled-components';
 import { Link } from 'gatsby';
-
+import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
-import { useScroll } from '../../../hooks/use-scroll';
-import { ScrollProvider, ScrollContext } from '../../../context/ScrollProvider';
 
 import { Container } from "../../global"
 import {
@@ -21,12 +19,11 @@ import {
 
 const NAV_ITEMS = ["Features", "Connect", "Dashboard"]
 
-export const Navigation = ({scrolled}) => {
-  
-  console.group(ScrollProvider, ScrollContext)
-
+export const Navigation = ({scrolled}) => { 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  
+  // const [hasScrolled, setHasScrolled] = useState(false);
+  const { isVisible } = useHeaderContext();
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
   }
@@ -61,9 +58,9 @@ export const Navigation = ({scrolled}) => {
       </Scrollspy>
     </NavListWrapper>
   );
-
   // useEffect(() => {
   //   const handleScroll = () => {
+  //     const scrollPosition = window.pageYOffset;
   //     if (scrollPosition > 10) {
   //       setHasScrolled({ hasScrolled: true })
   //     } else {
@@ -77,7 +74,7 @@ export const Navigation = ({scrolled}) => {
   // console.log(hasScrolled);
   
   return (
-    <Nav {...scrolled}>
+    <Nav {...scrolled} isVisible={isVisible}>
         <Brand>
           <Scrollspy offset={-64} item={["top"]} currentClassName="active">
             <Link to="/">
