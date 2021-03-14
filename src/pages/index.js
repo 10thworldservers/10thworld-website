@@ -20,6 +20,11 @@ const IndexPage = () => {
           <authContext.Consumer>
             {context => {
               console.log(context)
+              if (context === undefined) {
+                context = {
+                  user: true
+                }
+              }
               return (
                 <>
                   <SEO title="Home" />
