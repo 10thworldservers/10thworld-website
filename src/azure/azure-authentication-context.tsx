@@ -42,11 +42,10 @@ export class AzureAuthenticationContext  {
       ...this.loginRequest,
       redirectStartPage: location,
     };
+
     this.loginRequestRedirect = {
       scopes: ["User.ReadWrite"]
-    }
-
-    
+    };
   }
 
   login(signInType: string, setUser: any): void {
