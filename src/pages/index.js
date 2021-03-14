@@ -13,23 +13,6 @@ import { HeaderProvider } from '../context/HeaderProvider.js';
 import { authContext } from '../hooks/use-auth';
 
 const IndexPage = () => {
-  // const [user, setUser] = useState(null);
-
-  // const isTheUserThere = () => {
-  //   if (authMethods.getAccount() === undefined) {
-  //     console.log('authMethods === undefined', authMethods);
-  //     setUser(authMethods.getAccount());
-  //   } else {
-  //     console.log('authMethods !== undefined', authMethods);
-  //     setUser(null)
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   isTheUserThere()
-  //   console.log('Is the user there?', user);
-  // }, [user, isTheUserThere]);
-
   return (
     <ScrollProvider>
       <HeaderProvider>
