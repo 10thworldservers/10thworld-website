@@ -46,10 +46,12 @@ const Subtitle = styled.h5`
 
 const HeaderTextGroup = styled.div`
   margin: 2.5rem;
-
+  padding: 1.5rem;
+  box-shadow: inset 300px 300px 300px rgba(245, 242, 240, 0.8);
+  border-radius: 10px;
   > div {
     width: 120%;
-    margin-bottom: -4.5%;
+    margin-bottom: -9.5%;
 
     @media (max-width: ${props => props.theme.screen.md}) {
       margin: 0 16px;

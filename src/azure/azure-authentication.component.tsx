@@ -94,6 +94,13 @@ const LoginButton = styled.button`
   margin: 0 10px;
   padding: 0.65em;
   background-color: ${props => props.theme.color.white.regular};
+  box-shadow: .1em .1em .3em #000;
+
+  &:hover {
+    color: white;
+    background-color: #2C2C2C;
+    transition: all 0.2s ease-in;
+  }
 `
 
 export default AzureAuthenticationButton;
