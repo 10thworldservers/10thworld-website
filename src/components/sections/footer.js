@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Container } from "../global"
-import vikingLogo2 from '../../images/ShieldNameBlue.png';
+import vikingLogo2 from '../../images/ShieldOnlyBlue.png';
 
 
 const Footer = () => (
@@ -41,7 +41,7 @@ const Footer = () => (
 )
 
 const FooterWrapper = styled.footer`
-  background-color: white;
+  background-color: #2C2C2C;
   margin: 80px 0 0;
   padding: 0 0 80px;
 `
@@ -74,13 +74,13 @@ const FooterColumn = styled.div`
   span {
     font-size: 16px;
     font-family: ${props => props.theme.font.bold};
-    color: ${props => props.theme.color.primary};
+    color: ${props => props.theme.color.white.regular};
   }
   ul {
     list-style: none;
     margin: 16px 0;
     padding: 0;
-    color: ${props => props.theme.color.black.regular};
+    color: ${props => props.theme.color.white.regular};
     li {
       margin-bottom: 12px;
       font-family: ${props => props.theme.font.normal};

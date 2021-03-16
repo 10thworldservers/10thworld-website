@@ -48,7 +48,7 @@ const Checkout = () => {
       }
       onClick={redirectToCheckout}
     >
-      Buy Now!
+      Begin Your Journey
     </button>
   )
 }
