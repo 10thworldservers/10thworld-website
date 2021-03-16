@@ -17,7 +17,7 @@ import {
   Mobile,
 } from "./style"
 
-const NAV_ITEMS = ["Features", "Connect", "Dashboard"]
+const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
 
 export const Navigation = ({scrolled}) => { 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -58,21 +58,7 @@ export const Navigation = ({scrolled}) => {
       </Scrollspy>
     </NavListWrapper>
   );
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     const scrollPosition = window.pageYOffset;
-  //     if (scrollPosition > 10) {
-  //       setHasScrolled({ hasScrolled: true })
-  //     } else {
-  //       setHasScrolled({ hasScrolled: false })
-  //     }
-  //   };
-  //   window.addEventListener("scroll", handleScroll)
-  //   return () => window.removeEventListener('scroll', handleScroll);
-  // }, [hasScrolled])
 
-  // console.log(hasScrolled);
-  
   return (
     <Nav {...scrolled} isVisible={isVisible}>
         <Brand>
@@ -124,32 +110,3 @@ const ImgContainer = styled.div`
   margin-left: 0.5rem;
   
 `
-
-const LogOutButton = styled.button`
-  font-weight: 500;
-  font-size: 14px;
-  color: ${props => props.signUp ? `white` : `black`};
-  letter-spacing: 1px;
-  height: 60px;
-  display: block;
-  margin-top: 8px;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-  background: #ffffff;
-  border-radius: 4px;
-  padding: 0px 40px;
-  border-width: 0px;
-  border-style: initial;
-  border-color: initial;
-  border-image: initial;
-  outline: 0px;
-  &:hover {
-    box-shadow: rgba(110, 120, 152, 0.22) 0px 2px 10px 0px;
-  }
-  @media (max-width: ${props => props.theme.screen.md}) {
-  }
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    margin-left: 0;
-  }
-  `

@@ -8,7 +8,7 @@ import { ScrollProvider } from '../../context/ScrollProvider';
 import { HeaderProvider } from '../../context/HeaderProvider.js';
 const features = [1,2,3]
 
-const Features = () => {
+const Faq= () => {
   return (
     <ScrollProvider>
       <HeaderProvider>
@@ -50,4 +50,4 @@ const FeatureCard = styled.div`
   background-color: hsl(0, 0%, 23%);
   box-shadow: 1px 1px 5px hsl(0, 0%, 23%);
 `
-export default Features
+export default Faq;
