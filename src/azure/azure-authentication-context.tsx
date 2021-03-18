@@ -127,8 +127,12 @@ export class AzureAuthenticationContext  {
       );
       return currentAccounts[0];
     } else if (currentAccounts.length === 1) {
+      console.log(
+        "One Account Detected."
+      );
       return currentAccounts[0];
     }
+
   }
 }
 

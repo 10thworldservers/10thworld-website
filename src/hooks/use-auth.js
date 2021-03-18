@@ -8,7 +8,10 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   return <authContext.Provider value={{
     user,
-    getUser: () => setUser(authMethods.getAccount())
+    getUser: () => { 
+      console.log("getUser Called");
+      setUser(authMethods.getAccount()); 
+    }
   }}>
     {children}
   </authContext.Provider>
@@ -17,7 +20,7 @@ const AuthProvider = ({ children }) => {
 export default ({ element }) => {
   return (
     <AuthProvider>
-    {element}
-  </AuthProvider>
+      {element}
+    </AuthProvider>
   )
 };
