@@ -44,7 +44,7 @@ export class AzureAuthenticationContext  {
     };
 
     this.loginRequestRedirect = {
-      scopes: ["User.ReadWrite"]
+      //scopes: ["User.ReadWrite"]
     };
   }
 
@@ -84,7 +84,8 @@ export class AzureAuthenticationContext  {
       this.account = response.account;
       console.log("10thWorldAcc: ", this.account);
       const accessTokenRequest = {
-        scopes: ["user.read"]
+        scopes: ["user.read"],
+        authority: MSAL_CONFIG.auth.authority
     }
        this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
        let accessToken = accessTokenResponse.accessToken;
