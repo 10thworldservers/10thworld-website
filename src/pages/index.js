@@ -20,7 +20,6 @@ const IndexPage = () => {
           <authContext.Consumer>
             {context => {
               console.log(context)
-              console.log(context.user)
               if (context.user === null) {
                 context = {
                   user: true
