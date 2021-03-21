@@ -34,6 +34,9 @@ const Checkout = () => {
       lineItems: [{ price: "price_1ITW5OAS0djFnCh030YLxmpx", quantity: 1 }],
       successUrl: `http://localhost:8000/page-2/`,
       cancelUrl: `http://localhost:8000/`,
+      //clientReferenceId is set by us from user db and passed to webhook, it is the only way to associate checkout session to client.
+      clientReferenceId: 'test',
+      customerEmail: 'johndavidfischer@gmail.com'
     })
     if (error) {
       console.warn("Error:", error)

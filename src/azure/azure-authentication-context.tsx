@@ -86,14 +86,14 @@ export class AzureAuthenticationContext  {
       const accessTokenRequest = {
         scopes: ["user.read"],
         authority: MSAL_CONFIG.auth.authority
-    }
-       this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
-       let accessToken = accessTokenResponse.accessToken;
-       console.log('Access token acquired (silent): ', accessToken);
-     }).catch(function (error) {
-      //Acquire token silent failure, and send an interactive request
-      if (error.errorMessage.indexOf("interaction_required") !== -1) {
-         this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
+      }
+      this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+        let accessToken = accessTokenResponse.accessToken;
+        console.log('Access token acquired (silent): ', accessToken);
+      }).catch(function (error) {
+        //Acquire token silent failure, and send an interactive request
+        if (error.errorMessage.indexOf("interaction_required") !== -1) {
+          this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
               // Acquire token interactive success
           }).catch(function(error) {
               // Acquire token interactive failure
@@ -103,6 +103,7 @@ export class AzureAuthenticationContext  {
     });
         
     } else {
+      console.log('Access token not acquired');
       this.account = this.getAccount();
     }
 
