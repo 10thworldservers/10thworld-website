@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import AzureAuthenticationContext from "./azure-authentication-context";
 import { AccountInfo } from "@azure/msal-browser";
 import styled from 'styled-components';
-
+import { AuthContext } from "../hooks/use-auth.js";
 
 const checkIfWindowExists = () => {
   let isIE: any;
@@ -29,6 +29,8 @@ const AzureAuthenticationButton = ({ onAuthenticated, text }: any): JSX.Element 
 
   const [authenticated, setAuthenticated] = useState<Boolean>(false);
   const [user, setUser] = useState<AccountInfo>();
+  const authContext = useContext(AuthContext);
+  
 
   const logIn = (method: string): any => {
     const typeName = "loginRedirect";

@@ -9,6 +9,7 @@ import {
 
 import { MSAL_CONFIG } from "./azure-authentication-config";
 
+
 const location = typeof window !== `undefined` ? window : null;
 
 
@@ -103,12 +104,12 @@ export class AzureAuthenticationContext  {
     });
         
     } else {
-      console.log('Access token not acquired');
+      //console.log('Access token not acquired');
       this.account = this.getAccount();
     }
 
     if (this.account) {
-      incomingFunction(this.account);
+      incomingFunction(this.account.name);
     }
   }
   private getAccount(): AccountInfo | undefined {

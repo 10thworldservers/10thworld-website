@@ -1,26 +1,31 @@
-import React, { createContext, useState } from 'react'
-import AzureAuthContext from '../azure/azure-authentication-context';
+import React, { createContext } from 'react';
+//import AzureAuthContext from '../azure/azure-authentication-context';
 
-const authMethods = new AzureAuthContext();
-export const authContext = createContext();
+//const authMethods = new AzureAuthContext();
+export const AuthContext = createContext({
+  user: "null",
+  setUser: () => {}
+});
 
-export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  return <authContext.Provider value={{
-    user,
-    getUser: () => { 
-      console.log("getUser Called");
-      setUser(authMethods.getAccount()); 
-    }
-  }}>
-    {children}
-  </authContext.Provider>
-}
+export default AuthContext
 
-export default ({ element }) => {
-  return (
-    <AuthProvider>
-      {element}
-    </AuthProvider>
-  )
-};
+// export const AuthProvider = ({ children }) => {
+//   //const [user, setUser] = useState(null);
+//   return <authContext.Provider value={{
+//     user: "null",
+//     setUser: () => { 
+//       console.log("setUser Called");
+//       //setUser(authMethods.returnedAccountInfo()); 
+//     }
+//   }}>
+//     {children}
+//   </authContext.Provider>
+// }
+
+// export default ({ element }) => {
+//   return (
+//     <AuthProvider>
+//       {element}
+//     </AuthProvider>
+//   )
+// };

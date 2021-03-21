@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import Layout from "../components/common/layout/layout";
 import SEO from "../components/common/layout/seo";
@@ -10,33 +10,31 @@ import GetStarted from "../components/sections/getstarted";
 import Welcome from "../components/sections/welcome";
 import { ScrollProvider } from '../context/ScrollProvider';
 import { HeaderProvider } from '../context/HeaderProvider.js';
-import { authContext } from '../hooks/use-auth';
+import { AuthContext } from '../hooks/use-auth';
+import { AzureAuthButton } from '../azure/azure-auth-button.tsx';
 
 const IndexPage = () => {
+
+  const [user, setUser] = useState("test");
+  const value = {user, setUser};
   return (
+
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
-          <authContext.Consumer>
-            {context => {
-              console.log(context)
-              if (context === null) {
-                context = {
-                  user: true
-                }
-              }
-              return (
-                <>
-                  <SEO title="Home" />
-                  <Navigation />
-                  {context !== null ? <Welcome /> : <Header />}
-                  <Features />
-                  <GetStarted />
-                  <Footer />
-                </>
-              )
-            }}
-          </authContext.Consumer>
+       
+          <AuthContext.Provider value={value}>
+              <SEO title="Home" />
+              <Navigation />
+              <Header />
+              <div>
+                <AzureAuthButton />
+              </div>
+              <Features />
+              <GetStarted />
+              <Footer />
+          </AuthContext.Provider>     
+            
         </Layout>
       </HeaderProvider>
     </ScrollProvider>
