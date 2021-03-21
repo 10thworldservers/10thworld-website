@@ -83,7 +83,7 @@ export class AzureAuthenticationContext  {
   handleResponse(response: AuthenticationResult, incomingFunction: any) {
     if(response !==null && response.account !==null) {
       this.account = response.account;
-      console.log("10thWorldAcc: ", this.account);
+      console.log("10thWorld AuthResult: ", response);
       const accessTokenRequest = {
         scopes: ["user.read"],
         authority: MSAL_CONFIG.auth.authority
@@ -113,7 +113,7 @@ export class AzureAuthenticationContext  {
     }
   }
   private getAccount(): AccountInfo | undefined {
-    console.log(`loadAuthModule`);
+    console.log(`getAccount`);
     const currentAccounts = this.myMSALObj.getAllAccounts();
     if (currentAccounts === null) {
       // @ts-ignore

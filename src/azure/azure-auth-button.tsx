@@ -33,12 +33,12 @@ export const AzureAuthButton = () => {
     };
 
 
-      return (
-        
-        <UserLoginButton onClick={() => logIn()}>
-          Set User (Current" {user})
-        </UserLoginButton>
-      );
+    return (
+    
+    <UserLoginButton onClick={() => logIn()}>
+        Set User (Current" {user})
+    </UserLoginButton>
+    );
 
 };
 
