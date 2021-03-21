@@ -64,6 +64,7 @@ export class AzureAuthenticationContext  {
         this.handleResponse(resp, setUser)
       })
       .catch((err)=> {
+        console.log("CAUGHT ERROR ON handleRedirectPromise")
         console.error(err);
       });
       this.myMSALObj.loginRedirect(this.loginRequestRedirect);
