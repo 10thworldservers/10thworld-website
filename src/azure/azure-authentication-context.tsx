@@ -18,7 +18,6 @@ export class AzureAuthenticationContext  {
     MSAL_CONFIG
   );
   private account?: AccountInfo;
-  private loginRedirectRequest?: RedirectRequest;
   private loginRequest?: PopupRequest;
   private loginRequestRedirect?: RedirectRequest;
 
@@ -38,17 +37,15 @@ export class AzureAuthenticationContext  {
       scopes: [],
       prompt: "select_account",
     };
-
-    this.loginRedirectRequest = {
-      ...this.loginRequest,
-      redirectStartPage: location,
-    };
-
+    
     this.loginRequestRedirect = {
-      //scopes: ["User.ReadWrite"]
+      scopes: []
     };
   }
 
+  /// 
+  // Called by Auth Button Component, Handles Signup as well as login
+  ///
   login(signInType: string, setUser: any): void {
     if (signInType === "loginPopup") {
       this.myMSALObj
@@ -73,6 +70,9 @@ export class AzureAuthenticationContext  {
     }
   }
 
+  ///
+  // Not used yet.
+  ///
   logout(account: AccountInfo): void {
     const logOutRequest: EndSessionRequest = {
       account,
@@ -80,6 +80,10 @@ export class AzureAuthenticationContext  {
 
     this.myMSALObj.logout(logOutRequest);
   }
+
+  ///
+  // Called by Login to handle response. 
+  ///
   handleResponse(response: AuthenticationResult, incomingFunction: any) {
     if(response !==null && response.account !==null) {
       this.account = response.account;
@@ -100,8 +104,8 @@ export class AzureAuthenticationContext  {
               // Acquire token interactive failure
               console.log(error);
           });
-      }
-    });
+        }
+      });
         
     } else {
       //console.log('Access token not acquired');
@@ -112,6 +116,8 @@ export class AzureAuthenticationContext  {
       incomingFunction(this.account.name);
     }
   }
+
+
   private getAccount(): AccountInfo | undefined {
     console.log(`getAccount`);
     const currentAccounts = this.myMSALObj.getAllAccounts();

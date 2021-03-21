@@ -10,12 +10,12 @@ import { AuthContext } from "../hooks/use-auth.js";
 // Log In, Log Out button
 export const AzureAuthButton = () => {
 
-    const authenticationModule: AzureAuthenticationContext = new AzureAuthenticationContext();
+    const authenticationModule = new AzureAuthenticationContext();
     const {user, setUser} = useContext(AuthContext);
   
     
   
-    const logIn = (): any => {
+    const logIn = ()=> {
       const typeName = "loginRedirect";
       //setUser
       console.log("Called logIn");
@@ -27,7 +27,7 @@ export const AzureAuthButton = () => {
     };
 
 
-    const returnedAccountInfo = (user: AccountInfo) => {
+    const returnedAccountInfo = (user) => {
         // set state
         console.log("user:", user);
     };

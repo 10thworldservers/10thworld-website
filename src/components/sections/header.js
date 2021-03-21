@@ -8,7 +8,9 @@ import { authContext } from '../../hooks/use-auth';
 import { Container } from "../global"
 
 // Azure Authentication Button
-import AzureAuthenticationButton from '../../azure/azure-authentication.component';
+//import AzureAuthenticationButton from '../../azure/azure-authentication.component';
+import { AzureAuthButton } from '../../azure/azure-auth-button.js';
+
 
 const Header = () => {
   return (
@@ -20,7 +22,7 @@ const Header = () => {
             <h2>
               Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
             </h2>
-            <AzureAuthenticationButton text="Sign Up"></AzureAuthenticationButton>                           
+            <AzureAuthButton text="Sign Up"></AzureAuthButton>                           
           </HeaderTextGroup>
         </Flex>
       </Container>

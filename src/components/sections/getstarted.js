@@ -3,6 +3,7 @@ import styled from "styled-components"
 import SkyBackGround from "../../images/landscape-darkblue-lower.svg"
 import { Container, Section } from "../global"
 import AzureAuthenticationComponent from '../../azure/azure-authentication.component';
+import { AzureAuthButton } from '../../azure/azure-auth-button.js';
 
 const GetStarted = () => (
   <StyledSection>
@@ -34,7 +35,7 @@ const GetStartedTitle = styled.h3`
   text-align: center;
 `
 
-const GetStartedSignup = styled(AzureAuthenticationComponent)`
+const GetStartedSignup = styled(AzureAuthButton)`
   margin: 0 auto 32px;
   text-salign: center;
 `

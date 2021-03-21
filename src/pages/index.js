@@ -11,7 +11,7 @@ import Welcome from "../components/sections/welcome";
 import { ScrollProvider } from '../context/ScrollProvider';
 import { HeaderProvider } from '../context/HeaderProvider.js';
 import { AuthContext } from '../hooks/use-auth';
-import { AzureAuthButton } from '../azure/azure-auth-button.tsx';
+//import { AzureAuthButton } from '../azure/azure-auth-button.js';
 
 const IndexPage = () => {
 
@@ -27,9 +27,9 @@ const IndexPage = () => {
               <SEO title="Home" />
               <Navigation />
               <Header />
-              <div>
+              {/* <div>
                 <AzureAuthButton />
-              </div>
+              </div> */}
               <Features />
               <GetStarted />
               <Footer />
