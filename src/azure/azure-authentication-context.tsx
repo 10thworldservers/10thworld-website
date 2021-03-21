@@ -23,13 +23,23 @@ export class AzureAuthenticationContext  {
 
   public isAuthenticationConfigured = false;
 
-  constructor() {
+  constructor(setUser: any) {
     // @ts-ignore
     this.account = null;
     this.setRequestObjects();
     if (MSAL_CONFIG?.auth?.clientId) {
       this.isAuthenticationConfigured = true;
     }
+
+    // Redirect: once login is successful and redirects with tokens, call Graph API
+    this.myMSALObj.handleRedirectPromise().then((resp: AuthenticationResult) => { 
+      this.handleResponse(resp, setUser)
+    })
+    .catch((err)=> {
+      console.log("CAUGHT ERROR ON handleRedirectPromise")
+      console.error(err);
+    });
+
   }
 
   private setRequestObjects(): void {
@@ -60,13 +70,6 @@ export class AzureAuthenticationContext  {
         });
         console.log(this.myMSALObj.getAllAccounts());
     } else if (signInType === "loginRedirect") {
-      this.myMSALObj.handleRedirectPromise().then((resp: AuthenticationResult) => { 
-        this.handleResponse(resp, setUser)
-      })
-      .catch((err)=> {
-        console.log("CAUGHT ERROR ON handleRedirectPromise")
-        console.error(err);
-      });
       this.myMSALObj.loginRedirect(this.loginRequestRedirect);
     }
   }
@@ -109,7 +112,7 @@ export class AzureAuthenticationContext  {
       });
         
     } else {
-      //console.log('Access token not acquired');
+      console.log('Response was Null!');
       this.account = this.getAccount();
     }
 

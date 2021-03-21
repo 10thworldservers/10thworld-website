@@ -9,9 +9,9 @@ import { AuthContext } from "../hooks/use-auth.js";
 
 // Log In, Log Out button
 export const AzureAuthButton = () => {
-
-    const authenticationModule = new AzureAuthenticationContext();
     const {user, setUser} = useContext(AuthContext);
+    const authenticationModule = new AzureAuthenticationContext(setUser);
+    
   
     
   
