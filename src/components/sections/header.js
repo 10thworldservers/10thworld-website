@@ -14,11 +14,12 @@ import { AzureAuthButton } from '../../azure/azure-auth-button.js';
 
 
 const Header = () => {
-  const {context, user, setState} = useContext(AuthContext);
-  console.log("context: ", context)
-  console.log("user: ", user)
-  console.log("setState: ", setState)
-  if (user !== null) {
+  const {context} = useContext(AuthContext);
+  
+  const userAccount = context.getAccount();
+  console.log("Header User Account:", userAccount);
+
+  if (userAccount !== undefined) {
     return (
       <HeaderWrapper id="top">
         <Container>

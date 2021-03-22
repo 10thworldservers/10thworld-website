@@ -131,7 +131,7 @@ export class AzureAuthenticationContext  {
   }
 
 
-  private getAccount(): AccountInfo | undefined {
+  getAccount(): AccountInfo | undefined {
     console.log(`getAccount`);
     const currentAccounts = this.myMSALObj.getAllAccounts();
     console.log("currentAccounts:", currentAccounts);

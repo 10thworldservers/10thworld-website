@@ -5,14 +5,19 @@ import AzureAuthContext from '../azure/azure-authentication-context';
 
 
 
+
+
+
 export const AuthContext = createContext();
+
+const context = new AzureAuthContext();
 
 export function AuthProvider({children}) {
   
-const [user, setState] = useState(null);
-const context = new AzureAuthContext(setState);
+  //[user, setState] = useState(null);
 
-  const value = {context, user, setState}
+
+  const value = {context}
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 
