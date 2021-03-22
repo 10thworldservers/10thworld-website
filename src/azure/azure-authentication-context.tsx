@@ -31,6 +31,8 @@ export class AzureAuthenticationContext  {
       this.isAuthenticationConfigured = true;
     }
 
+    console.log("constructed new Auth Context");
+
     // Redirect: once login is successful and redirects with tokens, call Graph API
     this.myMSALObj.handleRedirectPromise().then((resp: AuthenticationResult) => { 
       this.handleResponse(resp, setUser)
@@ -117,7 +119,7 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
-      incomingFunction(this.account.name);
+      incomingFunction("John");
     }
   }
 

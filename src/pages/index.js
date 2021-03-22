@@ -10,30 +10,28 @@ import GetStarted from "../components/sections/getstarted";
 import Welcome from "../components/sections/welcome";
 import { ScrollProvider } from '../context/ScrollProvider';
 import { HeaderProvider } from '../context/HeaderProvider.js';
-import { AuthContext } from '../hooks/use-auth';
-//import { AzureAuthButton } from '../azure/azure-auth-button.js';
+import { AuthProvider } from '../hooks/use-auth';
 
 const IndexPage = () => {
 
-  const [user, setUser] = useState("test");
-  const value = {user, setUser};
+  //const [user, setUser] = useState("test");
+  //const value = {user, setUser};
   return (
 
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
        
-          <AuthContext.Provider value={value}>
+           <AuthProvider> 
               <SEO title="Home" />
               <Navigation />
               <Header />
-              {/* <div>
-                <AzureAuthButton />
-              </div> */}
+              <div>
+              </div>
               <Features />
               <GetStarted />
               <Footer />
-          </AuthContext.Provider>     
+           </AuthProvider>      
             
         </Layout>
       </HeaderProvider>
