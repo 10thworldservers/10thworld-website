@@ -14,10 +14,10 @@ export const AuthContext = createContext();
 
 export function AuthProvider({children}) {
   
-  //[user, setState] = useState(null);
-  const context = new AzureAuthContext();
+  const [user, setState] = useState(null);
+  const context = new AzureAuthContext(setState);
 
-  const value = {context}
+  const value = {context, user}
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 
