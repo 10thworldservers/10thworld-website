@@ -87,6 +87,32 @@ export class AzureAuthenticationContext  {
     this.myMSALObj.logout(logOutRequest);
   }
 
+
+  
+
+  private getTokenSilent() {
+    console.log("Getting token silent");
+    const accessTokenRequest = {
+      scopes: [],
+      authority: MSAL_CONFIG.auth.authority
+    }
+    this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+      let accessToken = accessTokenResponse.accessToken;
+      console.log('Access token acquired (silent): ', accessToken);
+    }).catch(function (error) {
+      //Acquire token silent failure, and send an interactive request
+      if (error.errorMessage.indexOf("interaction_required") !== -1) {
+        this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
+            // Acquire token interactive success
+        }).catch(function(error) {
+            // Acquire token interactive failure
+            console.log(error);
+        });
+      }
+    });
+  }
+
+
   ///
   // Called by Login to handle response. 
   ///
@@ -94,24 +120,8 @@ export class AzureAuthenticationContext  {
     if(response !==null && response.account !==null) {
       this.account = response.account;
       console.log("10thWorld AuthResult: ", response);
-      const accessTokenRequest = {
-        scopes: ["user.read"],
-        authority: MSAL_CONFIG.auth.authority
-      }
-      this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
-        let accessToken = accessTokenResponse.accessToken;
-        console.log('Access token acquired (silent): ', accessToken);
-      }).catch(function (error) {
-        //Acquire token silent failure, and send an interactive request
-        if (error.errorMessage.indexOf("interaction_required") !== -1) {
-          this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
-              // Acquire token interactive success
-          }).catch(function(error) {
-              // Acquire token interactive failure
-              console.log(error);
-          });
-        }
-      });
+      this.getTokenSilent();
+      
         
     } else {
       console.log('Response was Null!');
@@ -119,7 +129,7 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
-      incomingFunction("John");
+      //incomingFunction("John");
     }
   }
 
@@ -127,12 +137,14 @@ export class AzureAuthenticationContext  {
   private getAccount(): AccountInfo | undefined {
     console.log(`getAccount`);
     const currentAccounts = this.myMSALObj.getAllAccounts();
-    if (currentAccounts === null) {
+    console.log("currentAccounts:", currentAccounts);
+    if (currentAccounts === null || currentAccounts.length === 0) {
+      this.getTokenSilent();
       // @ts-ignore
       console.log("No accounts detected");
       return undefined;
     }
-
+    
     if (currentAccounts.length > 1) {
       // TBD: Add choose account code here
       // @ts-ignore
