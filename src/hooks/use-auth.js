@@ -10,12 +10,12 @@ import AzureAuthContext from '../azure/azure-authentication-context';
 
 export const AuthContext = createContext();
 
-const context = new AzureAuthContext();
+
 
 export function AuthProvider({children}) {
   
   //[user, setState] = useState(null);
-
+  const context = new AzureAuthContext();
 
   const value = {context}
 

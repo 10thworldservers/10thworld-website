@@ -18,6 +18,8 @@ const IndexPage = () => {
   //console.log("context: ", context)
   //const [user, setUser] = useState("test");
   //const value = {user, setUser};
+
+  // const context = new AzureAuthContext();
   return (
 
     <ScrollProvider>
@@ -28,8 +30,6 @@ const IndexPage = () => {
               <SEO title="Home" />
               <Navigation />
               <Header />
-              <div>
-              </div>
               <Features />
               <GetStarted />
               <Footer />
