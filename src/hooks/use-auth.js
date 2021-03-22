@@ -2,14 +2,15 @@ import React, { createContext, useState } from 'react';
 import AzureAuthContext from '../azure/azure-authentication-context';
 
 //const azureAuthContext = new AzureAuthContext();
-const context = new AzureAuthContext();
+
 
 
 export const AuthContext = createContext();
 
 export function AuthProvider({children}) {
-  const [user, setState] = useState(null);
   
+const [user, setState] = useState(null);
+const context = new AzureAuthContext(setState);
 
   const value = {context, user, setState}
 

@@ -18,22 +18,40 @@ const Header = () => {
   console.log("context: ", context)
   console.log("user: ", user)
   console.log("setState: ", setState)
+  if (user !== null) {
+    return (
+      <HeaderWrapper id="top">
+        <Container>
+          <Flex>
+            <HeaderTextGroup>
+              <Subtitle>Valheim Servers</Subtitle>
+              <h2>
+                Welcome to 10th World Servers!
+              </h2>                          
+            </HeaderTextGroup>
+          </Flex>
+        </Container>
+      </HeaderWrapper>
+    )
+  } else {
+    return (
+      <HeaderWrapper id="top">
+        <Container>
+          <Flex>
+            <HeaderTextGroup>
+              <Subtitle>Valheim Servers</Subtitle>
+              <h2>
+                Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
+              </h2>
+              <AzureAuthButton text="Sign Up"></AzureAuthButton>                           
+            </HeaderTextGroup>
+          </Flex>
+        </Container>
+      </HeaderWrapper>
+    )
+  }
 
-  return (
-    <HeaderWrapper id="top">
-      <Container>
-        <Flex>
-          <HeaderTextGroup>
-            <Subtitle>Valheim Servers</Subtitle>
-            <h2>
-              Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
-            </h2>
-            <AzureAuthButton text="Sign Up"></AzureAuthButton>                           
-          </HeaderTextGroup>
-        </Flex>
-      </Container>
-    </HeaderWrapper>
-  )
+
 }
 
 export default Header
