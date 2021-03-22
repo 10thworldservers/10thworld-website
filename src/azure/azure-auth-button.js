@@ -16,9 +16,9 @@ export const AzureAuthButton = () => {
     //const { instance } = useMsal();
     //const authenticationModule = new AzureAuthenticationContext(setUser);
     
-    const {context} = useContext(AuthContext);
+    const {context, user, setState} = useContext(AuthContext);
   
-    
+    console.log("User state:", user)
   
     const logIn = ()=> {
       const typeName = "loginRedirect";

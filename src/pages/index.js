@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 
 import Layout from "../components/common/layout/layout";
 import SEO from "../components/common/layout/seo";
@@ -11,9 +11,11 @@ import Welcome from "../components/sections/welcome";
 import { ScrollProvider } from '../context/ScrollProvider';
 import { HeaderProvider } from '../context/HeaderProvider.js';
 import { AuthProvider } from '../hooks/use-auth';
+import { AuthContext } from "../hooks/use-auth.js";
 
 const IndexPage = () => {
-
+  //const {context} = useContext(AuthContext);
+  //console.log("context: ", context)
   //const [user, setUser] = useState("test");
   //const value = {user, setUser};
   return (
