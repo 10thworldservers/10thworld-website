@@ -90,25 +90,15 @@ export class AzureAuthenticationContext  {
 
   
 
-  private getTokenSilent() {
+  private getTokenSilent(accessTokenRequest) {
     console.log("Getting token silent");
-    const accessTokenRequest = {
-      scopes: [],
-      authority: MSAL_CONFIG.auth.authority
-    }
+    
     this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
       let accessToken = accessTokenResponse.accessToken;
       console.log('Access token acquired (silent): ', accessToken);
     }).catch(function (error) {
-      //Acquire token silent failure, and send an interactive request
-      if (error.errorMessage.indexOf("interaction_required") !== -1) {
-        this.myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
-            // Acquire token interactive success
-        }).catch(function(error) {
-            // Acquire token interactive failure
-            console.log(error);
-        });
-      }
+      //Acquire token silent error, log it
+      console.log(error);
     });
   }
 
@@ -117,10 +107,17 @@ export class AzureAuthenticationContext  {
   // Called by Login to handle response. 
   ///
   handleResponse(response: AuthenticationResult, incomingFunction: any) {
-    if(response !==null && response.account !==null) {
+    if(response !==null && response.account !==null && response.account) {
       this.account = response.account;
       console.log("10thWorld AuthResult: ", response);
-      this.getTokenSilent();
+      
+      
+      const accessTokenRequest = {
+        scopes: [],
+        authority: MSAL_CONFIG.auth.authority,
+        account: this.account
+      }      
+      this.getTokenSilent(accessTokenRequest);
       
         
     } else {
@@ -139,7 +136,7 @@ export class AzureAuthenticationContext  {
     const currentAccounts = this.myMSALObj.getAllAccounts();
     console.log("currentAccounts:", currentAccounts);
     if (currentAccounts === null || currentAccounts.length === 0) {
-      this.getTokenSilent();
+      //this.getTokenSilent();
       // @ts-ignore
       console.log("No accounts detected");
       return undefined;
