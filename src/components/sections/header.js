@@ -18,6 +18,9 @@ const Header = () => {
   
   const userAccount = context.getAccount();
   console.log("Header User Account:", userAccount);
+  console.log("Header User Account from state:", user);
+
+
 
   if (userAccount !== undefined) {
     return (
@@ -27,7 +30,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers! {user}
+                Welcome to 10th World Servers! {user.name}
               </h2>                          
             </HeaderTextGroup>
           </Flex>
