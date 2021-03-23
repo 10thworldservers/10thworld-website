@@ -19,7 +19,7 @@ const Header = () => {
   const userAccount = context.getAccount();
   console.log("Header User Account:", userAccount);
 
-  if (userAccount === undefined) {
+  if (userAccount !== undefined) {
     return (
       <HeaderWrapper id="top">
         <Container>
