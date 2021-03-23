@@ -126,7 +126,7 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
-      incomingFunction(this.account);
+      incomingFunction(this.account.name);
     }
   }
 
