@@ -14,12 +14,12 @@ import { AzureAuthButton } from '../../azure/azure-auth-button.js';
 
 
 const Header = () => {
-  const {context} = useContext(AuthContext);
+  const {context, user} = useContext(AuthContext);
   
   const userAccount = context.getAccount();
   console.log("Header User Account:", userAccount);
 
-  if (userAccount !== undefined) {
+  if (userAccount === undefined) {
     return (
       <HeaderWrapper id="top">
         <Container>
@@ -27,7 +27,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers!
+                Welcome to 10th World Servers! {user}
               </h2>                          
             </HeaderTextGroup>
           </Flex>
