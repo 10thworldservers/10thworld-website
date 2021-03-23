@@ -30,7 +30,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers! {user.name}
+                Welcome to 10th World Servers! {user}
               </h2>                          
             </HeaderTextGroup>
           </Flex>
