@@ -1,15 +1,9 @@
 import React, { useState } from "react"
 import { loadStripe } from "@stripe/stripe-js"
-const buttonStyles = {
-  fontSize: "16px",
-  fontWeight: "800",
-  textAlign: "center",
-  color: "#000",
-  backgroundColor: "hsl(42, 87%, 55%)",
-  padding: "12px 45px",
-  borderRadius: "6px",
-  letterSpacing: "1.5px",
-}
+import styled from 'styled-components';
+
+
+
 
 const buttonDisabledStyles = {
   opacity: "0.5",
@@ -44,15 +38,30 @@ const Checkout = () => {
     }
   }
   return (
-    <button
+    <CheckoutButton
       disabled={loading}
-      style={
-        loading ? { ...buttonStyles, ...buttonDisabledStyles } : buttonStyles
-      }
       onClick={redirectToCheckout}
     >
-      Begin Your Journey
-    </button>
+      Get Access
+    </CheckoutButton>
   )
 }
+
+const CheckoutButton = styled.button`
+  font-size: 18px;
+  padding: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  color: #000;
+  background-color: hsl(42, 87%, 55%);
+  border-radius: 5px;
+  letter-spacing: 1.5px;
+  margin-left: 15%;
+  width: 15%;
+
+  &:hover {
+    box-shadow: 1px 1px 1em black;
+    transition: box-shadow 0.2s ease;
+  }
+`;
 export default Checkout

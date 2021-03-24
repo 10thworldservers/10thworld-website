@@ -7,10 +7,12 @@ export const Nav = styled.nav`
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: ${props => props.theme.color.primary};
+  margin-left: auto;
+  margin-right: auto;
+  background: ${props => props.theme.color.white.regular};
   transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   transform: ${props => props.isVisible ? 'translateY(0)' : 'translateY(-100%)'};
   transition: transform 0.5s ease-out;
@@ -18,15 +20,13 @@ export const Nav = styled.nav`
 
 export const StyledContainer = styled(Container)`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `
 
 export const NavListWrapper = styled.div`
   ul {
     list-style: none;
-    margin-right: 1.75rem;
-    padding: .5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -77,6 +77,7 @@ export const Brand = styled.div`
   text-decoration: none;
   letter-spacing: 1px;
   margin: 0;
+  margin-right: 10%;
   ul {
     list-style: none;
     margin: 0;

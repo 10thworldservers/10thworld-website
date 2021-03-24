@@ -19,7 +19,7 @@ import {
 
 const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
 
-export const Navigation = ({scrolled}) => { 
+export const Navigation = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   // const [hasScrolled, setHasScrolled] = useState(false);
   const { isVisible } = useHeaderContext();
@@ -36,12 +36,12 @@ export const Navigation = ({scrolled}) => {
 
   const getNavAnchorLink = item => {
     return (
-      <Link to={`${item.toLowerCase()}`} style={{ color: 'white' }} href={`/${item.toLowerCase()}`} onClick={() => closeMobileMenu()}>
+      <Link to={`${item.toLowerCase()}`} href={`/${item.toLowerCase()}`} onClick={() => closeMobileMenu()}>
         {item}
       </Link>
     )
   }
-  
+
   const getNavList = ({ mobile = false }) => (
     <NavListWrapper mobile={mobile}>
       <Scrollspy
@@ -50,46 +50,45 @@ export const Navigation = ({scrolled}) => {
         mobile={mobile}
         offset={-64}
       >
-        <Checkout />
         {NAV_ITEMS.map(navItem => (
           <NavItem key={navItem}>{getNavAnchorLink(navItem)}</NavItem>
         ))}
-        
       </Scrollspy>
     </NavListWrapper>
   );
 
   return (
     <Nav {...scrolled} isVisible={isVisible}>
-        <Brand>
-          <Scrollspy offset={-64} item={["top"]} currentClassName="active">
-            <Link to="/">
-              <ImgContainer>
-                <img src={logo1} alt="10th World Servers main logo" />
-              </ImgContainer>
-            </Link>
-          </Scrollspy>
-        </Brand>
-        <Mobile>
-          <button
-            style={{ color: "black", background: "none" }}
-          >
-            {mobileMenuOpen ? (
-              <X size={24} alt="close menu" />
-            ) : (
-              <Menu size={24} alt="open menu" />
-            )}
-          </button>
-        </Mobile>
-        <Mobile hide>
-          {getNavList({})}
-        </Mobile>
-      
+      <Brand>
+        <Scrollspy offset={-64} item={["top"]} currentClassName="active">
+          <Link to="/">
+            <ImgContainer>
+              <img src={logo1} alt="10th World Servers main logo" />
+            </ImgContainer>
+          </Link>
+        </Scrollspy>
+      </Brand>
+      <Mobile>
+        <button
+          style={{ color: "black", background: "none" }}
+        >
+          {mobileMenuOpen ? (
+            <X size={24} alt="close menu" />
+          ) : (
+            <Menu size={24} alt="open menu" />
+          )}
+        </button>
+      </Mobile>
+      <Mobile hide>
+        {getNavList({})}
+      </Mobile>
+      <Checkout />
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
+              {/* <Checkout /> */}
             </Container>
           </MobileMenu>
         )}
@@ -103,10 +102,6 @@ export const Navigation = ({scrolled}) => {
 
 
 const ImgContainer = styled.div`
-  box-shadow: .25px .25px 5px black;
-  border-radius: 10px;
   padding: 0.75rem;
-  background-color: ${props => props.theme.color.white.regular};
   margin-left: 0.5rem;
-  
 `

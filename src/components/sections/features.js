@@ -42,7 +42,6 @@ const features = [
 ]
 
 const Features = () => {
-  const [props, set] = useSpring(() => ({xys: [0, 0, 1], config: {mass: 10, tension: 350, friction: 40}}))
   return (
     <StyledSection id="features">
     <StyledContainer>
