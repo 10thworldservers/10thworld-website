@@ -9,7 +9,7 @@ export const Nav = styled.nav`
   z-index: 1000;
   margin-left: auto;
   margin-right: auto;
-  background: ${props => props.theme.color.white.regular};
+  background: ${props => props.theme.color.secondary};
   transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
   display: flex;
   justify-content: center;

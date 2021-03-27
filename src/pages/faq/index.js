@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../../components/common/layout/layout';
 import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
@@ -8,7 +8,10 @@ import styled from 'styled-components';
 import { ScrollProvider } from '../../context/ScrollProvider';
 import { HeaderProvider } from '../../context/HeaderProvider.js';
 
-const Faq= () => {
+const Faq = () => {
+
+
+
   return (
     <ScrollProvider>
       <HeaderProvider>

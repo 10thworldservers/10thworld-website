@@ -37,7 +37,7 @@ const features = [
   {
     id: 6,
     title: "Join In",
-    text: "Take part in an exciting opportunity to witness th growth of one of the fastest selling early access survival RPGs"
+    text: "Join millions of others in experiencing one of the fastest selling survival RPG's."
   },
 ]
 
@@ -102,6 +102,7 @@ const FeaturesGrid = styled.div`
   grid-row-gap: 15px;
   align-items: vertical;
   justify-content: center;
+  
   @media (max-width: ${props => props.theme.screen.sm}) {
     grid-template-columns: 1fr;
     padding: 0 64px;

@@ -1,35 +1,35 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { faqQ } from '../../utils/faq';
 
 const Slider = () => {
 
-  const [questions, showQuestions] = useState([
-    {
-      id: 0,
-      question: "How do I get started?",
-      answer: "Once you've created an account and purchased a subscription you will gain access to a server.",
-      visible: false,
-    },
-    {
-      id: 1,
-      question: "How will I be billed?",
-      answer: "All payments are processed through Stripe on a monthly basis.",
-      visible: false
-    },
-    {
-      id: 2,
-      question: "Can I cancel my subscription?",
-      answer: "You can deactivate your subscription at any time (that's if Valheim ever stops being fun).",
-      visible: false
-    },
-  ]);
+  const [questions, showQuestions] = useState(faqQ);
 
   console.log(questions)
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    const updatedQuestions = [...questions];
+  const handleClick = (e, id) => {
+    let previousIndex = id - 1;
+    let precedingIndex = id + 1;
+    let updatedQuestions = [...questions];
+    let index = updatedQuestions.findIndex(item => id === item.id);
 
+    if (previousIndex < 0) {
+      updatedQuestions[index]['visible'] = !updatedQuestions[index]['visible'];
+      updatedQuestions[precedingIndex]['visible'] = false;
+      console.log('No previous index or preceding index', index);
+    } else if (precedingIndex > 4) {
+      updatedQuestions[index]['visible'] = !updatedQuestions[index]['visible'];
+      updatedQuestions[previousIndex]['visible'] = false;
+    } else  {
+      updatedQuestions[previousIndex]['visible'] = false;
+      updatedQuestions[precedingIndex]['visible'] = false;
+      updatedQuestions[index]['visible'] = !updatedQuestions[index]['visible'];
+    }
+
+    
+    showQuestions(updatedQuestions);
+    e.preventDefault();
   };
 
   return (
@@ -39,7 +39,6 @@ const Slider = () => {
           return (
             <div style={{ color: 'white' }} key={item.id}>
               {item.question}
-              {item.answer}
             </div>
           )
         })}

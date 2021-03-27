@@ -23,24 +23,29 @@ const theme = {
   },
 
   color: {
-    primary: "#2c2c2c",
-    secondary: "#2C2C2C",
-    accent: "#cca86e",
+    primary: "hsl(209, 20%, 25%)",
+    secondary: "hsl(210, 16%, 82%)",
+    accent: "hsl(221, 78%, 86%)",
     background: {
-      white: "#ffffff",
-      light: "#f8f8f8",
+      white: "hsl(216, 33%, 97%)",
+      light: "hsl(214, 15%, 91%)",
     },
     white: {
-      regular: "#ffffff",
-      lessdark: "#faf9f8",
-      dark: "#2c2c2c",
-      darker: "#eeeeee",
+      regular: "hsl(0, 0%, 97%)",
+      lessdark: "hsl(0, 0%, 88%)",
+      dark: "hsl(0, 0%, 81%)",
+      darker: "hsl(0, 0%, 69%)",
     },
     black: {
-      lightest: "#ABA8AF",
-      light: "#564F62",
-      regular: "#071435",
+      lightest: "hsl(0, 0%, 32%)",
+      light: "hsl(0, 0%, 23%)",
+      regular: "hsl(0, 0%, 13%)",
     },
+  },
+  custom: {
+    accentOne: 'hsl(232, 51%, 36%)',
+    accentTwo: 'hsl(234, 62%, 26%)',
+    accentThree: 'hsl(125, 73%, 20%)'
   },
   screen: {
     xs: "575px",

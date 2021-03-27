@@ -57,8 +57,8 @@ export default AzureAuthButton
 const UserLoginButton = styled.button`
   font-size: 24px;
   border-radius: 10px;
-  margin: 0 10px;
   padding: 0.65em;
+  width: 50%;
   background-color: ${props => props.theme.color.white.regular};
   box-shadow: .1em .1em .3em #000;
 

@@ -26,14 +26,14 @@ const Header = () => {
     return (
       <HeaderWrapper id="top">
         <Container>
-          <Flex>
+         
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
                 Welcome to 10th World Servers! {user}
               </h2>                          
             </HeaderTextGroup>
-          </Flex>
+          
         </Container>
       </HeaderWrapper>
     )
@@ -41,7 +41,6 @@ const Header = () => {
     return (
       <HeaderWrapper id="top">
         <Container>
-          <Flex>
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
@@ -49,7 +48,6 @@ const Header = () => {
               </h2>
               <AzureAuthButton text="Sign Up"></AzureAuthButton>                           
             </HeaderTextGroup>
-          </Flex>
         </Container>
       </HeaderWrapper>
     )
@@ -61,11 +59,12 @@ const Header = () => {
 export default Header
 
 const HeaderWrapper = styled.header`
-  margin-top: 20rem;
+  position: relative;
+  margin-top: 5rem;
   margin-bottom: 5rem;
   padding: 10rem;
   background-image: url(${SkyBackGround});
-  box-shadow: inset 0 0 0 2000px rgba(235, 242, 250, 0.3);
+  background-repeat: no-repeat;
 `
 const Subtitle = styled.h5`
   font-size: 16px;
@@ -75,9 +74,11 @@ const Subtitle = styled.h5`
 `
 
 const HeaderTextGroup = styled.div`
-  margin: 2.5rem;
-  padding: 1.5rem;
-  box-shadow: inset 300px 300px 300px rgba(245, 242, 240, 0.8);
+  max-width: 75%;
+  position: relative;
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+  box-shadow: inset 300px 300px 300px ${props => props.theme.color.secondary};
   border-radius: 10px;
   > div {
     width: 120%;
@@ -95,12 +96,9 @@ const HeaderTextGroup = styled.div`
 
   h2 {
     margin-bottom: 24px;
-    ${props => props.theme.font_size.regular}
+    text-align: left;
   }
 
-  p {
-    margin-bottom: 48px;
-  }
 `
 
 const Flex = styled.div`
