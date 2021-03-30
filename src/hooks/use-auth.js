@@ -3,53 +3,28 @@ import AzureAuthContext from '../azure/azure-authentication-context';
 
 //const azureAuthContext = new AzureAuthContext();
 
-
-
-
-
-
 export const AuthContext = createContext();
-
-
 
 export function AuthProvider({children}) {
   
-  const [user, setState] = useState("Init");
-  const context = new AzureAuthContext(setState);
+  const [user, setState] = useState({
+    token: null,
+    uniqueId: null,
+    name: null,
+  });
 
-  const value = {context, user}
+  const context = new AzureAuthContext(updateUser);
+
+  const updateUser = ({token, uniqueId, name}) => {
+    // SetState in here
+    setState({ token: token, uniqueId: uniqueId, name: name });
+  };
+
+  const value = { context, user };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 
-   
-}
-
-// export const AuthContext = createContext({
-//   user: "null",
-//   setUser: () => {}
-// });
+};
 
 
-
-export default AuthProvider
-
-// export const AuthProvider = ({ children }) => {
-//   //const [user, setUser] = useState(null);
-//   return <authContext.Provider value={{
-//     user: "null",
-//     setUser: () => { 
-//       console.log("setUser Called");
-//       //setUser(authMethods.returnedAccountInfo()); 
-//     }
-//   }}>
-//     {children}
-//   </authContext.Provider>
-// }
-
-// export default ({ element }) => {
-//   return (
-//     <AuthProvider>
-//       {element}
-//     </AuthProvider>
-//   )
-// };
+export default AuthProvider;

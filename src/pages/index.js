@@ -25,7 +25,6 @@ const IndexPage = () => {
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
-       
            <AuthProvider> 
               <SEO title="Home" />
               <Navigation />
@@ -34,7 +33,6 @@ const IndexPage = () => {
               <GetStarted />
               <Footer />
            </AuthProvider>      
-            
         </Layout>
       </HeaderProvider>
     </ScrollProvider>

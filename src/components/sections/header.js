@@ -26,14 +26,12 @@ const Header = () => {
     return (
       <HeaderWrapper id="top">
         <Container>
-         
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
                 Welcome to 10th World Servers! {user}
               </h2>                          
             </HeaderTextGroup>
-          
         </Container>
       </HeaderWrapper>
     )

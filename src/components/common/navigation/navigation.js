@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useContext } from "react"
 import Scrollspy from "react-scrollspy"
 import logo1 from "../../../images/ShieldNameBlue.png"
 import { Menu, X } from "react-feather"
@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
-
+import { AuthContext } from '../../../hooks/use-auth';
 import { Container } from "../../global"
 import {
   Nav,
@@ -22,6 +22,9 @@ const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
 export const Navigation = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
+  const {context, user} = useContext(AuthContext);
+
+  console.log(context);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
@@ -57,7 +60,7 @@ export const Navigation = ({ scrolled }) => {
   );
 
   return (
-    <Nav {...scrolled} isVisible={isVisible}>
+      <Nav {...scrolled} isVisible={isVisible}>
       <Brand>
         <Scrollspy offset={-64} item={["top"]} currentClassName="active">
           <Link to="/">
@@ -81,20 +84,18 @@ export const Navigation = ({ scrolled }) => {
       <Mobile hide>
         {getNavList({})}
       </Mobile>
-      <Checkout />
+      {user ? <Checkout /> : null}
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
-              {/* <Checkout /> */}
+              {user ? <Checkout /> : null}
             </Container>
           </MobileMenu>
         )}
       </Mobile>
     </Nav>
-
-
   )
 }
 

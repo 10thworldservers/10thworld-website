@@ -11,7 +11,7 @@ import { AuthContext } from "../hooks/use-auth.js";
 // authenticationModule must be passed in. Can only construct this once on page load.
 // This is due to handleResponse, being called more than once. Causes failures.
 // see https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/2796
-export const AzureAuthButton = ({text}) => {
+export const AzureAuthButton = ({ text }) => {
     //const {user, setUser} = useContext(AuthContext);
     //const { instance } = useMsal();
     //const authenticationModule = new AzureAuthenticationContext(setUser);
