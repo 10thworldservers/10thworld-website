@@ -44,6 +44,9 @@ const FooterWrapper = styled.footer`
   background-color: ${props => props.theme.color.black.light};
   margin: 80px 0 0;
   padding: 0 0 80px;
+  position: relative;
+  width: 100%;
+  bottom: 0;
 `
 
 const BrandContainer = styled(Container)`

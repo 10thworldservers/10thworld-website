@@ -1,5 +1,4 @@
-import React, {useState, useContext} from "react";
-
+import React from "react";
 import Layout from "../components/common/layout/layout";
 import SEO from "../components/common/layout/seo";
 import { Navigation } from "../components/common/navigation/navigation";
@@ -13,7 +12,6 @@ import { AuthProvider } from '../context/AuthProvider';
 
 const IndexPage = () => {
   return (
-
     <ScrollProvider>
       <HeaderProvider>
         <Layout>

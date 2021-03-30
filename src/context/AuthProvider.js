@@ -11,7 +11,7 @@ export function AuthProvider({children}) {
     name: null,
   });
 
-  const updateUser = ({token, uniqueId, name}) => {
+  const updateUser = ({ token, uniqueId, name }) => {
     // SetState in here
     setState({ token: token, uniqueId: uniqueId, name: name });
   };
@@ -20,8 +20,11 @@ export function AuthProvider({children}) {
 
   const value = { context, user };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-
+  return (
+    <AuthContext.Provider value={value}>
+    {children}
+    </AuthContext.Provider>
+  )
 };
 
 

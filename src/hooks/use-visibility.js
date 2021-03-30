@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const useVisibility = (defaultValue = false) => {
   const [isVisible, setIsVisible] = useState(defaultValue);
