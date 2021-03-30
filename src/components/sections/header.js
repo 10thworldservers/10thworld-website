@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import SkyBackGround from "../../images/landscape-darkblue-upper-cloud.svg"
-import { AuthContext } from '../../hooks/use-auth';
+import { AuthContext } from '../../context/AuthProvider';
 
 import { Container } from "../global"
 

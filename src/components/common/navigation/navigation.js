@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
-import { AuthContext } from '../../../hooks/use-auth';
+import { AuthContext } from '../../../context/AuthProvider';
 import { Container } from "../../global"
 import {
   Nav,
@@ -84,13 +84,13 @@ export const Navigation = ({ scrolled }) => {
       <Mobile hide>
         {getNavList({})}
       </Mobile>
-      {user ? <Checkout /> : null}
+      {user ? null : <Checkout />}
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
-              {user ? <Checkout /> : null}
+              {user ? null : <Checkout />}
             </Container>
           </MobileMenu>
         )}
