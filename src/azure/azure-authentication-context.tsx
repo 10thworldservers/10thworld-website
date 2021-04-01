@@ -128,7 +128,7 @@ export class AzureAuthenticationContext  {
 
     if (this.account) {
       if (this.account.idTokenClaims['newUser'] === true)
-        console.log(this.account.idTokenClaims);
+        console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
         incomingFunction(this.account.name);
     }
   }
