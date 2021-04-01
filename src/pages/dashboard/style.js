@@ -85,4 +85,4 @@ export const DataUser = styled.article`
   color: white;
 `
 
-export default ServerContainer;
+export default ServerContainer
