@@ -1,9 +1,13 @@
 import axios from "axios";
 
 
+<<<<<<< HEAD
+function getUserById(Id) {
+=======
 
 
 export function getUserById(Id) {
+>>>>>>> fc45cedef81748c8c2c920f8271dd55354af596d
     const restOptions = {
         url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/GetUserById?code=ISGe5C3rDAAUGaVZattBpLaCeuebLIiKFiY4nRui2ILaiGSDQWe6QQ=='
     }
