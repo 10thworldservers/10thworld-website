@@ -1,25 +1,25 @@
 import styled from 'styled-components';
 
- const ServerContainer = styled.div`
+export const ServerContainer = styled.div`
   margin-top: 12rem;
   margin-left: 2rem;
 `
- const SubContainer = styled.div`
+export const SubContainer = styled.div`
   margin-top: 2rem;
   margin-left: 2rem;
 `
- const SectionTitle = styled.h1`
+export const SectionTitle = styled.h1`
   color: white;
   display: inline-block;
   padding: 0;
   margin-top: 0;
 `
- const UserDashBoard = styled.div`
+export const UserDashBoard = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 5rem;
 `
- const ServerInfo = styled.section`
+export const ServerInfo = styled.section`
   width: 750px;
   height: 500px;
   background-color: hsl(0, 0%, 23%);
@@ -28,7 +28,7 @@ import styled from 'styled-components';
   box-shadow: 1px 1px 5px hsl(0, 0%, 23%);
   color: white;
 `
- const SubInfo = styled.section`
+export const SubInfo = styled.section`
   width: 750px;
   height: 250px;
   border: 1px solid white;
@@ -40,13 +40,13 @@ import styled from 'styled-components';
   box-shadow: 1px 1px 5px hsl(0, 0%, 23%);
 `
 
- const DataTitle = styled.h4`
+export const DataTitle = styled.h4`
   color: white;
   display: inline-block;
   margin: 0.65rem 0 0 0;
 `
 
- const DataSection = styled.section`
+export const DataSection = styled.section`
   margin-top: 12rem;
   display: flex;
   flex-direction: column;
@@ -55,25 +55,25 @@ import styled from 'styled-components';
   width: 15%;
   height: 100%;
 `
- const Row = styled.div`
+export const Row = styled.div`
   display: flex;
   flex-direction: row;
 `
- const DataInfo = styled.article`
+export const DataInfo = styled.article`
   margin-top: 0.65rem;
   color: white;
   border: 1px solid white;
   padding: 0.75rem;
   border-radius: 10px;
 `
- const SubActive = styled.article`
+export const SubActive = styled.article`
   margin-top: .5rem;
   color: white;
   border: 1px solid green;
   padding: 0.75rem;
   border-radius: 10px;
 `
- const SubInactive = styled.article`
+export const SubInactive = styled.article`
   margin-top: .5rem;
   color: white;
   border: 1px solid red;
@@ -81,22 +81,8 @@ import styled from 'styled-components';
   border-radius: 10px;
 `
 
- const DataUser = styled.article`
+export const DataUser = styled.article`
   color: white;
 `
 
-export {
-  ServerContainer,
-  SubContainer,
-  SectionTitle,
-  UserDashBoard,
-  ServerInfo,
-  SubInfo,
-  DataTitle,
-  DataSection,
-  Row,
-  DataInfo,
-  SubActive,
-  SubInactive,
-  DataUser
-};
+export default ServerContainer;

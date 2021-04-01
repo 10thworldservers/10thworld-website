@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const FaqContainer = styled.div`
+export const FaqContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
