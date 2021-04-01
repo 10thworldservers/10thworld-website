@@ -7,8 +7,8 @@ import Slider from '../../components/parts/Slider';
 import { ScrollProvider } from '../../context/ScrollProvider';
 import { HeaderProvider } from '../../context/HeaderProvider.js';
 import { AuthProvider } from '../../context/AuthProvider';
-import { FaqContainer } from './style';
-
+import  FaqContainer from './style';
+// needs a sticky footer component
 const Faq = () => {
   return (
     <ScrollProvider>
@@ -21,6 +21,7 @@ const Faq = () => {
               <Slider />
             </FaqContainer>
           </AuthProvider>
+          <Footer />
         </Layout>
       </HeaderProvider>
     </ScrollProvider>
