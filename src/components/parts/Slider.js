@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { faqQ } from '../../utils/faq';
 import { ListParent, ListChild, ListLink, ListIcon, ListIconActive, CopyText } from './style';
 
@@ -27,7 +27,6 @@ const Slider = () => {
               </ListChild>
           )
         })}
-
       </ListParent>
     </>
   )
