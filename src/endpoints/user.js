@@ -1,8 +1,6 @@
 import axios from "axios";
 
 
-
-
 function getUserById(Id) {
     const restOptions = {
         url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/GetUserById?code=ISGe5C3rDAAUGaVZattBpLaCeuebLIiKFiY4nRui2ILaiGSDQWe6QQ=='

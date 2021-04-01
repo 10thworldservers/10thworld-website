@@ -7,3 +7,5 @@ export const FaqContainer = styled.div`
   margin-top: 12rem;
   justify-content: center;
 `
+
+export default FaqContainer;

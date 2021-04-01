@@ -126,6 +126,8 @@ export const Mobile = styled.div`
   `}
 `
 
+export default Nav;
+
 // Background blur info
 // background-color: ${props => props.scrolled && `rgba(245, 245, 250, .8`};
 // box-shadow:  ${props =>

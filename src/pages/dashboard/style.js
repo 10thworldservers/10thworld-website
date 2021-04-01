@@ -84,3 +84,5 @@ export const SubInactive = styled.article`
 export const DataUser = styled.article`
   color: white;
 `
+
+export default ServerContainer;

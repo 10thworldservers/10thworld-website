@@ -10,3 +10,4 @@ export const InstructionsTitle = styled.h1`
 export const InstText = styled.p`
   color: white;
 `
+export default InstContainer;
