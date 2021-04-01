@@ -64,8 +64,7 @@ export class AzureAuthenticationContext  {
         .loginPopup(this.loginRequest)
         .then((resp: AuthenticationResult) => {
           this.handleResponse(resp, setUser);
-
-
+          
         })
         .catch((err) => {
           console.error(err);
@@ -107,6 +106,8 @@ export class AzureAuthenticationContext  {
   // Called by Login to handle response. 
   ///
   handleResponse(response: AuthenticationResult, incomingFunction: any) {
+    // do I call the function in here?
+    // if check for user existence
     if(response !==null && response.account !==null && response.account) {
       this.account = response.account;
       console.log("10thWorld AuthResult: ", response);
@@ -126,10 +127,11 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
-      incomingFunction(this.account.name);
+      if (this.account.idTokenClaims['newUser'] === true)
+        console.log(this.account.idTokenClaims);
+        incomingFunction(this.account.name);
     }
   }
-
 
   getAccount(): AccountInfo | undefined {
     console.log(`getAccount`);
