@@ -22,7 +22,7 @@ const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
 export const Navigation = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
-  const { context, user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
@@ -82,13 +82,13 @@ export const Navigation = ({ scrolled }) => {
       <Mobile hide>
         {getNavList({})}
       </Mobile>
-      {user === undefined ?  <Checkout /> : null }
+      {user ?  null : <Checkout /> }
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
-              {user === undefined ?  <Checkout /> : null }
+              {user ?  null : <Checkout /> }
             </Container>
           </MobileMenu>
         )}

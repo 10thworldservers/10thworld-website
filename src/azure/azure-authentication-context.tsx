@@ -33,8 +33,6 @@ export class AzureAuthenticationContext {
       this.isAuthenticationConfigured = true
     }
 
-    console.log("constructed new Auth Context")
-
     // Redirect: once login is successful and redirects with tokens, call Graph API
     this.myMSALObj
       .handleRedirectPromise()
@@ -71,7 +69,6 @@ export class AzureAuthenticationContext {
         .catch((err) => {
           console.error(err)
         })
-      console.log(this.myMSALObj.getAllAccounts())
     } else if (signInType === "loginRedirect") {
       this.myMSALObj.loginRedirect(this.loginRequestRedirect)
     }
@@ -89,13 +86,10 @@ export class AzureAuthenticationContext {
   }
 
   private getTokenSilent(accessTokenRequest: any): AuthenticationResult | undefined {
-    console.log("Getting token silent")
-
     this.myMSALObj
       .acquireTokenSilent(accessTokenRequest)
       .then((accessTokenResponse) => {
         let accessToken = accessTokenResponse.accessToken
-        console.log("Access token acquired (silent): ", accessToken)
         return accessTokenResponse
       })
       .catch(function (error) {
@@ -126,7 +120,6 @@ export class AzureAuthenticationContext {
       }
       this.getTokenSilent(accessTokenRequest)
     } else {
-      console.log("Response was Null!")
       this.account = this.getAccount()
     }
 
@@ -161,9 +154,7 @@ export class AzureAuthenticationContext {
   }
 
   getAccount(): AccountInfo | undefined {
-    console.log(`getAccount`)
     const currentAccounts = this.myMSALObj.getAllAccounts()
-    console.log("currentAccounts:", currentAccounts)
     if (currentAccounts === null || currentAccounts.length === 0) {
       //this.getTokenSilent();
       // @ts-ignore

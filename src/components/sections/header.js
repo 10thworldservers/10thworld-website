@@ -1,10 +1,8 @@
 import React, {useContext} from "react"
 import styled from "styled-components"
-import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import SkyBackGround from "../../images/landscape-darkblue-upper-cloud.svg"
 import { AuthContext } from '../../context/AuthProvider';
-
 import { Container } from "../global"
 
 // Azure Authentication Button
@@ -17,8 +15,8 @@ const Header = () => {
   const {context, user} = useContext(AuthContext);
   
   const userAccount = context.getAccount();
-  console.log("Header User Account:", userAccount);
-  console.log("Header User Account from state:", user);
+  console.warn("HEADER USER ACCOUNT :", userAccount);
+  console.warn("HEADER USER ACCOUNT FROM STATE :", user.name);
 
 
 
@@ -29,7 +27,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers! <span>{ user }</span>
+                Welcome to 10th World Servers! <span>{ user.name }</span>
               </h2>                          
             </HeaderTextGroup>
         </Container>

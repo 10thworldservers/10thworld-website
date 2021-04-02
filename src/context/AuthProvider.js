@@ -10,9 +10,6 @@ export const AuthProvider = ({children}) => {
       uniqueId: "",
       name: "",
   });
-  
-  const context = new AzureAuthContext(updateUser);
-  const value = { context, user };
 
   const updateUser = ( token, uniqueId, name ) => {
     console.group(`VALUES PASSED TO UPDATEUSER: `)
@@ -22,6 +19,9 @@ export const AuthProvider = ({children}) => {
     console.groupEnd();
     setUser({token: token, uniqueId: uniqueId, name: name});
   };
+  
+  const context = new AzureAuthContext(updateUser);
+  const value = { context, user };
 
   return (
     <AuthContext.Provider value={value}>
