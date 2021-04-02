@@ -28,7 +28,7 @@ export function AuthProvider({children}) {
     });
   };
 
-  const context = new AzureAuthContext(updateUser);
+  const context = new AzureAuthContext(setState);
 
   const value = { context, user };
 
