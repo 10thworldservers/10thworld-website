@@ -22,7 +22,7 @@ const IndexPage = () => {
               <Features />
               <GetStarted />
               <Footer />
-           </AuthProvider>      
+           </AuthProvider>
         </Layout>
       </HeaderProvider>
     </ScrollProvider>

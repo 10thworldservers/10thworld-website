@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout renders correctly 1`] = `
+.c0 {
+  width: 600px;
+  height: 600px;
+  background-color: #000;
+}
+
+@media (max-width:767px) {
+
+}
+
+@media (max-width:575px) {
+
+}
+
+<div
+  className="c0"
+>
+  Test
+</div>
+`;

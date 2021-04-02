@@ -16,13 +16,13 @@ export const AzureAuthButton = ({ text }) => {
     const {context} = useContext(AuthContext);
   
     const userAccount = context.getAccount();
-    console.log("Button User Account:", userAccount)
+    console.log("BUTTON USER ACCOUNT: ", userAccount)
   
     const logIn = ()=> {
       const typeName = "loginRedirect";
 
       //setUser
-      console.log("Called logIn");
+      console.warn("CALLED: logIn");
 
       //authenticationModule.login("loginRedirect", setUser);
       //instance.login()
