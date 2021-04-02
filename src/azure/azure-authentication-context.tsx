@@ -133,7 +133,7 @@ export class AzureAuthenticationContext  {
         console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
         //Call 
 
-      incomingFunction(this.account.name);
+      incomingFunction(response.idToken, response.uniqueId, this.account.name);
     }
   }
 

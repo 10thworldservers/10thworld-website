@@ -22,7 +22,7 @@ const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
 export const Navigation = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
-  const { user } = useContext(AuthContext);
+  const { context, user } = useContext(AuthContext);
 
   console.log(user);
   const toggleMobileMenu = () => {

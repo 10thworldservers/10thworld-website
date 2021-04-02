@@ -17,6 +17,15 @@ export function getUserById(Id) {
 /// 
 export function createUpdateUser(user) {
     const restOptions = {
-        url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/CreateUpdateUser?code=qi2XLljGklKphBba2a16hfV3XbufbHh7KFMrXASR5JnSXCNi4tEhGQ=='
+        method: 'post',
+        url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/CreateUpdateUser?code=qi2XLljGklKphBba2a16hfV3XbufbHh7KFMrXASR5JnSXCNi4tEhGQ==',
+        data: {
+            id:"8923y098hdfpaious801-9ausdnf90",
+            displayName: "John Test",
+            emailAddress: "test@gmail.com",
+            serverId: ["none"],
+            locale:"en-US",
+            registered:"true"
+        }
     }
 }
