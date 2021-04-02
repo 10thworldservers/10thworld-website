@@ -127,9 +127,12 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
+      //Check returned claims to see if this is the user's first sign-in
+      //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
       if (this.account.idTokenClaims['newUser'] === true)
         console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
-      
+        //Call 
+
       incomingFunction(this.account.name);
     }
   }
