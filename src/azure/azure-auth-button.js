@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 //import AzureAuthenticationContext from "./azure-authentication-context";
 import styled from 'styled-components';
 import { AuthContext } from "../context/AuthProvider.js";
@@ -27,7 +27,7 @@ export const AzureAuthButton = ({ text }) => {
   };
 
 
-  console.warn('USERACCOUNT', userAccount);
+  console.warn('USERACCOUNT FROM AUTH BUTTON: ', {userAccount});
 
   return (
     <UserLoginButton onClick={() => logIn()}>
