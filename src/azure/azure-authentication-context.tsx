@@ -18,8 +18,8 @@ export class AzureAuthenticationContext  {
     MSAL_CONFIG
   );
   private account?: AccountInfo;
-  private uniqueId;
-  private idToken;
+  public uniqueId;
+  public idToken;
   private loginRequest?: PopupRequest;
   private loginRequestRedirect?: RedirectRequest;
 
