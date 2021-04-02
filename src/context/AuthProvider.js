@@ -5,19 +5,14 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
   
-  const [user, setUser] = useState({
-      token: "",
-      uniqueId: "",
-      name: "",
-  });
+  const [user, setUser] = useState();
 
   const updateUser = ( token, uniqueId, name ) => {
-    console.group(`VALUES PASSED TO UPDATEUSER: `)
-    console.warn('THE TOKEN', token)
-    console.warn('THE ID', uniqueId)
-    console.warn('THE NAME', name)
-    console.groupEnd();
-    setUser({token: token, uniqueId: uniqueId, name: name});
+    // console.log(`VALUES PASSED TO UPDATEUSER: `)
+    // console.log('THE TOKEN', token)
+    // console.log('THE ID', uniqueId)
+    // console.log('THE NAME', name)
+    setUser(name);
   };
   
   const context = new AzureAuthContext(updateUser);

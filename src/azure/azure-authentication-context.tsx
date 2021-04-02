@@ -85,21 +85,7 @@ export class AzureAuthenticationContext {
     this.myMSALObj.logout(logOutRequest)
   }
 
-  private getTokenSilent(accessTokenRequest: any): AuthenticationResult | undefined {
-    this.myMSALObj
-      .acquireTokenSilent(accessTokenRequest)
-      .then((accessTokenResponse) => {
-        let accessToken = accessTokenResponse.accessToken
-        return accessTokenResponse
-      })
-      .catch(function (error) {
-        //Acquire token silent error, log it
-        console.log(error)
-        return undefined
-      })
-
-    return undefined
-  }
+  
 
   ///
   // Called by Login to handle response.
@@ -108,48 +94,70 @@ export class AzureAuthenticationContext {
     // do I call the function in here?
     // if check for user existence
     if (response !== null && response.account !== null && response.account) {
-      this.account = response.account
-      this.idToken = response.idToken
-      this.uniqueId = response.uniqueId
-      console.log("10thWorld AuthResult: ", response)
+      this.account = response.account;
+      this.idToken = response.idToken;
+      this.uniqueId = response.uniqueId;
+      console.log("10thWorld AuthResult: ", response);
 
       const accessTokenRequest: any = {
         scopes: [],
         authority: MSAL_CONFIG.auth.authority,
         account: this.account,
       }
-      this.getTokenSilent(accessTokenRequest)
+      
+      this.myMSALObj
+      .acquireTokenSilent(accessTokenRequest)
+      .then((accessTokenResponse) => {
+        //let accessToken = accessTokenResponse.accessToken
+        this.idToken = accessTokenResponse.idToken
+      })
+      .catch(function (error) {
+        //Acquire token silent error, log it
+        console.log(error)
+      })
+
+
     } else {
       this.account = this.getAccount()
     }
 
     if (this.account) {
       if (response === null) {
+        console.log("10thWorld Auth Response is Null: ", response);
         const accessTokenRequest: any = {
           scopes: [],
           authority: MSAL_CONFIG.auth.authority,
           account: this.account
         }
   
-        response = this.getTokenSilent(accessTokenRequest);
-        //this.account = response.account;
-        this.idToken = response.idToken;
-        this.uniqueId = response.uniqueId;
+        this.myMSALObj
+        .acquireTokenSilent(accessTokenRequest)
+        .then((accessTokenResponse) => {
+          //let accessToken = accessTokenResponse.accessToken
+          this.idToken = accessTokenResponse.idToken
+          //Check returned claims to see if this is the user's first sign-in
+          //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
+          if (this.account.idTokenClaims)
+            console.warn('the value from idTokenClaims', this.account.idTokenClaims);
+            //Call 
+          
+          // incomingFunction({
+          //   userState: {
+          //     token: this.idToken,
+          //     uniqueId: this.uniqueId,
+          //     name: this.account.name,
+          //   }
+          // });
+          incomingFunction(this.idToken, this.account.localAccountId, this.account.name);
+
+
+        })
+        .catch(function (error) {
+          //Acquire token silent error, log it
+          console.log(error)
+        })
       }
-      //Check returned claims to see if this is the user's first sign-in
-      //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-      if (this.account.idTokenClaims)
-        console.warn('the value from idTokenClaims', this.account.idTokenClaims);
-        //Call 
-        
-      // incomingFunction({
-      //   userState: {
-      //     token: this.idToken,
-      //     uniqueId: this.uniqueId,
-      //     name: this.account.name,
-      //   }
-      // });
-      incomingFunction(this.account.name);
+      
     }
   }
 
