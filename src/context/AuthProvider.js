@@ -11,7 +11,7 @@ export function AuthProvider({children}) {
     name: null,
   });
 
-  const updateUser = ({ token, uniqueId, name }) => {
+  const updateUser = ([ token, uniqueId, name ]) => {
     // SetState in here
     setState({ token: token, uniqueId: uniqueId, name: name });
   };
