@@ -13,7 +13,7 @@ import { AuthContext } from "../context/AuthProvider.js";
 
 export const AzureAuthButton = ({ text }) => {
 
-  const context = useContext(AuthContext);
+  const { context } = useContext(AuthContext);
 
   const userAccount = context.getAccount();
 

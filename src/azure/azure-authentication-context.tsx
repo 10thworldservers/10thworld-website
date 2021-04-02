@@ -11,6 +11,8 @@ import { MSAL_CONFIG } from "./azure-authentication-config"
 
 const location = typeof window !== `undefined` ? window : null
 
+// None of these methods on the Class are asynchronous
+
 export class AzureAuthenticationContext {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(
     MSAL_CONFIG
@@ -78,7 +80,7 @@ export class AzureAuthenticationContext {
   ///
   // Not used yet.
   ///
-  logout(account: AccountInfo): void {
+   logout(account: AccountInfo): void {
     const logOutRequest: EndSessionRequest = {
       account,
     }

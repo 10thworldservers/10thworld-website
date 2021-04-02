@@ -24,7 +24,6 @@ export const Navigation = ({ scrolled }) => {
   const { isVisible } = useHeaderContext();
   const { context, user } = useContext(AuthContext);
 
-  console.log(user);
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
   }
