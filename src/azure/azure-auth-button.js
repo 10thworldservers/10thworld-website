@@ -12,28 +12,31 @@ import { AuthContext } from "../context/AuthProvider.js";
 // see https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/2796
 
 export const AzureAuthButton = ({ text }) => {
-    
-    const {context} = useContext(AuthContext);
-  
-    const userAccount = context.getAccount();
-    console.log("BUTTON USER ACCOUNT: ", userAccount)
-  
-    const logIn = ()=> {
-      const typeName = "loginRedirect";
 
-      //setUser
-      console.warn("CALLED: logIn");
+  const context = useContext(AuthContext);
 
-      //authenticationModule.login("loginRedirect", setUser);
-      //instance.login()
-      context.login(typeName);
-    };
+  const userAccount = context.getAccount();
 
-    return (
+  const logIn = () => {
+    const typeName = "loginRedirect";
+
+    //setUser
+    //authenticationModule.login("loginRedirect", setUser);
+    //instance.login()
+    context.login(typeName);
+  };
+
+
+  // All Console logs here
+  // the Context
+  console.warn('CONTEXT FROM AuthContext: ', context);
+  console.warn('USERACCOUNT: ', userAccount);
+
+  return (
     <UserLoginButton onClick={() => logIn()}>
       {text}
     </UserLoginButton>
-    );
+  );
 
 };
 

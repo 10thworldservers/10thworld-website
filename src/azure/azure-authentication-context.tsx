@@ -16,8 +16,8 @@ export class AzureAuthenticationContext {
     MSAL_CONFIG
   );
   private account?: AccountInfo;
-  public uniqueId;
-  public idToken;
+  public uniqueId?: any;
+  public idToken?: any;
   private loginRequest?: PopupRequest;
   private loginRequestRedirect?: RedirectRequest;
 
@@ -86,7 +86,7 @@ export class AzureAuthenticationContext {
     this.myMSALObj.logout(logOutRequest)
   }
 
-  private getTokenSilent(accessTokenRequest): AuthenticationResult | undefined {
+  private getTokenSilent(accessTokenRequest: any): AuthenticationResult | undefined {
     console.log("Getting token silent")
 
     this.myMSALObj
@@ -117,7 +117,7 @@ export class AzureAuthenticationContext {
       this.uniqueId = response.uniqueId
       console.log("10thWorld AuthResult: ", response)
 
-      const accessTokenRequest = {
+      const accessTokenRequest: any = {
         scopes: [],
         authority: MSAL_CONFIG.auth.authority,
         account: this.account,
@@ -130,7 +130,7 @@ export class AzureAuthenticationContext {
 
     if (this.account) {
       if (response === null) {
-        const accessTokenRequest = {
+        const accessTokenRequest: any = {
           scopes: [],
           authority: MSAL_CONFIG.auth.authority,
           account: this.account
@@ -143,8 +143,8 @@ export class AzureAuthenticationContext {
       }
       //Check returned claims to see if this is the user's first sign-in
       //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-      if (this.account.idTokenClaims['newUser'] === true)
-        console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
+      if (this.account.idTokenClaims)
+        console.warn('the value from idTokenClaims', this.account.idTokenClaims);
         //Call 
         
       // incomingFunction({
