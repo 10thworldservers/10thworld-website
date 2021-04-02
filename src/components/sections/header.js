@@ -15,7 +15,13 @@ const Header = () => {
   const { context } = useContext(AuthContext);
   
   const userAccount = context.getAccount();
-  console.warn("USER ACCOUNT FROM INSIDE HEADER :", userAccount);
+  console.log("HEADER USER ACCOUNT :", userAccount);
+  console.log("HEADER USER ACCOUNT FROM STATE :", user);
+
+  console.log(`VALUES In Header: `)
+  // console.log('THE TOKEN', userAccount.Idtoken)
+  // console.log('THE ID', userAccount.uniqueId)
+  // console.log('THE NAME', context.name)
 
 
 
@@ -26,7 +32,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers! <span>{ userAccount.name }</span>
+                Welcome to 10th World Servers! <span>{ user }</span>
               </h2>                          
             </HeaderTextGroup>
         </Container>
