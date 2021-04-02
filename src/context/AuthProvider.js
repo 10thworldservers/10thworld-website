@@ -5,13 +5,15 @@ export const AuthContext = createContext();
 
 export function AuthProvider({children}) {
   
-  const [user, setState] = useState({
-    userState: {
-      token: "",
-      uniqueId: "",
-      name: "",
-    }
-  });
+  // const [user, setState] = useState({
+  //   userState: {
+  //     token: "",
+  //     uniqueId: "",
+  //     name: "",
+  //   }
+  // });
+
+  const [user, setState] = useState();
 
   const updateUser = ( tokenIn, uniqueIdPass, namePass ) => {
     // SetState in here
@@ -19,13 +21,7 @@ export function AuthProvider({children}) {
     console.log("token:" + tokenIn);
     console.log("uniqueId:" + uniqueIdPass);
     console.log("name:" + namePass);
-    setState({
-      userState: {
-        token: tokenIn,
-        uniqueId: uniqueIdPass,
-        name: namePass,
-      }
-    });
+    setState(namePass);
   };
 
   const context = new AzureAuthContext(setState);

@@ -14,12 +14,12 @@ const location = typeof window !== `undefined` ? window : null
 export class AzureAuthenticationContext {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(
     MSAL_CONFIG
-  )
-  private account?: AccountInfo
-  private uniqueId
-  private idToken
-  private loginRequest?: PopupRequest
-  private loginRequestRedirect?: RedirectRequest
+  );
+  private account?: AccountInfo;
+  public uniqueId;
+  public idToken;
+  private loginRequest?: PopupRequest;
+  private loginRequestRedirect?: RedirectRequest;
 
   public isAuthenticationConfigured = false
 
@@ -130,34 +130,31 @@ export class AzureAuthenticationContext {
 
     if (this.account) {
       if (response === null) {
-        // const accessTokenRequest = {
-        //   scopes: [],
-        //   authority: MSAL_CONFIG.auth.authority,
-        //   account: this.account
-        // }
-        // response = this.getTokenSilent(accessTokenRequest);
+        const accessTokenRequest = {
+          scopes: [],
+          authority: MSAL_CONFIG.auth.authority,
+          account: this.account
+        }
+  
+        response = this.getTokenSilent(accessTokenRequest);
+        //this.account = response.account;
+        this.idToken = response.idToken;
+        this.uniqueId = response.uniqueId;
       }
       //Check returned claims to see if this is the user's first sign-in
       //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-      if (this.account.idTokenClaims["newUser"] === true) {
-        console.warn(
-          "the value from idTokenClaims",
-          this.account.idTokenClaims["newUser"]
-        )
-        incomingFunction({
-          userState: {
-            token: this.idToken,
-            uniqueId: this.uniqueId,
-            name: this.account.name,
-          },
-        }) 
-      } else {
-        console.error('User with this name already exists')
-      }
-      //Call
-
-     
-      //incomingFunction();
+      if (this.account.idTokenClaims['newUser'] === true)
+        console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
+        //Call 
+        
+      // incomingFunction({
+      //   userState: {
+      //     token: this.idToken,
+      //     uniqueId: this.uniqueId,
+      //     name: this.account.name,
+      //   }
+      // });
+      incomingFunction(this.account.name);
     }
   }
 
