@@ -14,27 +14,19 @@ import { AuthContext } from "../context/AuthProvider.js";
 export const AzureAuthButton = ({ text }) => {
 
   const { context } = useContext(AuthContext);
-
   const userAccount = context.account;
 
-  const logIn = () => {
-    const typeName = "loginRedirect";
-
-    //setUser
-    //authenticationModule.login("loginRedirect", setUser);
-    //instance.login()
-    context.login(typeName);
+  const logIn = (typeName) => {
+    return context.login(typeName);
   };
-
 
   console.warn('USERACCOUNT FROM AUTH BUTTON: ', {userAccount});
 
   return (
-    <UserLoginButton onClick={() => logIn()}>
+    <UserLoginButton onClick={() => logIn('loginRedirect')}>
       {text}
     </UserLoginButton>
   );
-
 };
 
 export default AzureAuthButton
