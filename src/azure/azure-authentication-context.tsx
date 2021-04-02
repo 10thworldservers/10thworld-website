@@ -110,6 +110,12 @@ export class AzureAuthenticationContext {
       .then((accessTokenResponse) => {
         //let accessToken = accessTokenResponse.accessToken
         this.idToken = accessTokenResponse.idToken
+        //Check returned claims to see if this is the user's first sign-in
+        //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
+        if (this.account.idTokenClaims["newUser"])
+          console.log('the value from idTokenClaims', this.account.idTokenClaims["newUser"]);
+
+        incomingFunction(this.idToken, this.account.localAccountId, this.account.name);
       })
       .catch(function (error) {
         //Acquire token silent error, log it
@@ -137,8 +143,8 @@ export class AzureAuthenticationContext {
           this.idToken = accessTokenResponse.idToken
           //Check returned claims to see if this is the user's first sign-in
           //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-          if (this.account.idTokenClaims)
-            console.warn('the value from idTokenClaims', this.account.idTokenClaims);
+          if (this.account.idTokenClaims["newUser"])
+            console.log('the value from idTokenClaims', this.account.idTokenClaims["newUser"]);
             //Call 
           
           // incomingFunction({

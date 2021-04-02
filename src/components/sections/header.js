@@ -5,6 +5,7 @@ import SkyBackGround from "../../images/landscape-darkblue-upper-cloud.svg"
 import { AuthContext } from '../../context/AuthProvider';
 import { Container } from "../global"
 
+
 // Azure Authentication Button
 //import AzureAuthenticationButton from '../../azure/azure-authentication.component';
 import { AzureAuthButton } from '../../azure/azure-auth-button.js';
@@ -16,9 +17,13 @@ const Header = () => {
   
   const userAccount = context.getAccount();
   console.log("HEADER USER ACCOUNT :", userAccount);
-  console.log("HEADER USER ACCOUNT FROM STATE :", user);
+  if (userAccount !== undefined){
+    console.log("HEADER USER NAME FROM ACCOUNT :", userAccount.name);
+    console.log("HEADER USER ID FROM ACCOUNT :", userAccount.localAccountId);
+    console.log("HEADER USER TOKEN FROM STATE :", user);
+  }
 
-  console.log(`VALUES In Header: `)
+
   // console.log('THE TOKEN', userAccount.Idtoken)
   // console.log('THE ID', userAccount.uniqueId)
   // console.log('THE NAME', context.name)
@@ -32,7 +37,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers! <span>{ user }</span>
+                Welcome to 10th World Servers! <span>{ userAccount.name }</span>
               </h2>                          
             </HeaderTextGroup>
         </Container>

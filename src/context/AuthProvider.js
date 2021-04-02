@@ -8,11 +8,11 @@ export const AuthProvider = ({children}) => {
   const [user, setUser] = useState();
 
   const updateUser = ( token, uniqueId, name ) => {
-    // console.log(`VALUES PASSED TO UPDATEUSER: `)
-    // console.log('THE TOKEN', token)
-    // console.log('THE ID', uniqueId)
-    // console.log('THE NAME', name)
-    setUser(name);
+    console.log(`VALUES PASSED TO UPDATEUSER: `)
+    console.log('THE TOKEN', token)
+    console.log('THE ID', uniqueId)
+    console.log('THE NAME', name)
+    setUser(token);
   };
   
   const context = new AzureAuthContext(updateUser);
