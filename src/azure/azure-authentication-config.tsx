@@ -1,7 +1,7 @@
 import { Configuration, LogLevel } from "@azure/msal-browser";
 
 //testApp
-//const AzureActiveDirectoryAppClientId: string = '97e55fe7-ef1a-4892-ae76-59eba5fa4837';
+//const AzureActiveDirectoryAppClientId: string = see .env;
 //10thWorldServers
 const AzureActiveDirectoryAppClientId: string = process.env.GATSBY_AD_CLIENT_ID;
 

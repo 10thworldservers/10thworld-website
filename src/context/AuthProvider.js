@@ -5,28 +5,23 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({children}) => {
   
-  // const [user, setUser] = useState({
-  //   userState: {
-  //     token: "",
-  //     uniqueId: "",
-  //     name: "",
-  //   }
-  // });
-
-  const [user, setUser] = useState();
-
-  const updateUser = ( tokenIn, uniqueIdPass, namePass ) => {
-    // setUser in here
-    //setUser({ token: tokenPass, uniqueId: uniqueIdPass, name: namePass });
-    console.log("token:" + tokenIn);
-    console.log("uniqueId:" + uniqueIdPass);
-    console.log("name:" + namePass);
-    setUser(namePass);
-  };
-
-  const context = new AzureAuthContext(setUser);
-
+  const [user, setUser] = useState({
+      token: "",
+      uniqueId: "",
+      name: "",
+  });
+  
+  const context = new AzureAuthContext(updateUser);
   const value = { context, user };
+
+  const updateUser = ( token, uniqueId, name ) => {
+    console.group(`VALUES PASSED TO UPDATEUSER: `)
+    console.warn('THE TOKEN', token)
+    console.warn('THE ID', uniqueId)
+    console.warn('THE NAME', name)
+    console.groupEnd();
+    setUser({token: token, uniqueId: uniqueId, name: name});
+  };
 
   return (
     <AuthContext.Provider value={value}>

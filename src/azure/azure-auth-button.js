@@ -15,7 +15,7 @@ export const AzureAuthButton = ({ text }) => {
 
   const { context } = useContext(AuthContext);
 
-  const userAccount = context.getAccount();
+  const userAccount = context.account;
 
   const logIn = () => {
     const typeName = "loginRedirect";
@@ -27,10 +27,7 @@ export const AzureAuthButton = ({ text }) => {
   };
 
 
-  // All Console logs here
-  // the Context
-  console.warn('CONTEXT FROM AuthContext: ', context);
-  console.warn('USERACCOUNT: ', userAccount);
+  console.warn('USERACCOUNT', userAccount);
 
   return (
     <UserLoginButton onClick={() => logIn()}>

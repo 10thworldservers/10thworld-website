@@ -82,13 +82,13 @@ export const Navigation = ({ scrolled }) => {
       <Mobile hide>
         {getNavList({})}
       </Mobile>
-      {user ? null : <Checkout />}
+      {user === undefined ?  <Checkout /> : null }
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
-              {user ? null : <Checkout />}
+              {user === undefined ?  <Checkout /> : null }
             </Container>
           </MobileMenu>
         )}
