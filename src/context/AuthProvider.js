@@ -16,7 +16,7 @@ export const AuthProvider = ({children}) => {
     console.warn('THE TOKEN', token)
     console.warn('THE ID', uniqueId)
     console.warn('THE NAME', name)
-    console.groupEnd();
+    console.groupEnd(`VALUES PASSED TO UPDATEUSER`);
     setUser({token: token, uniqueId: uniqueId, name: name});
   };
   

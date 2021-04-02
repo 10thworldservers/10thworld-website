@@ -20,8 +20,8 @@ export class AzureAuthenticationContext {
   private account?: AccountInfo;
   public uniqueId?: any;
   public idToken?: any;
-  private loginRequest?: PopupRequest;
-  private loginRequestRedirect?: RedirectRequest;
+  private loginRequest: PopupRequest;
+  private loginRequestRedirect: RedirectRequest;
 
   public isAuthenticationConfigured = false
 
@@ -132,25 +132,20 @@ export class AzureAuthenticationContext {
         }
   
         response = this.getTokenSilent(accessTokenRequest);
-        //this.account = response.account;
+        this.account = response.account;
         this.idToken = response.idToken;
         this.uniqueId = response.uniqueId;
+        console.warn('RESPONSE: ', response);
       }
+
       //Check returned claims to see if this is the user's first sign-in
       //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
       if (this.account.idTokenClaims)
         console.warn('the value from idTokenClaims', this.account.idTokenClaims);
-        //Call 
-        
-      // incomingFunction({
-      //   userState: {
-      //     token: this.idToken,
-      //     uniqueId: this.uniqueId,
-      //     name: this.account.name,
-      //   }
-      // });
-      incomingFunction(this.account.name);
+    
+      incomingFunction(this.account);
     }
+    console.warn(`THE ACCOUNT: `, this.account);
   }
 
   getAccount(): AccountInfo | undefined {

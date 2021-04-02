@@ -22,8 +22,10 @@ const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
 export const Navigation = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
-  const { user } = useContext(AuthContext);
-
+  const { context } = useContext(AuthContext);
+  
+  const userAccount = context.getAccount();
+  console.warn(`USER ACCOUNT FROM INSIDE NAVIGATION: `, userAccount);
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
   }
@@ -82,13 +84,13 @@ export const Navigation = ({ scrolled }) => {
       <Mobile hide>
         {getNavList({})}
       </Mobile>
-      {user ?  null : <Checkout /> }
+      {userAccount !== undefined ?  <Checkout /> : null  }
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
-              {user ?  null : <Checkout /> }
+              {userAccount !== undefined ?  <Checkout /> : null  }
             </Container>
           </MobileMenu>
         )}

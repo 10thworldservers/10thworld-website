@@ -12,11 +12,10 @@ import { AzureAuthButton } from '../../azure/azure-auth-button.js';
 
 
 const Header = () => {
-  const {context, user} = useContext(AuthContext);
+  const { context } = useContext(AuthContext);
   
   const userAccount = context.getAccount();
-  console.warn("HEADER USER ACCOUNT :", userAccount);
-  console.warn("HEADER USER ACCOUNT FROM STATE :", user.name);
+  console.warn("USER ACCOUNT FROM INSIDE HEADER :", userAccount);
 
 
 
@@ -27,7 +26,7 @@ const Header = () => {
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
-                Welcome to 10th World Servers! <span>{ user.name }</span>
+                Welcome to 10th World Servers! <span>{ userAccount.name }</span>
               </h2>                          
             </HeaderTextGroup>
         </Container>
