@@ -32,9 +32,9 @@ jobs:
           output_location: "public" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
         env:
-          gatsby_ad_client_id: ${{ secrets.GATSBY_AD_CLIENT_ID }}
-          gatsby_authority: ${{ secrets.GATSBY_AUTHORITY }}
-          gatsby_redirect_uri: ${{ secrets.GATSBY_REDIRECT_URI }}
+          GATSBY_AD_CLIENT_ID: ${{ secrets.GATSBY_AD_CLIENT_ID }}
+          GATSBY_AUTHORITY: ${{ secrets.GATSBY_AUTHORITY }}
+          GATSBY_REDIRECT_URI: ${{ secrets.GATSBY_REDIRECT_URI }}
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
