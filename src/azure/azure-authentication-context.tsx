@@ -18,6 +18,8 @@ export class AzureAuthenticationContext  {
     MSAL_CONFIG
   );
   private account?: AccountInfo;
+  private uniqueId;
+  private idToken;
   private loginRequest?: PopupRequest;
   private loginRequestRedirect?: RedirectRequest;
 
@@ -115,6 +117,8 @@ export class AzureAuthenticationContext  {
     // if check for user existence
     if(response !==null && response.account !==null && response.account) {
       this.account = response.account;
+      this.idToken = response.idToken;
+      this.uniqueId = response.uniqueId;
       console.log("10thWorld AuthResult: ", response);
       
       
@@ -132,7 +136,7 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
-      if (response == null) {
+      if (response === null) {
         const accessTokenRequest = {
           scopes: [],
           authority: MSAL_CONFIG.auth.authority,
@@ -147,8 +151,8 @@ export class AzureAuthenticationContext  {
         console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
         //Call 
 
-      //incomingFunction(response.idToken, response.uniqueId, this.account.name);
-      incomingFunction();
+      incomingFunction(this.idToken, this.uniqueId, this.account.name);
+      //incomingFunction();
     }
   }
 
