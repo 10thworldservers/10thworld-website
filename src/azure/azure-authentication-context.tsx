@@ -89,16 +89,21 @@ export class AzureAuthenticationContext  {
 
   
 
-  private getTokenSilent(accessTokenRequest) {
+  private getTokenSilent(accessTokenRequest): AuthenticationResult | undefined {
     console.log("Getting token silent");
     
     this.myMSALObj.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
       let accessToken = accessTokenResponse.accessToken;
       console.log('Access token acquired (silent): ', accessToken);
+      return accessTokenResponse;
     }).catch(function (error) {
       //Acquire token silent error, log it
       console.log(error);
+      return undefined;
     });
+
+    return undefined
+
   }
 
 
@@ -127,6 +132,15 @@ export class AzureAuthenticationContext  {
     }
 
     if (this.account) {
+      if (response == null) {
+        const accessTokenRequest = {
+          scopes: [],
+          authority: MSAL_CONFIG.auth.authority,
+          account: this.account
+        }
+  
+        response = this.getTokenSilent(accessTokenRequest);
+      }
       //Check returned claims to see if this is the user's first sign-in
       //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
       if (this.account.idTokenClaims['newUser'] === true)
@@ -159,6 +173,7 @@ export class AzureAuthenticationContext  {
       console.log(
         "One Account Detected."
       );
+
       return currentAccounts[0];
     }
 
