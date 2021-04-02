@@ -151,14 +151,14 @@ export class AzureAuthenticationContext  {
         console.warn('the value from idTokenClaims', this.account.idTokenClaims['newUser']);
         //Call 
         
-      incomingFunction({
-        userState: {
-          token: this.idToken,
-          uniqueId: this.uniqueId,
-          name: this.account.name,
-        }
-      });
-      //incomingFunction();
+      // incomingFunction({
+      //   userState: {
+      //     token: this.idToken,
+      //     uniqueId: this.uniqueId,
+      //     name: this.account.name,
+      //   }
+      // });
+      incomingFunction(this.account.name);
     }
   }
 
