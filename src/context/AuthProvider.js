@@ -13,7 +13,7 @@ export function AuthProvider({children}) {
     console.log("token:" + tokenIn);
     console.log("uniqueId:" + uniqueIdPass);
     console.log("name:" + namePass);
-    setState();
+    setState(namePass);
   };
 
   const context = new AzureAuthContext(updateUser);
