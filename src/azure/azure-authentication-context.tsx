@@ -137,13 +137,13 @@ export class AzureAuthenticationContext  {
 
     if (this.account) {
       if (response === null) {
-        const accessTokenRequest = {
-          scopes: [],
-          authority: MSAL_CONFIG.auth.authority,
-          account: this.account
-        }
+        // const accessTokenRequest = {
+        //   scopes: [],
+        //   authority: MSAL_CONFIG.auth.authority,
+        //   account: this.account
+        // }
   
-        response = this.getTokenSilent(accessTokenRequest);
+        // response = this.getTokenSilent(accessTokenRequest);
       }
       //Check returned claims to see if this is the user's first sign-in
       //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
