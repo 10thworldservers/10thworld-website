@@ -20,8 +20,8 @@ export class AzureAuthenticationContext {
   private account?: AccountInfo;
   public uniqueId?: any;
   public idToken?: any;
-  private loginRequest?: PopupRequest;
-  private loginRequestRedirect?: RedirectRequest;
+  private loginRequest: PopupRequest;
+  private loginRequestRedirect: RedirectRequest;
 
   public isAuthenticationConfigured = false
 
@@ -165,6 +165,7 @@ export class AzureAuthenticationContext {
       }
       
     }
+    console.warn(`THE ACCOUNT: `, this.account);
   }
 
   getAccount(): AccountInfo | undefined {
