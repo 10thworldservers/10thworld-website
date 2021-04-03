@@ -70,7 +70,7 @@ export const ImgContainer = styled.div`
 
 export const BtnContainer = styled.div`
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
   width: 85%;
 
