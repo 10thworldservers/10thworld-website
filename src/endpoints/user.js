@@ -15,7 +15,7 @@ export function getUserById(Id) {
 ///
 /// Creates or updates a user based on object passed in
 /// 
-export function createUpdateUser(user) {
+export function createTestUser() {
     const restOptions = {
         method: 'post',
         url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/CreateUpdateUser?code=qi2XLljGklKphBba2a16hfV3XbufbHh7KFMrXASR5JnSXCNi4tEhGQ==',
@@ -28,4 +28,24 @@ export function createUpdateUser(user) {
             registered:"true"
         }
     }
+    
+    axios(restOptions);
+}
+
+
+export function createNewUser(userId, userDisplayName, userEmail) {
+    const restOptions = {
+        method: 'post',
+        url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/CreateUpdateUser?code=qi2XLljGklKphBba2a16hfV3XbufbHh7KFMrXASR5JnSXCNi4tEhGQ==',
+        data: {
+            id: userId,
+            displayName: userDisplayName,
+            emailAddress: userEmail,
+            serverId: ["none"],
+            registered:"true"
+        }
+    }
+
+    axios(restOptions);
+
 }

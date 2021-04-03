@@ -8,7 +8,7 @@ import {
 } from "@azure/msal-browser"
 
 import { MSAL_CONFIG } from "./azure-authentication-config"
-
+import { createNewUser } from "../endpoints/user.js"
 const location = typeof window !== `undefined` ? window : null
 
 // None of these methods on the Class are asynchronous
@@ -112,9 +112,10 @@ export class AzureAuthenticationContext {
         this.idToken = accessTokenResponse.idToken
         //Check returned claims to see if this is the user's first sign-in
         //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-        if (this.account.idTokenClaims["newUser"])
+        if (this.account.idTokenClaims["newUser"]) {
           console.log('the value from idTokenClaims', this.account.idTokenClaims["newUser"]);
-
+          createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+        }
         incomingFunction(this.idToken, this.account.localAccountId, this.account.name);
       })
       .catch(function (error) {
@@ -143,9 +144,10 @@ export class AzureAuthenticationContext {
           this.idToken = accessTokenResponse.idToken
           //Check returned claims to see if this is the user's first sign-in
           //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-          if (this.account.idTokenClaims["newUser"])
+          if (this.account.idTokenClaims["newUser"]){
             console.log('the value from idTokenClaims', this.account.idTokenClaims["newUser"]);
-            //Call 
+            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+          }
           
           // incomingFunction({
           //   userState: {
