@@ -1,5 +1,4 @@
 import React, {createContext, useMemo, useContext, useEffect} from 'react';
-
 import { SCROLL_DIRECTION, useScrollContext } from './ScrollProvider';
 import { useVisibility } from '../hooks/use-visibility';
 

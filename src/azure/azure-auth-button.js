@@ -14,7 +14,6 @@ import { AuthContext } from "../context/AuthProvider.js";
 export const AzureAuthButton = ({ text, userAction }) => {
 
   const { context } = useContext(AuthContext);
-  const userAccount = context.getAccount();
 
   const logInOut = (e, typeName) => {
      context.login(typeName)
@@ -23,8 +22,6 @@ export const AzureAuthButton = ({ text, userAction }) => {
     }
     
   };
-
-  console.warn('USERACCOUNT FROM AUTH BUTTON: ', { userAccount });
 
   return (
     <UserLoginButton onClick={(e) => logInOut(e, userAction)}>

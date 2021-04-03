@@ -41,23 +41,6 @@ const NavItem = styled(Link)`
     z-index: 6;
   }
 `
-const NAV_ITEMS = [
-  {
-    id: 1,
-    name: 'FAQ',
-    path: '/faq',
-  },
-  {
-    id: 2,
-    name: 'Connect',
-    path: '/connect'
-  },
-  {
-    id: 3,
-    name: 'Dashboard',
-    path: '/dashboard'
-  }
-]
 
 const NavLinks = () => {
   const { context } = useContext(AuthContext);

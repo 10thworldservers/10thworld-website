@@ -1,11 +1,8 @@
 import React, { useState, useContext } from "react"
-import Scrollspy from "react-scrollspy"
-import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
 import { AuthContext } from '../../../context/AuthProvider';
-import { Container } from "../../global"
 import AzureAuthButton from '../../../azure/azure-auth-button';
 import NavLinks from './navlinks';
 import { StaticImage } from 'gatsby-plugin-image';
@@ -33,18 +30,11 @@ export const Navigation = ({ scrolled }) => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
-  const closeMobileMenu = () => {
-    if (mobileMenuOpen) {
-      setMobileMenuOpen(false)
-    }
-  }
-
-  console.log(`The mobile menu state`, mobileMenuOpen);
   return (
     <Nav isVisible={isVisible}>
       <ImgContainer>
       <Link to="/">
-          <StaticImage src="../../../images/ShieldNameBlue.png" />
+          <StaticImage src="../../../images/ShieldNameBlue.png" alt="10th World Logo" />
       </Link>
       </ImgContainer>
       <Toggle

@@ -37,7 +37,7 @@ export class AzureAuthenticationContext {
     this.myMSALObj
       .handleRedirectPromise()
       .then((resp: AuthenticationResult) => {
-        this.handleResponse(resp, setUser)
+        this.handleResp(resp, setUser)
       })
       .catch((err) => {
         console.log("CAUGHT ERROR ON handleRedirectPromise")
@@ -64,7 +64,7 @@ export class AzureAuthenticationContext {
       this.myMSALObj
         .loginPopup(this.loginRequest)
         .then((resp: AuthenticationResult) => {
-          this.handleResponse(resp, setUser)
+          this.handleResp(resp, setUser)
         })
         .catch((err) => {
           console.error(err)
@@ -74,9 +74,6 @@ export class AzureAuthenticationContext {
     }
   }
 
-  ///
-  // Not used yet.
-  ///
    logout(account: AccountInfo): void {
     const logOutRequest: EndSessionRequest = {
       account,
@@ -84,8 +81,6 @@ export class AzureAuthenticationContext {
 
     this.myMSALObj.logout(logOutRequest)
   }
-
-  
 
   ///
   // Called by Login to handle response.
@@ -130,7 +125,6 @@ export class AzureAuthenticationContext {
 
     if (this.account) {
       if (response === null) {
-        console.log("10thWorld Auth Response is Null: ", response);
         const accessTokenRequest: any = {
           scopes: [],
           authority: MSAL_CONFIG.auth.authority,
@@ -167,15 +161,67 @@ export class AzureAuthenticationContext {
       }
       
     }
-    console.warn(`THE ACCOUNT: `, this.account);
+    console.warn(`%c THE ACCOUNT: `,'font-weight: bold; font-size: 24px; color: yellow', this.account);
   }
 
+  async handleResp(response: AuthenticationResult, incomingFunction: any): Promise<any> {
+    try {
+      if (response !== null && response.account !== null && response.account) {
+        this.account = response.account;
+        this.idToken = response.idToken;
+        this.uniqueId = response.uniqueId;
+  
+        const accessTokenRequest: any = {
+          scopes: [],
+          authority: MSAL_CONFIG.auth.authority,
+          account: this.account,
+        }
+
+        let MSAL = this.myMSALObj;
+        let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+          this.idToken = accessTokenResponse.idToken
+          if (this.account.idTokenClaims["newUser"]) {
+            console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
+            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+          }
+          incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
+        });
+        return acquireToken;
+      } else {
+        this.account = this.getAccount()
+      };
+
+      if (this.account) {
+        if (response === null) {
+          const accessTokenRequest: any = {
+            scopes: [],
+            authority: MSAL_CONFIG.auth.authority,
+            account: this.account,
+          }
+          let MSAL = this.myMSALObj;
+          let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+          this.idToken = accessTokenResponse.idToken
+          if (this.account.idTokenClaims["newUser"]) {
+            console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
+            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+          }
+          incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
+        });
+        return acquireToken;
+        }
+      };
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
   getAccount(): AccountInfo | undefined {
     const currentAccounts = this.myMSALObj.getAllAccounts()
     if (currentAccounts === null || currentAccounts.length === 0) {
       //this.getTokenSilent();
       // @ts-ignore
-      console.log("No accounts detected")
+      console.log('%c No Accounts Detected',"font-weight: bold; font-size: 18px; color: red")
       return undefined
     }
 
@@ -187,8 +233,7 @@ export class AzureAuthenticationContext {
       )
       return currentAccounts[0]
     } else if (currentAccounts.length === 1) {
-      console.log("One Account Detected.")
-
+      console.log('%c MSAL OBJ','font-weight: bold; font-size: 24px; color: orange', this.myMSALObj)
       return currentAccounts[0]
     }
   }

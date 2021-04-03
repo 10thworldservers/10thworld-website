@@ -17,7 +17,7 @@ const Header = () => {
   const userAccount = context.getAccount();
   console.log("HEADER USER ACCOUNT :", userAccount);
   if (userAccount !== undefined){
-    console.log("HEADER USER NAME FROM ACCOUNT :", userAccount.name);
+    console.trace("HEADER USER NAME FROM ACCOUNT :", userAccount.name);
     console.log("HEADER USER ID FROM ACCOUNT :", userAccount.localAccountId);
     console.log("HEADER USER TOKEN FROM STATE :", user);
   }

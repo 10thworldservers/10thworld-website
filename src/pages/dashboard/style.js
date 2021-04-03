@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const ServerContainer = styled.div`
-  margin-top: 12rem;
-  margin-left: 2rem;
+  margin-top: 6%;
+  margin-left: 6%;
 `
 export const SubContainer = styled.div`
   margin-top: 2rem;
