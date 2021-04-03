@@ -33,9 +33,9 @@ export const Navigation = ({ scrolled }) => {
   return (
     <Nav isVisible={isVisible}>
       <ImgContainer>
-      <Link to="/">
+        <Link to="/">
           <StaticImage src="../../../images/ShieldNameBlue.png" alt="10th World Logo" />
-      </Link>
+        </Link>
       </ImgContainer>
       <Toggle
         mobileMenuOpen={mobileMenuOpen}
@@ -45,31 +45,30 @@ export const Navigation = ({ scrolled }) => {
       </Toggle>
       {mobileMenuOpen ? (
         <NavListWrapper>
-        <StyledContainer>
-          <NavLinks />
-        </StyledContainer>
-          <BtnContainer>
+          <StyledContainer>
+            <NavLinks />
+          </StyledContainer>
           {userAccount !== undefined ? <Checkout /> : null}
-        {userAccount !== undefined ? (
-          <LogoutBtnContainer>
-            <AzureAuthButton text="logout" userAction={undefined} />
-          </LogoutBtnContainer>) : null}
-          </BtnContainer>
-        
-      </NavListWrapper>
+          {userAccount !== undefined ? (
+            <LogoutBtnContainer>
+              <AzureAuthButton text="logout" userAction={undefined} />
+            </LogoutBtnContainer>) : null}
+        </NavListWrapper>
       ) : (
         <NavListWrapper open>
-        <StyledContainer>
-          <NavLinks />
-        </StyledContainer>
-        {userAccount !== undefined ? <Checkout /> : null}
-        {userAccount !== undefined ? (
-          <LogoutBtnContainer>
-            <AzureAuthButton text="logout" userAction={undefined} />
-          </LogoutBtnContainer>) : null}
+          <StyledContainer>
+            <NavLinks />
+          </StyledContainer>
+          <BtnContainer>
+            {userAccount !== undefined ? <Checkout /> : null}
+            {userAccount !== undefined ? (
+              <LogoutBtnContainer>
+                <AzureAuthButton text="logout" userAction={undefined} />
+              </LogoutBtnContainer>) : null}
+          </BtnContainer>
         </NavListWrapper>
       )}
-      
+
     </Nav>
   )
 }

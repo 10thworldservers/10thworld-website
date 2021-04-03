@@ -53,8 +53,6 @@ const CheckoutButton = styled.button`
   background-color: hsl(42, 87%, 55%);
   border-radius: 10px;
   letter-spacing: 1.5px;
-  /* margin-left: 5%; */
-  margin-right: 5%;
   max-width: 50%;
 
   &:hover {

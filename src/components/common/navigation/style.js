@@ -34,6 +34,7 @@ export const NavListWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    margin-right: 5%;
 
     @media (max-width: ${props => props.theme.screen.sm}) {
       flex-direction: column;
@@ -47,6 +48,7 @@ export const NavListWrapper = styled.div`
       transition: all 0.3s ease-in;
       top: 15vh;
       left: ${props => (props.open ? "-100%" : "0")};
+      margin: 0;
     }
 `
 export const ImgContainer = styled.div`
@@ -71,8 +73,12 @@ export const ImgContainer = styled.div`
 export const BtnContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  width: 85%;
+  justify-content: space-around;
+  width: 30%;
+  border: 2px solid ${props => props.theme.color.primary};
+  padding: 0.75rem 0.50rem;
+  border-radius: 10px;
+  margin-right: 0.75rem;
 
   @media (max-width: ${props => props.theme.screen.sm}) {
     flex-direction: column;
@@ -81,7 +87,6 @@ export const BtnContainer = styled.div`
   }
 `
 export const LogoutBtnContainer = styled.div`
-  margin-right: 10%;
    button {
     font-size: 18px;
     padding: .85rem 1.5rem;
