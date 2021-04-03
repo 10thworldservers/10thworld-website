@@ -23,7 +23,6 @@ const Slider = () => {
       updatedQuestions[previousIndex]['isVisible'] = false;
       updatedQuestions[precedingIndex]['isVisible'] = false;
       updatedQuestions[index]['isVisible'] = !updatedQuestions[index]['isVisible'];
-
     }
 
     showQuestions(updatedQuestions);

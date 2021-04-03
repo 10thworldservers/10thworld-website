@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { AuthContext } from '../../../context/AuthProvider';
 
 const NavItem = styled(Link)`
   text-decoration: none;
@@ -59,11 +60,14 @@ const NAV_ITEMS = [
 ]
 
 const NavLinks = () => {
+  const { context } = useContext(AuthContext);
+
+  const userAccount = context.getAccount();
   return (
     <>
-      {NAV_ITEMS.map(navItem => (
-        <NavItem key={navItem.id} to={navItem.path}>{ navItem.name }</NavItem>
-      ))}
+      <NavItem to="/faq">Faq</NavItem>
+      <NavItem to="/connect">Connect</NavItem>
+      {userAccount !== undefined ? <NavItem to="/dashboard">Dashboard</NavItem> : null}
     </>
   )
 }

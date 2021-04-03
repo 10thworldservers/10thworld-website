@@ -43,8 +43,9 @@ export const Navigation = ({ scrolled }) => {
   return (
     <Nav isVisible={isVisible}>
       <ImgContainer>
-      <Link to="/" />
-        <StaticImage src="../../../images/ShieldNameBlue.png" />
+      <Link to="/">
+          <StaticImage src="../../../images/ShieldNameBlue.png" />
+      </Link>
       </ImgContainer>
       <Toggle
         mobileMenuOpen={mobileMenuOpen}
