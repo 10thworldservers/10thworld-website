@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-
 export const ListParent = styled.ul`
   list-style: none;
   margin-top: 2.5rem;
@@ -19,8 +18,9 @@ export const ListLink = styled.a`
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+  align-items: center;
   color: ${props => props.theme.color.white.regular};
-  font-size: 20px;
+  font-size: 24px;
   cursor: pointer;
   &:visited {
     color: ${props => props.theme.color.white.lessdark};
@@ -37,13 +37,13 @@ export const ListLink = styled.a`
 `;
 
 export const ListIcon = styled.img`
-  width: 15px;
-  height: 10px;
+  width: 20px;
+  height: 15px;
 `
 
 export const ListIconActive = styled.img`
-  width: 15px;
-  height: 10px;
+  width: 20px;
+  height: 15px;
   transform: rotate(180deg);
   transition: transform 1s ease-in;
 `;
