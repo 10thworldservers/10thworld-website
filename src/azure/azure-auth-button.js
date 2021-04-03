@@ -11,19 +11,23 @@ import { AuthContext } from "../context/AuthProvider.js";
 // This is due to handleResponse, being called more than once. Causes failures.
 // see https://github.com/AzureAD/microsoft-authentication-library-for-js/issues/2796
 
-export const AzureAuthButton = ({ text }) => {
+export const AzureAuthButton = ({ text, userAction }) => {
 
   const { context } = useContext(AuthContext);
-  const userAccount = context.account;
+  const userAccount = context.getAccount();
 
-  const logIn = (typeName) => {
-    return context.login(typeName);
+  const logInOut = (e, typeName) => {
+     context.login(typeName)
+    if (typeName === undefined) {
+       context.logout(undefined)
+    }
+    
   };
 
   console.warn('USERACCOUNT FROM AUTH BUTTON: ', { userAccount });
 
   return (
-    <UserLoginButton onClick={() => logIn('loginRedirect')}>
+    <UserLoginButton onClick={(e) => logInOut(e, userAction)}>
       {text}
     </UserLoginButton>
   );
@@ -36,9 +40,9 @@ const UserLoginButton = styled.button`
   font-size: 24px;
   border-radius: 10px;
   padding: 0.65em;
-  width: 50%;
+  width: 100%;
   background-color: ${props => props.theme.color.white.regular};
-  box-shadow: .1em .1em .3em #000;
+  box-shadow: .1em .1em .1em #000;
 
   &:hover {
     color: white;

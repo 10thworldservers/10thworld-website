@@ -54,7 +54,7 @@ export const NavItem = styled.li`
     opacity: 0.9;
     color: ${props => props.theme.color.black.regular};
   }
-
+  
   &.active {
     a {
       opacity: 1;
@@ -78,6 +78,7 @@ export const Brand = styled.div`
   letter-spacing: 1px;
   margin: 0;
   margin-right: 10%;
+  margin-left: 10%;
   ul {
     list-style: none;
     margin: 0;
@@ -126,6 +127,26 @@ export const Mobile = styled.div`
   `}
 `
 
+export const BtnContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 85%;
+`
+export const LogoutBtnContainer = styled.div`
+  > button {
+    box-shadow: none !important;
+    background-color: ${props => props.theme.color.primary};
+    color: ${props => props.theme.color.white.regular};
+
+    &:hover {
+      background-color: ${props => props.theme.color.black.lightest} !important;
+      
+    }
+  }
+`
 export default Nav;
 
 // Background blur info

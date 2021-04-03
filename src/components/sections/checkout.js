@@ -46,15 +46,14 @@ const Checkout = () => {
 
 const CheckoutButton = styled.button`
   font-size: 18px;
-  padding: 0.75rem;
+  padding: 0 1.75rem;
   font-weight: 600;
   text-align: center;
   color: #000;
   background-color: hsl(42, 87%, 55%);
-  border-radius: 5px;
+  border-radius: 10px;
   letter-spacing: 1.5px;
-  margin-left: 15%;
-  width: 15%;
+  margin-right: 5%;
 
   &:hover {
     box-shadow: 1px 1px 1em black;

@@ -9,7 +9,6 @@ const GetStarted = () => (
   <StyledSection>
     <GetStartedContainer>
       <GetStartedTitle>Be the first to create your world</GetStartedTitle>
-      <GetStartedSignup text="Start Your Adventure"/>
     </GetStartedContainer>
   </StyledSection>
 )
@@ -35,10 +34,6 @@ const GetStartedTitle = styled.h3`
   text-align: center;
 `
 
-const GetStartedSignup = styled(AzureAuthButton)`
-  margin: 0 auto 32px;
-  text-salign: center;
-`
 
 // const TryItButton = styled.button`
 //   font-weight: 500;

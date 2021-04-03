@@ -13,7 +13,7 @@ import { AzureAuthButton } from '../../azure/azure-auth-button.js';
 
 
 const Header = () => {
-  const { context } = useContext(AuthContext);
+  const { context, user } = useContext(AuthContext);
   
   const userAccount = context.getAccount();
   console.log("HEADER USER ACCOUNT :", userAccount);
@@ -52,7 +52,7 @@ const Header = () => {
               <h2>
                 Sign up to gain access to your own Valheim server and play with up to 10 of your friends.
               </h2>
-              <AzureAuthButton text="Sign Up"></AzureAuthButton>                           
+              <AzureAuthButton text="Sign Up" userAction="loginRedirect"></AzureAuthButton>                           
             </HeaderTextGroup>
         </Container>
       </HeaderWrapper>

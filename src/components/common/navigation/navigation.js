@@ -8,6 +8,7 @@ import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
 import { AuthContext } from '../../../context/AuthProvider';
 import { Container } from "../../global"
+import AzureAuthButton from '../../../azure/azure-auth-button';
 import {
   Nav,
   NavItem,
@@ -15,6 +16,8 @@ import {
   NavListWrapper,
   MobileMenu,
   Mobile,
+  LogoutBtnContainer,
+  BtnContainer
 } from "./style"
 
 const NAV_ITEMS = ["FAQ", "Connect", "Dashboard"]
@@ -23,9 +26,9 @@ export const Navigation = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
   const { context } = useContext(AuthContext);
-  
+
   const userAccount = context.getAccount();
-  console.warn(`USER ACCOUNT FROM INSIDE NAVIGATION: `, userAccount);
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(prevState => ({ mobileMenuOpen: !prevState.mobileMenuOpen }))
   }
@@ -60,7 +63,7 @@ export const Navigation = ({ scrolled }) => {
   );
 
   return (
-      <Nav {...scrolled} isVisible={isVisible}>
+    <Nav {...scrolled} isVisible={isVisible}>
       <Brand>
         <Scrollspy offset={-64} item={["top"]} currentClassName="active">
           <Link to="/">
@@ -84,13 +87,28 @@ export const Navigation = ({ scrolled }) => {
       <Mobile hide>
         {getNavList({})}
       </Mobile>
-      {userAccount !== undefined ?  <Checkout /> : null  }
+      <BtnContainer>
+        {userAccount !== undefined ? (
+          <LogoutBtnContainer>
+            <AzureAuthButton text="Logout" userAction={undefined} />
+          </LogoutBtnContainer>
+        )
+          : null}
+        {userAccount !== undefined ? <Checkout /> : null}
+
+      </BtnContainer>
+
       <Mobile>
         {mobileMenuOpen && (
           <MobileMenu>
             <Container>{
               getNavList({ mobile: true })}
-              {userAccount !== undefined ?  <Checkout /> : null  }
+              {userAccount !== undefined ? (
+
+                <AzureAuthButton text="logout" userAction={undefined} />
+              )
+                : null}
+              {userAccount !== undefined ? <Checkout /> : null}
             </Container>
           </MobileMenu>
         )}
