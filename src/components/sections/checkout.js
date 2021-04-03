@@ -53,16 +53,19 @@ const CheckoutButton = styled.button`
   background-color: hsl(42, 87%, 55%);
   border-radius: 10px;
   letter-spacing: 1.5px;
-  max-width: 50%;
-
+  margin-right: 0.5rem;
   &:hover {
     box-shadow: 1px 1px 1em black;
     transition: box-shadow 0.2s ease;
   }
 
   @media (max-width: ${props => props.theme.screen.sm}) {
-    margin: 0;
+    margin-bottom: 0.75rem;
     font-size: 24px;
+  }
+  @media (max-width: ${props => props.theme.screen.md}) {
+    /* max-width: 50%; */
+    margin-right: 0.25rem;
   }
 `;
 export default Checkout

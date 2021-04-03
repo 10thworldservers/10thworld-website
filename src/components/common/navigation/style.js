@@ -74,7 +74,7 @@ export const BtnContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 30%;
+  max-width: 50%;
   border: 2px solid ${props => props.theme.color.primary};
   padding: 0.75rem 0.50rem;
   border-radius: 10px;
@@ -85,6 +85,7 @@ export const BtnContainer = styled.div`
     justify-content: center;
     align-items: center;
   }
+ 
 `
 export const LogoutBtnContainer = styled.div`
    button {

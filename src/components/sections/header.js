@@ -92,4 +92,8 @@ const HeaderTextGroup = styled.div`
     margin-bottom: 24px;
     text-align: left;
   }
+
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    max-width: 100%;
+  }
 `
