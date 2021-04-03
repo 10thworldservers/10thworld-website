@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "styled-components"
-import { useSpring, animated } from 'react-spring';
 import { Section, Container } from "../global"
 
 const features = [
@@ -109,7 +108,7 @@ const FeaturesGrid = styled.div`
   }
 `
 
-const FeatureItem = styled(animated.div)`
+const FeatureItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

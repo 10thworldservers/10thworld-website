@@ -7,11 +7,7 @@ export const AuthProvider = ({children}) => {
   
   const [user, setUser] = useState();
 
-  const updateUser = ( token, uniqueId, name ) => {
-    // console.log(`VALUES PASSED TO UPDATEUSER: `)
-    // console.log('THE TOKEN', token)
-    // console.log('THE ID', uniqueId)
-    // console.log('THE NAME', name)
+  const updateUser = ( token ) => {
     setUser(token);
   };
   

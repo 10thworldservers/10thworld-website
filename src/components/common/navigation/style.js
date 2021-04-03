@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Container } from "../../global"
+import { Menu, X } from 'react-feather';
 
 export const Nav = styled.nav`
   padding: ${props => props.isVisible ? `16px 0` : `24px 0`};
@@ -22,129 +23,114 @@ export const StyledContainer = styled(Container)`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    flex-direction: column;
+  }
 `
 
 export const NavListWrapper = styled.div`
-  ul {
-    list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
-    ${({ mobile }) =>
-      mobile &&
-      `
-        flex-direction: column;
-        margin-top: 1em;
+    justify-content: space-between;
+    width: 100%;
 
-        > ${NavItem} {
-          margin: 0;
-          margin-top: 0.75em;
-        }
-      `};
-  }
-`
-
-export const NavItem = styled.li`
-  margin: 0 0.75em;
-  font-family: ${props => props.theme.font.medium};
-  ${props => props.theme.font_size.xsmall};
-
-  a {
-    text-decoration: none;
-    opacity: 0.9;
-    color: ${props => props.theme.color.black.regular};
-  }
-  
-  &.active {
-    a {
-      opacity: 1;
-      border: 1px solid black;
+    @media (max-width: ${props => props.theme.screen.sm}) {
+      flex-direction: column;
+      position: fixed;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5vh;
+      padding-bottom: 5vh;
+      background-color: ${props => props.theme.color.primary};
+      transition: all 0.3s ease-in;
+      top: 15vh;
+      left: ${props => (props.open ? "-100%" : "0")};
     }
-  }
 `
-
-export const MobileMenu = styled.div`
-  width: 100%;
-  height: 100vh;
-  z-index: 1000;
-  background: ${props => props.theme.color.regular};
-`
-
-export const Brand = styled.div`
+export const ImgContainer = styled.div`
   font-family: ${props => props.theme.font.extrabold};
   ${props => props.theme.font_size.regular};
   color: ${props => props.theme.color.black.regular};
   text-decoration: none;
   letter-spacing: 1px;
-  margin: 0;
-  margin-right: 10%;
-  margin-left: 10%;
+  margin-left: 5%;
+  cursor: pointer;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
-
     a {
       color: ${props => props.theme.color.black.regular};
       text-decoration: none;
     }
   }
 `
-export const ActionsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  @media (max-width: ${props => props.theme.screen.xs}) {
-    display: none;
-  }
-
-  button {
-    font-family: ${props => props.theme.font.normal};
-    ${props => props.theme.font_size.xsmall};
-    color: white;
-    background: #098b8c;
-    border-radius: 4px;
-    padding: 10px 16px;
-    text-transform: uppercase;
-    font-size: 12px;
-  }
-`
-
-export const Mobile = styled.div`
-  display: none;
-
-  @media (max-width: ${props => props.theme.screen.xs}) {
-    display: block;
-  }
-
-  ${props =>
-    props.hide &&
-    `
-    display: block;
-
-    @media (max-width: ${props.theme.screen.xs}) {
-      display: none;
-    }
-  `}
-`
 
 export const BtnContainer = styled.div`
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
-  margin-left: 5%;
-  margin-right: 5%;
   width: 85%;
+
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `
 export const LogoutBtnContainer = styled.div`
-  > button {
+  margin-right: 10%;
+   button {
+    font-size: 18px;
+    padding: .85rem 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    color: ${props => props.theme.color.white.regular};
+    background-color: hsl(42, 87%, 55%);
+    border-radius: 10px;
+    letter-spacing: 1.5px;
     box-shadow: none !important;
     background-color: ${props => props.theme.color.primary};
-    color: ${props => props.theme.color.white.regular};
-
     &:hover {
       background-color: ${props => props.theme.color.black.lightest} !important;
       
     }
+  }
+
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    margin: 0;
+
+    button {
+      font-size: 24px;
+    }
+  }
+`
+
+export const Hamburger = styled(Menu)`
+  color: ${props => props.theme.color.primary};
+  :hover {
+    cursor: pointer;
+  }
+`
+
+export const Cancel = styled(X)`
+  color: ${props => props.theme.color.primary};
+  :hover {
+    cursor: pointer;
+  }
+`;
+
+
+export const Toggle = styled.div`
+  display: none;
+  height: 100%;
+  cursor: pointer;
+  padding: 0 10vw;
+
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    display: flex;
   }
 `
 export default Nav;
