@@ -72,7 +72,7 @@ const Subtitle = styled.h5`
 `
 
 const HeaderTextGroup = styled.div`
-  max-width: 100%;
+  max-width: 75%;
   position: relative;
   margin: 2.5rem auto;
   padding: 2.5rem;

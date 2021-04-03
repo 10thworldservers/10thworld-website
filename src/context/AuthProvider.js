@@ -7,8 +7,8 @@ export const AuthProvider = ({children}) => {
   
   const [user, setUser] = useState();
 
-  const updateUser = ( token ) => {
-    setUser(token);
+  const updateUser = ( accInfo ) => {
+    setUser(accInfo);
   };
   
   const context = new AzureAuthContext(updateUser);
