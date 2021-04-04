@@ -164,50 +164,73 @@ export class AzureAuthenticationContext {
     console.warn(`%c THE ACCOUNT: `,'font-weight: bold; font-size: 24px; color: yellow', this.account);
   }
 
+  async msalAcquireToken(incFn: any): Promise<any> {
+    let MSAL: any = this.myMSALObj;
+    const accessTokenRequest: any = {
+      scopes: [],
+      authority: MSAL_CONFIG.auth.authority,
+      account: this.account
+    }
+    try {
+      let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+        this.idToken = accessTokenResponse.idToken;
+        if (this.account.idTokenClaims["newUser"]) {
+          console.log('%c IDTOKENCLAIMS: ', 'font-size: 18px; color: green', this.account.idTokenClaims["newUser"]);
+          createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+        }
+        incFn(this.idToken, this.account.localAccountId, this.account.name);
+      })
+      return acquireToken;
+    } catch (error) {
+      
+    }
+  };
+  // Re-vamped handleResponse as async function
   async handleResp(response: AuthenticationResult, incomingFunction: any): Promise<any> {
     try {
       if (response !== null && response.account !== null && response.account) {
         this.account = response.account;
         this.idToken = response.idToken;
         this.uniqueId = response.uniqueId;
-  
-        const accessTokenRequest: any = {
-          scopes: [],
-          authority: MSAL_CONFIG.auth.authority,
-          account: this.account,
-        }
+        this.msalAcquireToken(incomingFunction);
+        // const accessTokenRequest: any = {
+        //   scopes: [],
+        //   authority: MSAL_CONFIG.auth.authority,
+        //   account: this.account,
+        // }
 
-        let MSAL = this.myMSALObj;
-        let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
-          this.idToken = accessTokenResponse.idToken
-          if (this.account.idTokenClaims["newUser"]) {
-            console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
-            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
-          }
-          incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
-        });
-        return acquireToken;
+        // let MSAL = this.myMSALObj;
+        // let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+        //   this.idToken = accessTokenResponse.idToken
+        //   if (this.account.idTokenClaims["newUser"]) {
+        //     console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
+        //     createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+        //   }
+        //   incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
+        // });
+        // return acquireToken;
       } else {
         this.account = this.getAccount()
       };
 
       if (this.account) {
         if (response === null) {
-          const accessTokenRequest: any = {
-            scopes: [],
-            authority: MSAL_CONFIG.auth.authority,
-            account: this.account,
-          }
-          let MSAL = this.myMSALObj;
-          let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
-          this.idToken = accessTokenResponse.idToken
-          if (this.account.idTokenClaims["newUser"]) {
-            console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
-            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
-          }
-          incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
-        });
-        return acquireToken;
+          this.msalAcquireToken(incomingFunction);
+        //   const accessTokenRequest: any = {
+        //     scopes: [],
+        //     authority: MSAL_CONFIG.auth.authority,
+        //     account: this.account,
+        //   }
+        //   let MSAL = this.myMSALObj;
+        //   let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
+        //   this.idToken = accessTokenResponse.idToken
+        //   if (this.account.idTokenClaims["newUser"]) {
+        //     console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
+        //     createNewUser(this.account.localAccountId, this.account.name, this.account.username);
+        //   }
+        //   incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
+        // });
+        // return acquireToken;
         }
       };
 

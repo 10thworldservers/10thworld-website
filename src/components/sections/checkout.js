@@ -2,11 +2,6 @@ import React, { useState } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import styled from 'styled-components';
 
-const buttonDisabledStyles = {
-  opacity: "0.5",
-  cursor: "not-allowed",
-}
-
 let stripePromise
 const getStripe = () => {
   if (!stripePromise) {

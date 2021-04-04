@@ -19,7 +19,7 @@ import {
 } from "./style"
 
 
-export const Navigation = ({ scrolled }) => {
+export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
   const { context } = useContext(AuthContext);
