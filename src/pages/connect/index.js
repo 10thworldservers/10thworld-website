@@ -23,14 +23,29 @@ const Connect = () => {
                   Instructions
         </InstTitle>
                 <InstText>
+                Get started by creating an account with us at 10th World Servers. 
+                Once signed up or signed in you can subscribe.
+                </InstText>
                 
+                <InstText>
+                Select Get Access to subscribe to our server plan.
+                Get Access will redirect to Stripe to complete payment. 
+                Once payment completes we'll redirect you back here to see your server details.
                 </InstText>
                 <InstText>
-
+                Servers are pre-configured and linked instantly to your account. 
+                You'll receive a domain name, and port number for your Valheim server. 
+                After subscribing you'll be up and running instantly!
                 </InstText>
                 <InstText>
-
+                We manage our servers with containers and kubernetes to maintain maximum uptime and durability.
+                You can control your server through our dashboard. 
+                See and set your default password.
+                Upload your personal world file. Save and backup your world here too.
+                Additional functionality is being added to the Dashboard for more personal control. 
+                For support email us directly at 10thworldsupport@gmail.com
                 </InstText>
+
               </InstContainer>
             </Container>
             <Footer />
