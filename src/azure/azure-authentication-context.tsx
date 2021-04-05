@@ -100,7 +100,7 @@ export class AzureAuthenticationContext {
       })
       return acquireToken;
     } catch (error) {
-      
+     console.error(error) 
     }
   };
   // Re-vamped handleResponse as async function

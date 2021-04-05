@@ -26,7 +26,6 @@ const Connect = () => {
                 Get started by creating an account with us at 10th World Servers. 
                 Once signed up or signed in you can subscribe.
                 </InstText>
-                
                 <InstText>
                 Select Get Access to subscribe to our server plan.
                 Get Access will redirect to Stripe to complete payment. 
@@ -45,7 +44,6 @@ const Connect = () => {
                 Additional functionality is being added to the Dashboard for more personal control. 
                 For support email us directly at 10thworldsupport@gmail.com
                 </InstText>
-
               </InstContainer>
             </Container>
             <Footer />

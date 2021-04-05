@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { AuthContext } from '../../../context/AuthProvider';
+import AzureAuthButton from '../../../azure/azure-auth-button';
 
 const NavItem = styled(Link)`
   text-decoration: none;
@@ -41,15 +42,34 @@ const NavItem = styled(Link)`
     z-index: 6;
   }
 `
+const SignUpContainer = styled.div`
+  max-width: 25%;
 
+  button {
+    box-shadow: none;
+    background: transparent;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: ${props => props.theme.color.primary};
+    cursor: pointer;
+
+    &:hover {
+      background: transparent;
+      color: ${props => props.theme.color.black.lightest};
+    }
+  }
+`
 const NavLinks = () => {
   const { context } = useContext(AuthContext);
 
   const userAccount = context.getAccount();
   return (
     <>
-      <NavItem to="/faq">Faq</NavItem>
       <NavItem to="/connect">Connect</NavItem>
+      <NavItem to="/faq">Faq</NavItem>
+      <SignUpContainer>
+      {userAccount === undefined ? <AzureAuthButton text="Sign Up" userAction="loginRedirect" /> : null }
+      </SignUpContainer>
       {userAccount !== undefined ? <NavItem to="/dashboard">Dashboard</NavItem> : null}
     </>
   )
