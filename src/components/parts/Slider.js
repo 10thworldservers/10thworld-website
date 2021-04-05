@@ -36,7 +36,7 @@ const Slider = () => {
           return (
               <ListChild key={item.id}>
               <ListLink href="#" rel="noopener noreferrer" onClick={(e) => handleClick(e, item.id)}>{item.question}
-              {questions[index].isVisible ? <ListIcon alt="icon arrow up" src={arrow} /> : <ListIconActive alt="icon arrow down" src={ arrow } />}
+              {questions[index].isVisible ? <ListIconActive alt="icon arrow down" src={ arrow }/> : <ListIcon alt="icon arrow up" src={arrow} /> }
               
               </ListLink>
               {questions[index].isVisible ? <CopyText>{item.answer}</CopyText> : null}

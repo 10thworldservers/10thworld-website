@@ -75,9 +75,7 @@ export const BtnContainer = styled.div`
   flex-direction: row;
   justify-content: space-around;
   max-width: 50%;
-  border: 2px solid ${props => props.theme.color.primary};
   padding: 0.75rem 0.50rem;
-  border-radius: 10px;
   margin-right: 0.75rem;
 
   @media (max-width: ${props => props.theme.screen.sm}) {

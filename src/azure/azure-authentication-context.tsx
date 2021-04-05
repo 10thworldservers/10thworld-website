@@ -82,132 +82,43 @@ export class AzureAuthenticationContext {
     this.myMSALObj.logout(logOutRequest)
   }
 
-  ///
-  // Called by Login to handle response.
-  ///
-  handleResponse(response: AuthenticationResult, incomingFunction: any) {
-    // do I call the function in here?
-    // if check for user existence
-    if (response !== null && response.account !== null && response.account) {
-      this.account = response.account;
-      this.idToken = response.idToken;
-      this.uniqueId = response.uniqueId;
-      console.log("10thWorld AuthResult: ", response);
-
-      const accessTokenRequest: any = {
-        scopes: [],
-        authority: MSAL_CONFIG.auth.authority,
-        account: this.account,
-      }
-      
-      this.myMSALObj
-      .acquireTokenSilent(accessTokenRequest)
-      .then((accessTokenResponse) => {
-        //let accessToken = accessTokenResponse.accessToken
-        this.idToken = accessTokenResponse.idToken
-        //Check returned claims to see if this is the user's first sign-in
-        //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
+  async msalAcquireToken(incFn: any): Promise<any> {
+    let MSAL: any = this.myMSALObj;
+    const accessTokenRequest: any = {
+      scopes: [],
+      authority: MSAL_CONFIG.auth.authority,
+      account: this.account
+    }
+    try {
+      let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse: any) => {
+        this.idToken = accessTokenResponse.idToken;
         if (this.account.idTokenClaims["newUser"]) {
-          console.log('the value from idTokenClaims', this.account.idTokenClaims["newUser"]);
+          console.log('%c IDTOKENCLAIMS: ', 'font-size: 18px; color: green', this.account.idTokenClaims["newUser"]);
           createNewUser(this.account.localAccountId, this.account.name, this.account.username);
         }
-        incomingFunction(this.idToken, this.account.localAccountId, this.account.name);
+        incFn(this.idToken, this.account.localAccountId, this.account.name);
       })
-      .catch(function (error) {
-        //Acquire token silent error, log it
-        console.log(error)
-      })
-
-
-    } else {
-      this.account = this.getAccount()
-    }
-
-    if (this.account) {
-      if (response === null) {
-        const accessTokenRequest: any = {
-          scopes: [],
-          authority: MSAL_CONFIG.auth.authority,
-          account: this.account
-        }
-  
-        this.myMSALObj
-        .acquireTokenSilent(accessTokenRequest)
-        .then((accessTokenResponse) => {
-          //let accessToken = accessTokenResponse.accessToken
-          this.idToken = accessTokenResponse.idToken
-          //Check returned claims to see if this is the user's first sign-in
-          //Then call CreateUpdateUser to duplicate User from B2C into CosmosDB
-          if (this.account.idTokenClaims["newUser"]){
-            console.log('the value from idTokenClaims', this.account.idTokenClaims["newUser"]);
-            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
-          }
-          
-          // incomingFunction({
-          //   userState: {
-          //     token: this.idToken,
-          //     uniqueId: this.uniqueId,
-          //     name: this.account.name,
-          //   }
-          // });
-          incomingFunction(this.idToken, this.account.localAccountId, this.account.name);
-
-
-        })
-        .catch(function (error) {
-          //Acquire token silent error, log it
-          console.log(error)
-        })
-      }
+      return acquireToken;
+    } catch (error) {
       
     }
-    console.warn(`%c THE ACCOUNT: `,'font-weight: bold; font-size: 24px; color: yellow', this.account);
-  }
-
+  };
+  // Re-vamped handleResponse as async function
   async handleResp(response: AuthenticationResult, incomingFunction: any): Promise<any> {
     try {
       if (response !== null && response.account !== null && response.account) {
         this.account = response.account;
         this.idToken = response.idToken;
         this.uniqueId = response.uniqueId;
-  
-        const accessTokenRequest: any = {
-          scopes: [],
-          authority: MSAL_CONFIG.auth.authority,
-          account: this.account,
-        }
-
-        let MSAL = this.myMSALObj;
-        let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
-          this.idToken = accessTokenResponse.idToken
-          if (this.account.idTokenClaims["newUser"]) {
-            console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
-            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
-          }
-          incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
-        });
-        return acquireToken;
-      } else {
-        this.account = this.getAccount()
-      };
+        this.msalAcquireToken(incomingFunction);
+      }
+      // else {
+        // this.account = this.getAccount()
+      // };
 
       if (this.account) {
         if (response === null) {
-          const accessTokenRequest: any = {
-            scopes: [],
-            authority: MSAL_CONFIG.auth.authority,
-            account: this.account,
-          }
-          let MSAL = this.myMSALObj;
-          let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
-          this.idToken = accessTokenResponse.idToken
-          if (this.account.idTokenClaims["newUser"]) {
-            console.log('%c VALUE FROM IDTOKENCLAIMS: ', 'font-size: 18px; color: green; font-weight: bold', this.account.idTokenClaims["newUser"]);
-            createNewUser(this.account.localAccountId, this.account.name, this.account.username);
-          }
-          incomingFunction(this.idToken, this.account.localAccountId, this.account.name)
-        });
-        return acquireToken;
+          this.msalAcquireToken(incomingFunction);
         }
       };
 
@@ -233,7 +144,6 @@ export class AzureAuthenticationContext {
       )
       return currentAccounts[0]
     } else if (currentAccounts.length === 1) {
-      console.log('%c MSAL OBJ','font-weight: bold; font-size: 24px; color: orange', this.myMSALObj)
       return currentAccounts[0]
     }
   }

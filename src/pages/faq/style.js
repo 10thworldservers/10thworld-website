@@ -4,7 +4,7 @@ export const FaqContainer = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  margin-top: 15%;
+  margin-top: 10%;
   justify-content: space-around;
 
   @media (max-width: 575px) {
