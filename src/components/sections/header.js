@@ -15,11 +15,9 @@ const Header = () => {
   const { user, context } = useContext(AuthContext);
   
   const userAccount = context.getAccount();
-  console.log("HEADER USER ACCOUNT :", userAccount);
+
   if (userAccount !== undefined){
-    console.trace("HEADER USER NAME FROM ACCOUNT :", userAccount.name);
-    console.log("HEADER USER ID FROM ACCOUNT :", userAccount.localAccountId);
-    console.log("HEADER USER TOKEN FROM STATE :", user);
+    context.getAccount();
   }
 
   if (userAccount !== undefined) {

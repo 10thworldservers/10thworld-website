@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useEffect } from "react"
 import { Link } from 'gatsby';
 import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
@@ -30,6 +30,11 @@ export const Navigation = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
 
+  // useEffect(() => {
+  //   context.getAccount();
+  // }, []);
+  console.log('%c The Context from Navigation', 'font-size: 18px; color: green', context.account);
+  console.log('%c the user Account', 'color: yellow; font-size: 18px;', context.getAccount());
   return (
     <Nav isVisible={isVisible}>
       <ImgContainer>
