@@ -111,10 +111,9 @@ export class AzureAuthenticationContext {
         this.idToken = response.idToken;
         this.uniqueId = response.uniqueId;
         this.msalAcquireToken(incomingFunction);
-      }
-      // else {
-        // this.account = this.getAccount()
-      // };
+      } else {
+        this.account = this.getAccount()
+      };
 
       if (this.account) {
         if (response === null) {
