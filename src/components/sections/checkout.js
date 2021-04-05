@@ -1,11 +1,17 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import styled from 'styled-components';
+import { AuthContext } from '../../context/AuthProvider';
+
 
 const buttonDisabledStyles = {
   opacity: "0.5",
   cursor: "not-allowed",
 }
+
+
+
+
 
 let stripePromise
 const getStripe = () => {
@@ -16,6 +22,15 @@ const getStripe = () => {
 }
 const Checkout = () => {
   const [loading, setLoading] = useState(false)
+  const { user, context } = useContext(AuthContext);
+  const userAccount = context.getAccount();
+  console.log("CHECKOUT USER ACCOUNT :", userAccount);
+  if (userAccount !== undefined){
+    console.trace("CHECKOUT USER NAME FROM ACCOUNT :", userAccount.name);
+    console.log("CHECKOUT USER ID FROM ACCOUNT :", userAccount.localAccountId);
+    console.log("CHECKOUT USER TOKEN FROM STATE :", user);
+  }
+
   const redirectToCheckout = async event => {
     event.preventDefault()
     setLoading(true)
@@ -26,8 +41,8 @@ const Checkout = () => {
       successUrl: `http://localhost:8000/page-2/`,
       cancelUrl: `http://localhost:8000/`,
       //clientReferenceId is set by us from user db and passed to webhook, it is the only way to associate checkout session to client.
-      clientReferenceId: 'test',
-      customerEmail: 'johndavidfischer@gmail.com'
+      clientReferenceId: userAccount.localAccountId,
+      customerEmail: userAccount.userName
     })
     if (error) {
       console.warn("Error:", error)
