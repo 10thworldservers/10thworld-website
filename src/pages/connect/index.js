@@ -3,9 +3,9 @@ import Layout from '../../components/common/layout/layout';
 import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
 import Footer from "../../components/sections/footer"
-import { Container } from '../../components/global';
 import { ScrollProvider } from '../../context/ScrollProvider';
 import { HeaderProvider } from '../../context/HeaderProvider';
+import { useHeaderContext } from '../../context/HeaderProvider';
 import { AuthProvider } from '../../context/AuthProvider';
 import {
   InstContainer,
@@ -13,11 +13,16 @@ import {
   InstText,
   InstFlexWrapper,
   ImageWrapper,
-  FlexContainer
+  FlexContainer,
+  EmailUs,
+  EmailContainer,
+  EmailTitle
 } from './style';
 import { StaticImage } from 'gatsby-plugin-image';
 
 const Connect = () => {
+  const { isVisible } = useHeaderContext();
+
   return (
     <ScrollProvider>
       <HeaderProvider>
@@ -30,7 +35,7 @@ const Connect = () => {
                 <InstTitle>
                   How to Connect
               </InstTitle>
-                <InstFlexWrapper>
+                <InstFlexWrapper isVisible={isVisible}>
                   <InstText>
                     Get started by creating an account with us at 10th World Servers.
                     Once signed up or signed in you can subscribe.
@@ -62,11 +67,10 @@ const Connect = () => {
                 </InstFlexWrapper>
                 <InstFlexWrapper>
                   <InstText>
-                    We manage our servers with containers and kubernetes to maintain maximum uptime and durability.
+                    We manage our servers with containers and kubernetes for maximum uptime and durability.
                     You can control your server through our dashboard,
                     see and set your default password,
                     and upload your personal world file. Save and backup your world here too.
-                    Additional functionality is being added to the Dashboard for more personal control.
                     For support email us directly at 10thworldsupport@gmail.com
                 </InstText>
                   <ImageWrapper>
@@ -74,6 +78,11 @@ const Connect = () => {
                   </ImageWrapper>
                 </InstFlexWrapper>
               </InstContainer>
+              <EmailContainer>
+                <EmailTitle>Email Us Directly At:</EmailTitle>
+                <EmailUs>10thworldservers@gmail.com</EmailUs>
+              </EmailContainer>
+
             </FlexContainer>
             <Footer />
           </AuthProvider>

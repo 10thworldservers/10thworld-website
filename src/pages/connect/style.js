@@ -5,6 +5,7 @@ export const FlexContainer = styled(Container)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 1200px;
 `
 export const InstContainer = styled.div`
   margin-top: 15vh;
@@ -32,7 +33,7 @@ export const InstFlexWrapper = styled.div`
   display: flex;
   flex-direction: row;
   margin-top: 1.75rem;
-  margin-bottom: 1.75rem;
+  margin-bottom: 50vh;
   justify-content: space-around;
   align-items: center;
   &:nth-child(odd) {
@@ -70,7 +71,6 @@ export const InstFlexWrapper = styled.div`
     }
     img {
       border-radius: 10px;
-      /* max-height: 50%; */
       height: 250px;
     }
   }
@@ -94,10 +94,10 @@ max-width: 30%;
 `
 export const InstText = styled.p`
   color: white;
-  font-size: 1.25rem;
+  font-size: 2rem;
   display: block;
   margin-left: 1.25rem;
-  max-width: 50%;
+  max-width: 65%;
   line-height: 30px;
 
   @media (max-width: 575px) {
@@ -111,5 +111,19 @@ export const InstText = styled.p`
   @media (max-width: 991px) {
    
   }
+`
+export const EmailContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+export const EmailUs = styled.p`
+  text-decoration: underline;
+  color: ${props => props.theme.color.white.regular};
+  font-size: 1.5rem;
+  margin-left: 2%;
+`
+export const EmailTitle = styled.h3`
+  color: ${props => props.theme.color.white.regular};
 `
 export default InstContainer;
