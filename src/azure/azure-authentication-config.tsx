@@ -14,7 +14,7 @@ export const MSAL_CONFIG: Configuration = {
   auth: {
     clientId: AzureActiveDirectoryAppClientId,
     redirectUri: process.env.GATSBY_REDIRECT_URI,
-    authority: "https://10thworldservers.b2clogin.com/tfp/10thworldservers.onmicrosoft.com/b2c_1_nicebeaver/" || process.env.GATSBY_AUTHORITY
+    authority: process.env.GATSBY_AUTHORITY
     //validateAuthority: false
     //authority: 'https://10thworldservers.b2clogin.com/10thworldservers.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_nicebeaver'
 
