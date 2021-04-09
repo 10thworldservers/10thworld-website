@@ -10,9 +10,6 @@ const buttonDisabledStyles = {
 }
 
 
-
-
-
 let stripePromise
 const getStripe = () => {
   if (!stripePromise) {
@@ -32,7 +29,8 @@ const Checkout = () => {
   }
 
   const redirectToCheckout = async event => {
-    event.preventDefault()
+    event.preventDefault();
+    console.log(event);
     setLoading(true)
     const stripe = await getStripe()
     const { error } = await stripe.redirectToCheckout({
@@ -52,7 +50,7 @@ const Checkout = () => {
   return (
     <CheckoutButton
       disabled={loading}
-      onClick={redirectToCheckout}
+      onClick={(event) => redirectToCheckout(event)}
     >
       Get Access
     </CheckoutButton>
