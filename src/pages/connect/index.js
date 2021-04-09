@@ -16,7 +16,7 @@ import {
   FlexContainer,
   EmailUs,
   EmailContainer,
-  EmailTitle
+  EmailTitle,
 } from './style';
 import { StaticImage } from 'gatsby-plugin-image';
 
@@ -41,9 +41,8 @@ const Connect = () => {
                     Once signed up or signed in you can subscribe.
                 </InstText>
                   <ImageWrapper>
-                    <StaticImage src='../../images/landscape-darkblue-lower.svg' alt="Blue landscape lower" />
+                    <StaticImage className="inst__static--image" src='../../images/landscape-darkblue-lower.svg' alt="Blue landscape lower" />
                   </ImageWrapper>
-
                 </InstFlexWrapper>
                 <InstFlexWrapper>
                   <InstText>
@@ -52,7 +51,7 @@ const Connect = () => {
                     Once payment completes we'll redirect you back here to see your server details.
                 </InstText>
                   <ImageWrapper>
-                    <StaticImage src='../../images/landscape-darkblue-upper.png' alt="Blue mountain landscape" />
+                    <StaticImage className="inst__static--image" src='../../images/landscape-darkblue-upper.png' alt="Blue mountain landscape" />
                   </ImageWrapper>
                 </InstFlexWrapper>
                 <InstFlexWrapper>
@@ -62,7 +61,7 @@ const Connect = () => {
                     After subscribing you'll be up and running instantly!
                 </InstText>
                   <ImageWrapper>
-                    <StaticImage src='../../images/mountain-and-sea-4770131_1920.jpg' alt="Mountains and sea" />
+                    <StaticImage className="inst__static--image" src='../../images/mountain-and-sea-4770131_1920.jpg' alt="Mountains and sea" />
                   </ImageWrapper>
                 </InstFlexWrapper>
                 <InstFlexWrapper>
@@ -74,7 +73,7 @@ const Connect = () => {
                     For support email us directly at 10thworldsupport@gmail.com
                 </InstText>
                   <ImageWrapper>
-                    <StaticImage src='../../images/landscape-darkblue-upper-cloud.svg' alt="Server with cloud background" />
+                    <StaticImage className="inst__static--image" src='../../images/landscape-darkblue-upper-cloud.svg' alt="Server with cloud background" />
                   </ImageWrapper>
                 </InstFlexWrapper>
               </InstContainer>

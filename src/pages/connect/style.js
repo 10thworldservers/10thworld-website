@@ -6,12 +6,14 @@ export const FlexContainer = styled(Container)`
   flex-direction: column;
   justify-content: center;
   max-width: 1200px;
-`
+`;
+
 export const InstContainer = styled.div`
   margin-top: 15vh;
   display: flex;
   flex-direction: column;
-`
+`;
+
 export const InstTitle = styled.h1`
   color: white;
   margin-top: 10vh;
@@ -28,7 +30,8 @@ export const InstTitle = styled.h1`
   @media (max-width: 991px) {
     margin-top: 10vh;
   }
-`
+`;
+
 export const InstFlexWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -38,11 +41,10 @@ export const InstFlexWrapper = styled.div`
   align-items: center;
   &:nth-child(odd) {
     flex-direction: row-reverse;
-    img {
-    }
   }
 
-  img {
+  
+   .inst__static--image {
     height: 300px;
     border-radius: 50%;
     object-fit: center;
@@ -56,8 +58,8 @@ export const InstFlexWrapper = styled.div`
     &:nth-child(odd) {
       flex-direction: column-reverse;
     }
-    img {
-      height: 150px;
+     .inst__static--image {
+      height: 150px ;
       border-radius: 10px;
     }
   }
@@ -69,17 +71,18 @@ export const InstFlexWrapper = styled.div`
     &:nth-child(odd) {
       flex-direction: column-reverse;
     }
-    img {
+    .inst__static--image {
       border-radius: 10px;
       height: 250px;
     }
   }
   @media (max-width: 991px) {
-    img {
+    .inst__static--image {
       max-height: 75%;
     }
   }
-`
+`;
+
 export const ImageWrapper = styled.div`
 max-width: 30%;
   @media (max-width: 575px) {
@@ -91,7 +94,28 @@ max-width: 30%;
   @media (max-width: 991px) {
      
   }
-`
+`;
+
+export const Img = styled.img`
+    height: 300px;
+    border-radius: 50%;
+    object-fit: center;
+
+  @media (max-width: 575px) {
+      height: 150px ;
+      border-radius: 10px;
+  }
+  @media (max-width: 767px) {
+      border-radius: 10px;
+      height: 250px;
+    
+  }
+  @media (max-width: 991px) {
+      max-height: 75%;
+  }
+
+`;
+
 export const InstText = styled.p`
   color: white;
   font-size: 2rem;
@@ -111,19 +135,22 @@ export const InstText = styled.p`
   @media (max-width: 991px) {
    
   }
-`
+`;
+
 export const EmailContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`
+`;
+
 export const EmailUs = styled.p`
   text-decoration: underline;
   color: ${props => props.theme.color.white.regular};
   font-size: 1.5rem;
   margin-left: 2%;
-`
+`;
+
 export const EmailTitle = styled.h3`
   color: ${props => props.theme.color.white.regular};
-`
+`;
 export default InstContainer;

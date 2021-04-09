@@ -3,13 +3,6 @@ import { loadStripe } from "@stripe/stripe-js"
 import styled from 'styled-components';
 import { AuthContext } from '../../context/AuthProvider';
 
-
-const buttonDisabledStyles = {
-  opacity: "0.5",
-  cursor: "not-allowed",
-}
-
-
 let stripePromise
 const getStripe = () => {
   if (!stripePromise) {
@@ -30,7 +23,7 @@ const Checkout = () => {
 
   const redirectToCheckout = async event => {
     event.preventDefault();
-    console.log(event);
+    
     setLoading(true)
     const stripe = await getStripe()
     const { error } = await stripe.redirectToCheckout({
@@ -42,6 +35,7 @@ const Checkout = () => {
       clientReferenceId: userAccount.localAccountId,
       customerEmail: userAccount.userName
     })
+
     if (error) {
       console.warn("Error:", error)
       setLoading(false)
