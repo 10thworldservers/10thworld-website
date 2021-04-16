@@ -36,7 +36,7 @@ const Header = () => {
   } else {
     return (
       <HeaderWrapper id="top">
-        <Container>
+            <Container>
             <HeaderTextGroup>
               <Subtitle>Valheim Servers</Subtitle>
               <h2>
@@ -44,7 +44,7 @@ const Header = () => {
               </h2>
               <AzureAuthButton text="Sign Up" userAction="loginRedirect"></AzureAuthButton>                           
             </HeaderTextGroup>
-        </Container>
+            </Container>        
       </HeaderWrapper>
     )
   }
@@ -56,9 +56,8 @@ export default Header
 
 const HeaderWrapper = styled.header`
   position: relative;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-  padding: 10rem;
+  margin-top: 6.5rem;
+  padding: 2.5rem;
   background-image: url(${SkyBackGround});
   background-repeat: no-repeat;
 `
@@ -70,9 +69,9 @@ const Subtitle = styled.h5`
 `
 
 const HeaderTextGroup = styled.div`
-  max-width: 75%;
+  max-width: 100%;
   position: relative;
-  margin: 2.5rem auto;
+  margin: 5rem auto;
   padding: 2.5rem;
   box-shadow: inset 300px 300px 300px ${props => props.theme.color.secondary};
   border-radius: 10px;
@@ -91,7 +90,4 @@ const HeaderTextGroup = styled.div`
     text-align: left;
   }
 
-  @media (max-width: ${props => props.theme.screen.sm}) {
-    max-width: 100%;
-  }
 `

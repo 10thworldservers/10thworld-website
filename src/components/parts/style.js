@@ -2,8 +2,7 @@ import styled from 'styled-components';
 
 export const ListParent = styled.ul`
   list-style: none;
-  margin-top: 2.5rem;
-  margin-left: 10%;
+  margin: 2.5rem 0;
   padding: 0;
   height: 500px;
 `;

@@ -46,5 +46,9 @@ const UserLoginButton = styled.button`
     background-color: #2C2C2C;
     transition: all 0.2s ease-in;
   }
-`
+
+  @media (min-width: ${({ theme }) => theme.screen.sm}) {
+    width: 50%;
+  }
+`;
 

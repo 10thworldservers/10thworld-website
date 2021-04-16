@@ -68,7 +68,7 @@ const NavLinks = () => {
       <NavItem to="/connect">Connect</NavItem>
       <NavItem to="/faq">Faq</NavItem>
       <SignUpContainer>
-      {userAccount === undefined ? <AzureAuthButton text="Sign Up" userAction="loginRedirect" /> : null }
+      {userAccount === undefined ? <AzureAuthButton text="SignUp" userAction="loginRedirect" /> : null }
       </SignUpContainer>
       {userAccount !== undefined ? <NavItem to="/dashboard">Dashboard</NavItem> : null}
     </>

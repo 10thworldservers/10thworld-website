@@ -6,20 +6,16 @@ export const FaqContainer = styled.div`
   flex-wrap: nowrap;
   margin-top: 10%;
   justify-content: space-around;
+  align-items: center;
 
   @media (max-width: 575px) {
     flex-direction: column-reverse;
     align-items: center;
-    margin-top: 50%;
   }
   @media (max-width: 767px) {
     flex-direction: column-reverse;
     align-items: center;
-    margin-top: 45%;
   }
-  @media (max-width: 991px) {
-    margin-top: 25%;
-  }
-`
+`;
 
 export default FaqContainer;

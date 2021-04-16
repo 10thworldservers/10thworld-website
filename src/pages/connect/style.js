@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Container } from '../../components/global';
+// refactor this for mobile first
 
 export const FlexContainer = styled(Container)`
   display: flex;
@@ -8,149 +9,106 @@ export const FlexContainer = styled(Container)`
   max-width: 1200px;
 `;
 
-export const InstContainer = styled.div`
-  margin-top: 15vh;
+export const ConnectContainer = styled.div`
+  margin-top: 10vh;
   display: flex;
   flex-direction: column;
 `;
 
-export const InstTitle = styled.h1`
+export const ConnectTitle = styled.h1`
   color: white;
-  margin-top: 10vh;
-  margin-left: 5%;
-  @media (max-width: 575px) {
+  text-align: center;
+  @media (min-width: 575px) {
     text-align: center;
     margin-top: 10vh;
     margin-bottom: 2.25rem;
   }
-  @media (max-width: 767px) {
-    text-align: center;
-    margin-top: 10vh;
-  }
-  @media (max-width: 991px) {
-    margin-top: 10vh;
-  }
+ 
 `;
 
-export const InstFlexWrapper = styled.div`
+export const ConnectFlexWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   margin-top: 1.75rem;
-  margin-bottom: 50vh;
+  margin-bottom: 5vh;
   justify-content: space-around;
   align-items: center;
-  &:nth-child(odd) {
-    flex-direction: row-reverse;
-  }
 
   
-   .inst__static--image {
-    height: 300px;
-    border-radius: 50%;
+   .connect__static--image {
+    height: 150px;
+    border-radius: 10px;
     object-fit: center;
-  }
-
-  @media (max-width: 575px) {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-top: 1.50rem;
-    margin-bottom: 0.50rem;
-    &:nth-child(odd) {
-      flex-direction: column-reverse;
-    }
-     .inst__static--image {
-      height: 150px ;
-      border-radius: 10px;
-    }
-  }
-  @media (max-width: 767px) {
-    display: flex;
-    flex-direction: column-reverse;
-    margin-top: 0.50rem;
-    margin-bottom: 0.50rem;
-    &:nth-child(odd) {
-      flex-direction: column-reverse;
-    }
-    .inst__static--image {
-      border-radius: 10px;
+    margin-bottom: 1.5rem;
+    @media (min-width: 575px) {
       height: 250px;
     }
+    @media (min-width: 767px) {
+      height: 300px;
+      width: 300px;
+      border-radius: 50%;
+    }
   }
-  @media (max-width: 991px) {
-    .inst__static--image {
-      max-height: 75%;
+  @media (min-width: 767px) {
+    flex-direction: row;
+    &:nth-child(odd) {
+      flex-direction: row-reverse;
     }
   }
 `;
 
 export const ImageWrapper = styled.div`
-max-width: 30%;
-  @media (max-width: 575px) {
-    max-width: 100%;   
-  }
-  @media (max-width: 767px) {
-     max-width: 75%;
-  }
-  @media (max-width: 991px) {
-     
-  }
+  max-width: 100%;
 `;
 
-export const Img = styled.img`
-    height: 300px;
-    border-radius: 50%;
-    object-fit: center;
 
-  @media (max-width: 575px) {
-      height: 150px ;
-      border-radius: 10px;
-  }
-  @media (max-width: 767px) {
-      border-radius: 10px;
-      height: 250px;
-    
-  }
-  @media (max-width: 991px) {
-      max-height: 75%;
-  }
-
-`;
-
-export const InstText = styled.p`
+export const ConnectText = styled.p`
   color: white;
-  font-size: 2rem;
+  font-size: 1rem;
   display: block;
   margin-left: 1.25rem;
-  max-width: 65%;
+  max-width: 100%;
   line-height: 30px;
-
-  @media (max-width: 575px) {
-    max-width: 100%;
-    margin: 0;
+  @media(min-width: 575px) {
+    font-size: 1.25rem;
   }
-  @media (max-width: 767px) {
-   max-width: 75%;
-   margin: 0;
-  }
-  @media (max-width: 991px) {
-   
+  @media (min-width: 767px) {
+    font-size: 1.5rem;
   }
 `;
 
 export const EmailContainer = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 767px) {
+    flex-direction: row;
+  }
 `;
 
 export const EmailUs = styled.p`
   text-decoration: underline;
   color: ${props => props.theme.color.white.regular};
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin-left: 2%;
+  @media(min-width: 575px) {
+    font-size: 1.25rem;
+  }
+  @media (min-width: 767px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const EmailTitle = styled.h3`
   color: ${props => props.theme.color.white.regular};
+  font-size: 1rem;
+  @media(min-width: 575px) {
+    font-size: 1.25rem;
+  }
+  @media (min-width: 767px) {
+    font-size: 1.5rem;
+  }
 `;
-export default InstContainer;
+export default ConnectContainer;

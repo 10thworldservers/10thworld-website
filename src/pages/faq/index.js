@@ -23,12 +23,12 @@ const Faq = () => {
             <FaqContainer>
               <Slider />
               <ImgContainer>
-              <StaticImage
+                <StaticImage
+                className="faq__static--image"
                 src="../../images/vikinglandscape1.jpg"
                 alt="Viking landscape"
                 placeholder="blurred" />
               </ImgContainer>
-              
             </FaqContainer>
           </AuthProvider>
           <Footer />
@@ -43,13 +43,15 @@ const ImgContainer = styled.div`
    img {
     border-radius: 10px !important;
   }
-
+  .faq__static--image {
+    min-height: 500px;
+  }
   @media (max-width: ${props => props.theme.screen.xs}) {
     max-width: 75%;
     margin: auto;
   }
   @media (max-width: ${props => props.theme.screen.sm}) {
-    max-width: 75%;
+    max-width: 100%;
     margin: auto;
   }
 `
