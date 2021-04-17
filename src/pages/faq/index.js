@@ -3,7 +3,7 @@ import Layout from '../../components/common/layout/layout';
 import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
 import Footer from "../../components/sections/footer"
-import Slider from '../../components/parts/Slider';
+import Slider from '../../components/parts/Slider/Slider';  
 import { ScrollProvider } from '../../context/ScrollProvider';
 import { HeaderProvider } from '../../context/HeaderProvider.js';
 import { AuthProvider } from '../../context/AuthProvider';

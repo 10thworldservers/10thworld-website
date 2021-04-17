@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { faqQ } from '../../utils/faq';
+import { faqQ } from '../../../utils/faq';
 import { ListParent, ListChild, ListLink, ListIcon, ListIconActive, CopyText } from './style';
-import arrow from '../../images/icon-arrow.svg';
+import arrow from '../../../images/icon-arrow.svg';
 
 const Slider = () => {
 
