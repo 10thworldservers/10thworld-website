@@ -24,7 +24,6 @@ const IndexPage = () => {
             <Features />
             <Separator />
             <Pricing />
-            <Separator />
             <GetStarted />
             <Footer />
           </AuthProvider>

@@ -8,3 +8,27 @@ export const PriceContain = styled.div`
   border-radius: 10px;
 `;
 
+export const PriceTitle = styled.h1`
+  color: ${({ theme }) => theme.color.white.regular};
+  text-align: center;
+  margin: 1.5rem 0 0 0;
+  font-size: 1.25rem;
+`;
+
+export const PriceLine = styled.div`
+  width: 75%;
+  background-color: ${({ theme }) => theme.color.white.regular};
+  height: 5px;
+  display: flex;
+  justify-content: space-around;
+  margin: 4rem auto;
+`;
+
+export const PriceBall = styled.div`
+  width: 20px;
+  border-radius: 50%;
+  height: 20px;
+  background-color: ${({ theme }) => theme.color.white.regular};
+  margin-top: -7px;
+`;
+
