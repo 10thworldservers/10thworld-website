@@ -93,7 +93,6 @@ export class AzureAuthenticationContext {
       let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse: any) => {
         this.idToken = accessTokenResponse.idToken;
         if (this.account.idTokenClaims["newUser"]) {
-          console.log('%c IDTOKENCLAIMS: ', 'font-size: 18px; color: green', this.account.idTokenClaims["newUser"]);
           createNewUser(this.account.localAccountId, this.account.name, this.account.username);
         }
         incFn(this.idToken, this.account.localAccountId, this.account.name);
@@ -131,7 +130,6 @@ export class AzureAuthenticationContext {
     if (currentAccounts === null || currentAccounts.length === 0) {
       //this.getTokenSilent();
       // @ts-ignore
-      console.log('%c No Accounts Detected',"font-weight: bold; font-size: 18px; color: red")
       return undefined
     }
 

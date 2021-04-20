@@ -28,7 +28,9 @@ export const PriceBall = styled.div`
   width: 20px;
   border-radius: 50%;
   height: 20px;
-  background-color: ${({ theme }) => theme.color.white.regular};
+  background-color: ${props => props.active ? ({ theme }) => theme.color.white.regular : ({ theme }) => theme.color.primary};
+  border: ${props => props.active ? 'none' : '1px solid #FFFFFF'};
+  transition: border 0.2s ease;
   margin-top: -7px;
 `;
 
