@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `10th World Servers: Valheim Self-Hosting`,
     description: `A SaaS product for self-hosted Valheim servers`,
-    author: `John David Fischer, Daniel Beccaria, Davis`,
+    author: `The 10thworld team`,
     keywords: `valheim, servers, self, hosting`,
     siteUrl: `https://www.10th.world`,
   },
