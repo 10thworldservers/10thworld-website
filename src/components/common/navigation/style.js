@@ -95,10 +95,10 @@ export const LogoutBtnContainer = styled.div`
     background-color: hsl(42, 87%, 55%);
     border-radius: 10px;
     letter-spacing: 1.5px;
-    box-shadow: none !important;
+    box-shadow: none;
     background-color: ${props => props.theme.color.primary};
     &:hover {
-      background-color: ${props => props.theme.color.black.lightest} !important;
+      background-color: ${props => props.theme.color.black.lightest};
       
     }
   }

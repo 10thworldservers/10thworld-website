@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { faqQ } from '../../../utils/faq';
+import { arrayStateHandler } from '../../../utils/arrayHelpers';
 import { ListParent, ListChild, ListLink, ListIcon, ListIconActive, CopyText } from './style';
 import arrow from '../../../images/icon-arrow.svg';
 
@@ -8,22 +9,7 @@ const Slider = () => {
   const [questions, showQuestions] = useState(faqQ);
 
   const handleClick = (e, id) => {
-    let updatedQuestions = [...questions];
-    let index = updatedQuestions.findIndex(item => id === item.id);
-    let precedingIndex = id + 1;
-    let previousIndex = id - 1;
-
-    if (previousIndex < 0) {
-      updatedQuestions[index]['isVisible'] = !updatedQuestions[index]['isVisible'];
-      updatedQuestions[precedingIndex]['isVisible'] = false;
-    } else if (precedingIndex > 4) {
-      updatedQuestions[index]['isVisible'] = !updatedQuestions[index]['isVisible'];
-      updatedQuestions[previousIndex]['isVisible'] = false;
-    } else {
-      updatedQuestions[previousIndex]['isVisible'] = false;
-      updatedQuestions[precedingIndex]['isVisible'] = false;
-      updatedQuestions[index]['isVisible'] = !updatedQuestions[index]['isVisible'];
-    }
+    let updatedQuestions = arrayStateHandler(questions, id, 4, 'isVisible');
 
     showQuestions(updatedQuestions);
     e.preventDefault()

@@ -55,3 +55,9 @@ export const Section = styled.section`
         : props.theme.color.primary
     }`};
 `
+export const FlexContainer = styled.section`
+  display: flex;
+  @media (min-width: ${({ theme }) => theme.screen.md}) {
+    flex-direction: column;
+  }
+`;
