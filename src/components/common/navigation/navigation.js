@@ -29,9 +29,7 @@ export const Navigation = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
-
-  console.log('%c The Context from Navigation', 'font-size: 18px; color: green', context.account);
-  console.log('%c the user Account', 'color: yellow; font-size: 18px;', context.getAccount());
+  
   return (
     <Nav isVisible={isVisible}>
       <ImgContainer>

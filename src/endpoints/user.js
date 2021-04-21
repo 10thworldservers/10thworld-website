@@ -9,7 +9,7 @@ export function getUserById(Id) {
     }
     //requires parameter for id and partition.
     //partition should always be 'emailAddress'
-    
+    axios(restOptions);
 }
 
 ///
