@@ -6,15 +6,6 @@ export const Header = styled.header`
   height: 500px;
   background-image: url(${viking1});
 
-  @media (min-width: ${({ theme }) => theme.screen.xs}) {
-    width: 1000px;
-  }
-  @media (min-width: ${({ theme }) => theme.screen.xxs}) {
-    width: 1000px;
-  }
-  @media (min-width: ${({ theme }) => theme.screen.sm}) {
-    width: 100%;
-  }
 `;
 
 export const ServerContainer = styled.div`

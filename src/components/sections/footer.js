@@ -42,26 +42,19 @@ const Footer = () => (
 
 const FooterWrapper = styled.footer`
   background-color: ${props => props.theme.color.black.light};
+  margin: 80px 0 0;
+  padding: 0 0 80px;
   position: relative;
   width: 100%;
   bottom: 0;
-  @media (min-width: ${({ theme }) => theme.screen.xs}) {
-    width: 1000px;
-  }
-  @media (min-width: ${({ theme }) => theme.screen.xxs}) {
-    width: 1000px;
-  }
-  @media (min-width: ${({ theme }) => theme.screen.sm}) {
-    width: 2000px;
-  }
 `
 
 const BrandContainer = styled(Container)`
   position: relative;
+  padding-top: 48px;
   display: flex;
   align-items: flex-end;
-  padding: 1.25rem;
-  max-width: 30%;
+
   @media (max-width: ${props => props.theme.screen.sm}) {
   }
 `
@@ -70,38 +63,31 @@ const LogoImg = styled.img`
 `
 
 const FooterColumnContainer = styled(Container)`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 32px;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  @media (min-width: ${props => props.theme.screen.sm}) {
-    flex-direction: row;
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 32px;
   }
 `
 const FooterColumn = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   span {
-    ${({theme}) => theme.font_size.xlarge};
+    font-size: 16px;
     font-family: ${props => props.theme.font.bold};
     color: ${props => props.theme.color.white.regular};
-    @media (min-width: ${({ theme }) => theme.screen.md}) {
-        ${({theme}) => theme.font_size.regular};
-    }
   }
   ul {
     list-style: none;
+    margin: 16px 0;
     padding: 0;
     color: ${props => props.theme.color.white.regular};
     li {
       margin-bottom: 12px;
       font-family: ${props => props.theme.font.normal};
-      ${({ theme }) => theme.font_size.xlarge};
-      
-      @media (min-width: ${({ theme }) => theme.screen.md}) {
-        ${({theme}) => theme.font_size.regular};
-      }
+      font-size: 15px;
     }
   }
 `

@@ -31,8 +31,9 @@ import {
 
 // Dummy Data being used
 const DashBoard = () => {
+  const { outerWidth } = window;
+  const [width, setWidth] = useState(0);
   const [active, setActive] = useState();
-
   const isSubActive = () => {
     if (dummyUser.subscribed === 'Active') {
       setActive(true)
@@ -40,10 +41,18 @@ const DashBoard = () => {
       setActive(false)
     }
   };
+  
+  const trackWindowWidth = () => {
+    setWidth(outerWidth);
+  };
 
   useEffect(() => {
     isSubActive();
-  }, [active])
+    window.addEventListener('resize', trackWindowWidth);
+    return () => {
+      window.removeEventListener('resize', trackWindowWidth);
+    }
+  }, [active, width])
 
   return (
     <ScrollProvider>
@@ -52,7 +61,7 @@ const DashBoard = () => {
           <AuthProvider>
             <SEO title="Dashboard" />
             <Navigation />
-            <Header /> 
+            {width <= 767 ? null :  <Header />}
             <Container>
               <UserDashBoard>
                 <DataSection>
@@ -80,7 +89,7 @@ const DashBoard = () => {
                   </ServerContainer>
                   <SubContainer>
                     <SectionTitle>Subscription Info</SectionTitle>
-                    <SubInfo></SubInfo>
+                    <SubInfo><h1>{width}</h1></SubInfo>
                   </SubContainer>
                 </DashBoardFlexContainer>
               </UserDashBoard>
