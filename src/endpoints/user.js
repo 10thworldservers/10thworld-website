@@ -1,12 +1,16 @@
 import axios from "axios";
 
-export function getUserById(Id) {
+export default function getUserById(Id) {
     if (!Id) {
         console.log('%c No user id present','font-size: 18px; color: red;',Id)
        return     
     }   
     const restOptions = {
-        url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/GetUserById?code=ISGe5C3rDAAUGaVZattBpLaCeuebLIiKFiY4nRui2ILaiGSDQWe6QQ=='
+        method: 'get',
+        url: 'https://10thworldfunctions20210313113150.azurewebsites.net/api/GetUserById?code=ISGe5C3rDAAUGaVZattBpLaCeuebLIiKFiY4nRui2ILaiGSDQWe6QQ==',
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
     }
     //requires parameter for id and partition.
     //partition should always be 'emailAddress'
