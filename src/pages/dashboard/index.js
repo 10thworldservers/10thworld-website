@@ -61,7 +61,9 @@ const DashBoard = () => {
           <AuthProvider>
             <SEO title="Dashboard" />
             <Navigation />
+          
             {width <= 767 ? null :  <Header />}
+           
             <Container>
               <UserDashBoard>
                 <DataSection>
@@ -89,7 +91,7 @@ const DashBoard = () => {
                   </ServerContainer>
                   <SubContainer>
                     <SectionTitle>Subscription Info</SectionTitle>
-                    <SubInfo><h1>{width}</h1></SubInfo>
+                    <SubInfo></SubInfo>
                   </SubContainer>
                 </DashBoardFlexContainer>
               </UserDashBoard>

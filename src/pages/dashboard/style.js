@@ -5,7 +5,6 @@ export const Header = styled.header`
   width: 100%;
   height: 500px;
   background-image: url(${viking1});
-
 `;
 
 export const ServerContainer = styled.div`
@@ -57,20 +56,20 @@ export const DataTitle = styled.h4`
 `;
 
 export const DataSection = styled.section`
-  position: absolute;
-  top: 55%;
-  left: 75%;
-  max-width: 100%;
-  min-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   border-radius: 0 10px 0 10px;
   background: ${({ theme }) => theme.color.white.lessdark};
-  box-shadow: .10em 1px 1px .25em ${({theme}) => theme.color.white.regular};
+  box-shadow: .10em 1px 5px ${({theme}) => theme.color.white.lessdark};
   padding: 1.33em;
   ${({theme}) => theme.font_size.regular};
   @media (min-width: ${({ theme }) => theme.screen.md}) {
+    position: absolute;
+    top: 55%;
+    left: 15%;
+    display: flex;
+    width: 75%;
     flex-direction: row;
   };
   
@@ -100,7 +99,8 @@ export const SubActive = styled.span`
 `;
 
 export const SubInactive = styled.span`
-  color: ${({theme}) => theme.color.primary};
+  color: ${({ theme }) => theme.color.primary};
+  text-align: center;
   border: 1px solid red;
   border-radius: 10px;
   padding: 0.25rem;

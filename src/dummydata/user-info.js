@@ -4,5 +4,5 @@ export const dummyUser = {
     username: 'letoucan',
     email: 'letoucanhasarrived@gmail.com',
     servers: ['letoucanarivee'],
-    subscribed: 'Active'
+    subscribed: 'Inactive'
   }

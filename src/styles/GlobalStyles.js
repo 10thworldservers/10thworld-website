@@ -6,57 +6,97 @@ const normalize = `
 
 const GlobalStyles = createGlobalStyle`
   ${normalize};
-  :root {
-    box-sizing: border-box;
-  }
-  
+
   html {
     ${"" /* change this if implementing light/dark mode functionality */}
-    color: ${({theme}) => theme.color.primary};
+    color: ${props => props.theme.color.primary};
+
   }
   
   body {
-    font-family: ${({theme}) => theme.font.primary};
-    background-color: ${({theme}) => theme.color.primary};
+    font-family: ${props => props.theme.font.primary};
+    background-color: ${props => props.theme.color.primary};
   }
 
   
   h1 {
-    ${({theme}) => theme.font_size.xlarge};
-    font-family: ${({theme}) => theme.font.bold};
+    ${props => props.theme.font_size.xlarge};
+    font-family: ${props => props.theme.font.bold};
     
   }
 
   h2 {
-    ${({theme}) => theme.font_size.larger};
+    ${props => props.theme.font_size.larger};
   }
 
   h3 {
-    ${({theme}) => theme.font_size.larger};
-    font-family: ${({theme}) => theme.font.bold};
+    ${props => props.theme.font_size.larger};
+    font-family: ${props => props.theme.font.bold};
   }
 
   h4 {
-    ${({theme}) => theme.font_size.large};
-    font-family: ${({theme}) => theme.font.bold};
+    ${props => props.theme.font_size.large};
+    font-family: ${props => props.theme.font.bold};
   }
 
   h5 {
-    ${({theme}) => theme.font_size.xsmall};
-    font-family: ${({theme}) => theme.font.normal};
+    ${props => props.theme.font_size.xsmall};
+    font-family: ${props => props.theme.font.normal};
   }
 
   p {
-    ${({theme}) => theme.font_size.small};
+    ${props => props.theme.font_size.small};
     line-height: 22px;
 
   }
 
   input {
-    font-family: ${({theme}) => theme.font.normal};
+    font-family: ${props => props.theme.font.normal};
   }
 
- 
+  @media (max-width: ${props => props.theme.screen.sm}) {
+    h1 {
+      ${props => props.theme.font_size.larger};
+    }
+
+    h2 {
+      ${props => props.theme.font_size.large};
+    }
+
+    h3 {
+      ${props => props.theme.font_size.regular};
+    }
+
+    p {
+      ${props => props.theme.font_size.small};
+    }
+  }
+
+  @media (max-width: ${props => props.theme.screen.xs}) {
+
+    h1 {
+
+    }
+
+    h2 {
+
+    }
+
+    h3 {
+      font-size: 32px;
+      line-height: 36px;
+    }
+
+    h4 {
+      font-size: 22px;
+      line-height: 24px;
+    }
+    p {
+
+    }
+
+  }
+
   button {
     border: none;
     background: none;
