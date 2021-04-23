@@ -1,88 +1,126 @@
 import styled from 'styled-components';
+import viking1 from '../../images/landscape-darkblue-lower.svg';
+
+export const Header = styled.header`
+  width: 100%;
+  height: 500px;
+  background-image: url(${viking1});
+
+  @media (min-width: ${({ theme }) => theme.screen.xs}) {
+    width: 1000px;
+  }
+  @media (min-width: ${({ theme }) => theme.screen.xxs}) {
+    width: 1000px;
+  }
+  @media (min-width: ${({ theme }) => theme.screen.sm}) {
+    width: 100%;
+  }
+`;
 
 export const ServerContainer = styled.div`
-  margin-top: 6%;
-  margin-left: 6%;
-`
+  margin-top: 2rem;
+  margin-left: 2rem;
+`;
 export const SubContainer = styled.div`
   margin-top: 2rem;
   margin-left: 2rem;
-`
+`;
 export const SectionTitle = styled.h1`
   color: white;
   display: inline-block;
   padding: 0;
   margin-top: 0;
-`
-export const UserDashBoard = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 5rem;
-`
+`;
+
 export const ServerInfo = styled.section`
   width: 750px;
-  height: 500px;
-  background-color: hsl(0, 0%, 23%);
-  border: 1px solid hsl(0, 0%, 23%);
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px hsl(0, 0%, 23%);
-  color: white;
-`
+  height: 250px;
+  background-color: ${({ theme }) => theme.color.white.dark};
+  border-radius: 0 10px 10px 0;
+  border-left: 0.25em solid ${({ theme }) => theme.custom.accentThree};
+  color: ${({ theme }) => theme.color.primary};
+`;
+
 export const SubInfo = styled.section`
   width: 750px;
   height: 250px;
-  border: 1px solid white;
-  border-radius: 10px;
-  color: white;
+  border-radius:0 10px 10px 0;
+  color: ${({theme}) => theme.color.primary};
   margin-bottom: 2rem;
-  background-color: hsl(0, 0%, 23%);
-  border: 1px solid hsl(0, 0%, 23%);
-  box-shadow: 1px 1px 5px hsl(0, 0%, 23%);
-`
+  background-color: ${({ theme }) => theme.color.white.dark};
+  border-left: 0.25em solid ${({ theme }) => theme.custom.accentThree};
+`;
 
-export const DataTitle = styled.h4`
-  color: white;
-  display: inline-block;
-  margin: 0.65rem 0 0 0;
-`
-
-export const DataSection = styled.section`
-  margin-top: 12rem;
+export const UserDashBoard = styled.div`
   display: flex;
   flex-direction: column;
-  border-right: 5px solid #B1B1B1;
-  border-radius: 10px;
-  width: 15%;
-  height: 100%;
-`
-export const Row = styled.div`
+  justify-content: center;
+  margin-top: 5rem;
+`;
+
+
+export const DataTitle = styled.h4`
+  color: ${({theme}) => theme.color.primary};
+  display: inline-block;
+  margin: 0 0.25rem 0.5rem 0.25rem;
+`;
+
+export const DataSection = styled.section`
+  position: absolute;
+  top: 55%;
+  left: 75%;
+  max-width: 100%;
+  min-width: 50%;
   display: flex;
-  flex-direction: row;
-`
-export const DataInfo = styled.article`
-  margin-top: 0.65rem;
-  color: white;
-  border: 1px solid white;
-  padding: 0.75rem;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 0 10px 0 10px;
+  background: ${({ theme }) => theme.color.white.lessdark};
+  box-shadow: .10em 1px 1px .25em ${({theme}) => theme.color.white.regular};
+  padding: 1.33em;
+  ${({theme}) => theme.font_size.regular};
+  @media (min-width: ${({ theme }) => theme.screen.md}) {
+    flex-direction: row;
+  };
+  
+`;
+
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const DataInfo = styled.span`
+  color: ${({ theme }) => theme.color.primary};
+  border: 1px solid ${({ theme }) => theme.color.primary};
+  text-align: center;
+  font-weight: 600;
   border-radius: 10px;
-`
-export const SubActive = styled.article`
-  margin-top: .5rem;
-  color: white;
+  padding: 0.25rem;
+`;
+
+export const SubActive = styled.span`
+  color: ${({ theme }) => theme.color.primary};
+  text-align: center;
+  font-weight: 600;
   border: 1px solid green;
-  padding: 0.75rem;
   border-radius: 10px;
-`
-export const SubInactive = styled.article`
-  margin-top: .5rem;
-  color: white;
+  padding: 0.25rem;
+`;
+
+export const SubInactive = styled.span`
+  color: ${({theme}) => theme.color.primary};
   border: 1px solid red;
-  padding: 0.75rem;
   border-radius: 10px;
-`
+  padding: 0.25rem;
+`;
 
-export const DataUser = styled.article`
-  color: white;
-`
 
+
+export const DashBoardFlexContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 5rem;
+`;
 export default ServerContainer
