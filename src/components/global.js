@@ -6,22 +6,6 @@ export const Container = styled.div`
   margin: 0 auto;
   padding: 0 16px;
 
-  @media (min-width: ${props => props.theme.screen.xs}) {
-    max-width: 540px;
-  } 
-
-  @media (min-width: ${props => props.theme.screen.sm}) {
-    max-width: 720px;
-  }
-
-  @media (min-width: ${props => props.theme.screen.md}) {
-    max-width: 960px;
-  }
-
-  @media (min-width: ${props => props.theme.screen.lg}) {
-    max-width: 1200px;
-  }
-
   ${props =>
     props.fluid &&
     `

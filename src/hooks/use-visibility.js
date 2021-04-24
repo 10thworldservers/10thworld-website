@@ -5,9 +5,11 @@ export const useVisibility = (defaultValue = false) => {
   const show = useCallback(() => {
     setIsVisible(true);
   }, []);
+
   const hide = useCallback(() => {
     setIsVisible(false);
   }, []);
+  
   const toggle = useCallback(() => {
     setIsVisible(currentState => !currentState);
   }, []);

@@ -46,7 +46,7 @@ export const NavListWrapper = styled.div`
       padding-bottom: 5vh;
       background-color: ${props => props.theme.color.primary};
       transition: all 0.3s ease-in;
-      top: 15vh;
+      top: 18vh;
       left: ${props => (props.open ? "-100%" : "0")};
       margin: 0;
     }
@@ -87,6 +87,7 @@ export const BtnContainer = styled.div`
 `
 export const LogoutBtnContainer = styled.div`
    button {
+    width: 150px;
     font-size: 18px;
     padding: .85rem 1.5rem;
     font-weight: 600;

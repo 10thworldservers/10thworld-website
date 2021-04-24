@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../../components/common/layout/layout';
 import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
-import { dummyServer } from '../../dummydata/server-info';
 import { dummyUser } from '../../dummydata/user-info';
 import Footer from "../../components/sections/footer"
 import { ScrollProvider } from '../../context/ScrollProvider';
@@ -17,13 +16,13 @@ import {
   SubInfo,
   DataTitle,
   DataSection,
-  Row,
+  Col,
   DataInfo,
   SubActive,
   SubInactive,
-  DataUser
+  DashBoardFlexContainer,
+  Header
 } from './style';
-
 import {
   Container,
 } from '../../components/global';
@@ -31,7 +30,6 @@ import {
 // Dummy Data being used
 const DashBoard = () => {
   const [active, setActive] = useState();
-
   const isSubActive = () => {
     if (dummyUser.subscribed === 'Active') {
       setActive(true)
@@ -51,27 +49,28 @@ const DashBoard = () => {
           <AuthProvider>
             <SEO title="Dashboard" />
             <Navigation />
+            <Header />
             <Container>
               <UserDashBoard>
                 <DataSection>
-                  <DataTitle>User Name</DataTitle>
-                  <Row>
-                    <DataUser>
-                      <h4 style={{ margin: '.75rem 0 0.75rem 0rem' }}>{dummyUser.username}</h4>
-                    </DataUser>
-                  </Row>
-                  <DataTitle>Date</DataTitle>
-                  <Row>
+                  <Col>
+                    <DataTitle>Display Name</DataTitle>
                     <DataInfo>
-                      {dummyServer[0].date}
+                      {dummyUser.username}
                     </DataInfo>
-                  </Row>
-                  <DataTitle>Subscription</DataTitle>
-                  <Row>
+                  </Col>
+                  <Col>
+                    <DataTitle>Email</DataTitle>
+                    <DataInfo>
+                      {dummyUser.email}
+                    </DataInfo>
+                  </Col>
+                  <Col>
+                    <DataTitle>Subscription</DataTitle>
                     {active ? <SubActive>Active</SubActive> : <SubInactive>Inactive</SubInactive>}
-                  </Row>
+                  </Col>
                 </DataSection>
-                <div style={{ display: 'flex', flexDirection: 'column', marginLeft: '5rem' }}>
+                <DashBoardFlexContainer>
                   <ServerContainer>
                     <SectionTitle>Server Info</SectionTitle>
                     <ServerInfo></ServerInfo>
@@ -80,7 +79,7 @@ const DashBoard = () => {
                     <SectionTitle>Subscription Info</SectionTitle>
                     <SubInfo></SubInfo>
                   </SubContainer>
-                </div>
+                </DashBoardFlexContainer>
               </UserDashBoard>
             </Container>
             <Footer />
