@@ -42,10 +42,16 @@ export const SubInfo = styled.section`
 `;
 
 export const UserDashBoard = styled.div`
-  display: flex;
+  margin-top: 15rem;
+  margin-left: 2.5rem;
+  @media (min-width: ${({ theme }) => theme.screen.sm}) {
+    margin-top: -5rem;  
+  }
+  
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 5rem;
+  margin-top: 5rem; */
 `;
 
 
@@ -63,13 +69,9 @@ export const DataSection = styled.section`
   background: ${({ theme }) => theme.color.white.lessdark};
   box-shadow: .10em 1px 5px ${({theme}) => theme.color.white.lessdark};
   padding: 1.33em;
+  margin-top: -5vh;
   ${({theme}) => theme.font_size.regular};
   @media (min-width: ${({ theme }) => theme.screen.md}) {
-    position: absolute;
-    top: 55%;
-    left: 15%;
-    display: flex;
-    width: 75%;
     flex-direction: row;
   };
   

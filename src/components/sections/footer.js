@@ -1,6 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import { Container } from "../global"
+import React from "react";
+import styled from "styled-components";
+import { Link } from 'gatsby';
+import { Container } from "../global";
 import vikingLogo2 from '../../images/ShieldOnlyBlue.png';
 
 
@@ -20,20 +21,13 @@ const Footer = () => (
       <FooterColumn>
         <span>Resources</span>
         <ul>
-          <li>Blog</li>
+          <Link to="/blog">Blog</Link>
         </ul>
       </FooterColumn>
       <FooterColumn>
         <span>The Service</span>
         <ul>
-          <li>About Us</li>
-        </ul>
-      </FooterColumn>
-      <FooterColumn>
-        <span>Social</span>
-        <ul>
-          <li>Forums</li>
-          <li>Reddit</li>
+          <Link to="/about">About Us</Link>
         </ul>
       </FooterColumn>
     </FooterColumnContainer>
@@ -89,6 +83,11 @@ const FooterColumn = styled.div`
       font-family: ${props => props.theme.font.normal};
       font-size: 15px;
     }
+  }
+
+  a {
+    color: ${({ theme }) => theme.color.white.regular};
+    text-decoration: none;
   }
 `
 

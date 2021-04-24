@@ -14,12 +14,6 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false)
   const { user, context } = useContext(AuthContext);
   const userAccount = context.getAccount();
-  console.log("CHECKOUT USER ACCOUNT :", userAccount);
-  if (userAccount !== undefined){
-    console.trace("CHECKOUT USER NAME FROM ACCOUNT :", userAccount.name);
-    console.log("CHECKOUT USER ID FROM ACCOUNT :", userAccount.localAccountId);
-    console.log("CHECKOUT USER TOKEN FROM STATE :", user);
-  }
 
   const redirectToCheckout = async event => {
     event.preventDefault();

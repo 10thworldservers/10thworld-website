@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../../components/common/layout/layout';
 import { Navigation } from '../../components/common/navigation/navigation';
 import SEO from '../../components/common/layout/seo';
-import { dummyServer } from '../../dummydata/server-info';
 import { dummyUser } from '../../dummydata/user-info';
 import Footer from "../../components/sections/footer"
 import { ScrollProvider } from '../../context/ScrollProvider';
@@ -24,15 +23,12 @@ import {
   DashBoardFlexContainer,
   Header
 } from './style';
-
 import {
   Container,
 } from '../../components/global';
 
 // Dummy Data being used
 const DashBoard = () => {
-  const { outerWidth } = window;
-  const [width, setWidth] = useState(0);
   const [active, setActive] = useState();
   const isSubActive = () => {
     if (dummyUser.subscribed === 'Active') {
@@ -41,18 +37,10 @@ const DashBoard = () => {
       setActive(false)
     }
   };
-  
-  const trackWindowWidth = () => {
-    setWidth(outerWidth);
-  };
 
   useEffect(() => {
     isSubActive();
-    window.addEventListener('resize', trackWindowWidth);
-    return () => {
-      window.removeEventListener('resize', trackWindowWidth);
-    }
-  }, [active, width])
+  }, [active])
 
   return (
     <ScrollProvider>
@@ -61,9 +49,7 @@ const DashBoard = () => {
           <AuthProvider>
             <SEO title="Dashboard" />
             <Navigation />
-          
-            {width <= 767 ? null :  <Header />}
-           
+            <Header />
             <Container>
               <UserDashBoard>
                 <DataSection>
