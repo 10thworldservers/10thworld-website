@@ -27,7 +27,6 @@ const Connect = () => {
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
-          <AuthProvider>
             <SEO title="About" />
             <Navigation />
             <FlexContainer>
@@ -81,10 +80,8 @@ const Connect = () => {
                 <EmailTitle>Email Us Directly At:</EmailTitle>
                 <EmailUs>10thworldservers@gmail.com</EmailUs>
               </EmailContainer>
-
             </FlexContainer>
             <Footer />
-          </AuthProvider>
         </Layout>
       </HeaderProvider>
     </ScrollProvider>

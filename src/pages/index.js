@@ -14,12 +14,10 @@ import { AuthProvider } from '../context/AuthProvider';
 import getUserById from '../endpoints/user';
 
 const IndexPage = () => {
-  console.log(getUserById('fcd5df94-8a18-4ea0-858c-028a4bb8cd8c'));
   return (
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
-          <AuthProvider>
             <SEO title="Home" />
             <Navigation />
             <Header />
@@ -28,7 +26,6 @@ const IndexPage = () => {
             <Pricing />
             <GetStarted />
             <Footer />
-          </AuthProvider>
         </Layout>
       </HeaderProvider>
     </ScrollProvider>

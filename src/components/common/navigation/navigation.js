@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"
+import React, { useState, useContext, useRef } from "react"
 import { Link } from 'gatsby';
 import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
@@ -22,10 +22,8 @@ import {
 export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
-  const { context } = useContext(AuthContext);
-  console.log(context);
-  const userAccount = context.getAccount();
-
+  const { user } = useContext(AuthContext);
+  
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
@@ -48,8 +46,8 @@ export const Navigation = () => {
           <StyledContainer>
             <NavLinks />
           </StyledContainer>
-          {userAccount !== undefined ? <Checkout /> : null}
-          {userAccount !== undefined ? (
+          {user !== undefined ? <Checkout /> : null}
+          {user !== undefined ? (
             <LogoutBtnContainer>
               <AzureAuthButton text="logout" userAction={undefined} />
             </LogoutBtnContainer>) : null}
@@ -60,8 +58,8 @@ export const Navigation = () => {
             <NavLinks />
           </StyledContainer>
           <BtnContainer>
-            {userAccount !== undefined ? <Checkout /> : null}
-            {userAccount !== undefined ? (
+            {user !== undefined ? <Checkout /> : null}
+            {user !== undefined ? (
               <LogoutBtnContainer>
                 <AzureAuthButton text="logout" userAction={undefined} />
               </LogoutBtnContainer>) : null}

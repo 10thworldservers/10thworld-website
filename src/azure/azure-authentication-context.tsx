@@ -6,12 +6,8 @@ import {
   RedirectRequest,
   PopupRequest,
 } from "@azure/msal-browser"
-
 import { MSAL_CONFIG } from "./azure-authentication-config"
 import { createNewUser } from "../endpoints/user.js"
-const location = typeof window !== `undefined` ? window : null
-
-// None of these methods on the Class are asynchronous
 
 export class AzureAuthenticationContext {
   private myMSALObj: PublicClientApplication = new PublicClientApplication(

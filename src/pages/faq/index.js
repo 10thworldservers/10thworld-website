@@ -17,7 +17,6 @@ const Faq = () => {
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
-          <AuthProvider>
             <SEO title="Faq" />
             <Navigation />
             <FaqContainer>
@@ -30,7 +29,6 @@ const Faq = () => {
                 placeholder="blurred" />
               </ImgContainer>
             </FaqContainer>
-          </AuthProvider>
           <Footer />
         </Layout>
       </HeaderProvider>
