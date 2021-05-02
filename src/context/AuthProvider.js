@@ -14,10 +14,11 @@ export const AuthProvider = ({children}) => {
   // we need useEffect here to prevent additional re-renders
   useEffect(() => {
     
-  },[]);
+  }, []);
+  
   const context = new AzureAuthContext(updateUser);
   const value = { context, user };
- 
+  
   return (
     <AuthContext.Provider value={value}>
     {children}

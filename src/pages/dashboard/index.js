@@ -6,7 +6,6 @@ import { dummyUser } from '../../dummydata/user-info';
 import Footer from "../../components/sections/footer"
 import { ScrollProvider } from '../../context/ScrollProvider';
 import { HeaderProvider } from '../../context/HeaderProvider.js';
-import { AuthProvider } from '../../context/AuthProvider';
 import {
   ServerContainer,
   SubContainer,
@@ -46,7 +45,6 @@ const DashBoard = () => {
     <ScrollProvider>
       <HeaderProvider>
         <Layout>
-          <AuthProvider>
             <SEO title="Dashboard" />
             <Navigation />
             <Header />
@@ -83,7 +81,6 @@ const DashBoard = () => {
               </UserDashBoard>
             </Container>
             <Footer />
-          </AuthProvider>
         </Layout>
       </HeaderProvider>
     </ScrollProvider>

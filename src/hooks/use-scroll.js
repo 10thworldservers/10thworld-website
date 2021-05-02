@@ -18,8 +18,6 @@ export const useScroll = (timeout = 250) => {
   const previousScrollTop = useRef(defaultScrollTop);
   const [currentScrollTop, setCurrentScrollTop] = useState(defaultScrollTop);
 
-  console.log('previousScrollTop', previousScrollTop);
-
   useEffect(() => {
     const handleDocumentScroll = () => {
       const scrollTop = getScrollPosition();
