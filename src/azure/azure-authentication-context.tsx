@@ -92,7 +92,8 @@ export class AzureAuthenticationContext {
     try {
       let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse: any) => {
         this.idToken = accessTokenResponse.idToken;
-        if (this.account.idTokenClaims["newUser"]) {
+        // possible bug with this, we need the value from newUser not whether it is there
+        if (this.account.idTokenClaims.hasOwnProperty("newUser")) {
           createNewUser(this.account.localAccountId, this.account.name, this.account.username);
         }
         incFn(this.idToken, this.account.localAccountId, this.account.name);
