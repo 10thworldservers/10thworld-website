@@ -18,7 +18,7 @@ export const AuthProvider = ({children}) => {
   
   const context = new AzureAuthContext(updateUser);
   const value = { context, user };
-  
+  console.log(user);
   return (
     <AuthContext.Provider value={value}>
     {children}

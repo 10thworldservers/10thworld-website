@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { AuthContext } from '../../../context/AuthProvider';
 import AzureAuthButton from '../../../azure/azure-auth-button';
 
 const NavItem = styled(Link)`
@@ -59,10 +58,7 @@ const SignUpContainer = styled.div`
     }
   }
 `
-const NavLinks = () => {
-  const { context } = useContext(AuthContext);
-
-  const userAccount = context.getAccount();
+const NavLinks = ({ userAccount }) => {
   return (
     <>
       <NavItem to="/connect">Connect</NavItem>
