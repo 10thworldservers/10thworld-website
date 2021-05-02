@@ -1,29 +1,14 @@
 import {
   PublicClientApplication,
-  AuthenticationResult,
-  AccountInfo,
-  EndSessionRequest,
-  RedirectRequest,
-  PopupRequest,
 } from "@azure/msal-browser"
 import { MSAL_CONFIG } from "./azure-authentication-config"
 import { createNewUser } from "../endpoints/user.js"
 
 export class AzureAuthenticationContext {
-  private myMSALObj: PublicClientApplication = new PublicClientApplication(
-    MSAL_CONFIG
-  );
-  private account?: AccountInfo;
-  public uniqueId?: any;
-  public idToken?: any;
-  private loginRequest: PopupRequest;
-  private loginRequestRedirect: RedirectRequest;
-
-  public isAuthenticationConfigured = false
-
-  constructor(setUser: any) {
-    // @ts-ignore
+  constructor(setUser) {
     this.account = null
+    this.myMSALObj = new PublicClientApplication(MSAL_CONFIG);
+    this.isAuthenticationConfigured = false;
     this.setRequestObjects()
     if (MSAL_CONFIG?.auth?.clientId) {
       this.isAuthenticationConfigured = true
@@ -32,7 +17,7 @@ export class AzureAuthenticationContext {
     // Redirect: once login is successful and redirects with tokens, call Graph API
     this.myMSALObj
       .handleRedirectPromise()
-      .then((resp: AuthenticationResult) => {
+      .then((resp) => {
         this.handleResp(resp, setUser)
       })
       .catch((err) => {
@@ -41,7 +26,7 @@ export class AzureAuthenticationContext {
       })
   }
 
-  private setRequestObjects(): void {
+  setRequestObjects() {
     this.loginRequest = {
       scopes: [],
       prompt: "select_account",
@@ -55,11 +40,11 @@ export class AzureAuthenticationContext {
   ///
   // Called by Auth Button Component, Handles Signup as well as login
   ///
-  login(signInType: string, setUser: any): void {
+  login(signInType, setUser) {
     if (signInType === "loginPopup") {
       this.myMSALObj
         .loginPopup(this.loginRequest)
-        .then((resp: AuthenticationResult) => {
+        .then((resp) => {
           this.handleResp(resp, setUser)
         })
         .catch((err) => {
@@ -70,23 +55,23 @@ export class AzureAuthenticationContext {
     }
   }
 
-   logout(account: AccountInfo): void {
-    const logOutRequest: EndSessionRequest = {
+   logout(account){
+    const logOutRequest = {
       account,
     }
 
     this.myMSALObj.logout(logOutRequest)
   }
 
-  async msalAcquireToken(incFn: any): Promise<any> {
-    let MSAL: any = this.myMSALObj;
-    const accessTokenRequest: any = {
+  async msalAcquireToken(incFn){
+    let MSAL = this.myMSALObj;
+    const accessTokenRequest = {
       scopes: [],
       authority: MSAL_CONFIG.auth.authority,
       account: this.account
     }
     try {
-      let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse: any) => {
+      let acquireToken = await MSAL.acquireTokenSilent(accessTokenRequest).then((accessTokenResponse) => {
         this.idToken = accessTokenResponse.idToken;
         // possible bug with this, we need the value from newUser not whether it is there
         if (this.account.idTokenClaims.hasOwnProperty("newUser")) {
@@ -99,8 +84,9 @@ export class AzureAuthenticationContext {
      console.error(error) 
     }
   };
+
   // Re-vamped handleResponse as async function
-  async handleResp(response: AuthenticationResult, incomingFunction: any): Promise<any> {
+  async handleResp(response, incomingFunction) {
     try {
       if (response !== null && response.account !== null && response.account) {
         this.account = response.account;
@@ -122,17 +108,13 @@ export class AzureAuthenticationContext {
     }
   }
   
-  getAccount(): AccountInfo | undefined {
+  getAccount() {
     const currentAccounts = this.myMSALObj.getAllAccounts()
     if (currentAccounts === null || currentAccounts.length === 0) {
-      //this.getTokenSilent();
-      // @ts-ignore
       return undefined
     }
 
     if (currentAccounts.length > 1) {
-      // TBD: Add choose account code here
-      // @ts-ignore
       console.log(
         "Multiple accounts detected, need to add choose account code."
       )

@@ -22,7 +22,7 @@ export const AzureAuthButton = ({ text, userAction }) => {
     }
     
   };
-
+  
   return (
     <UserLoginButton onClick={(e) => logInOut(e, userAction)}>
       {text}

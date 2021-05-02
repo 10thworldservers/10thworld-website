@@ -1,4 +1,4 @@
-import React, { useState, useContext, useRef } from "react"
+import React, { useState, useContext } from "react"
 import { Link } from 'gatsby';
 import { useHeaderContext } from '../../../context/HeaderProvider';
 import Checkout from '../../sections/checkout';
@@ -29,7 +29,15 @@ export const Navigation = () => {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
-  
+  const renderCheckout = (user) => {
+    if (user !== undefined) {
+      return (
+        <Checkout />
+      )
+    } else {
+      return null
+    }
+  }
   return (
     <Nav isVisible={isVisible}>
       <ImgContainer>
@@ -46,9 +54,9 @@ export const Navigation = () => {
       {mobileMenuOpen ? (
         <NavListWrapper>
           <StyledContainer>
-            <NavLinks />
+            <NavLinks userAccount={userAccount} />
           </StyledContainer>
-          {userAccount !== undefined ? <Checkout /> : null}
+          {renderCheckout()}
           {userAccount !== undefined ? (
             <LogoutBtnContainer>
               <AzureAuthButton text="logout" userAction={undefined} />
@@ -57,11 +65,11 @@ export const Navigation = () => {
       ) : (
         <NavListWrapper open>
           <StyledContainer>
-            <NavLinks />
+            <NavLinks userAccount={userAccount} />
           </StyledContainer>
           <BtnContainer>
-            {Account !== undefined ? <Checkout /> : null}
-            {Account !== undefined ? (
+            {userAccount !== undefined ? <Checkout /> : null}
+            {userAccount !== undefined ? (
               <LogoutBtnContainer>
                 <AzureAuthButton text="logout" userAction={undefined} />
               </LogoutBtnContainer>) : null}
