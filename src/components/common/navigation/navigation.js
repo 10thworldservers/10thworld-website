@@ -22,8 +22,10 @@ import {
 export const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { isVisible } = useHeaderContext();
-  const { user } = useContext(AuthContext);
-  
+  const { context } = useContext(AuthContext);
+  const userAccount = context.getAccount();
+
+
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
@@ -46,8 +48,8 @@ export const Navigation = () => {
           <StyledContainer>
             <NavLinks />
           </StyledContainer>
-          {user !== undefined ? <Checkout /> : null}
-          {user !== undefined ? (
+          {userAccount !== undefined ? <Checkout /> : null}
+          {userAccount !== undefined ? (
             <LogoutBtnContainer>
               <AzureAuthButton text="logout" userAction={undefined} />
             </LogoutBtnContainer>) : null}
@@ -58,8 +60,8 @@ export const Navigation = () => {
             <NavLinks />
           </StyledContainer>
           <BtnContainer>
-            {user !== undefined ? <Checkout /> : null}
-            {user !== undefined ? (
+            {Account !== undefined ? <Checkout /> : null}
+            {Account !== undefined ? (
               <LogoutBtnContainer>
                 <AzureAuthButton text="logout" userAction={undefined} />
               </LogoutBtnContainer>) : null}
