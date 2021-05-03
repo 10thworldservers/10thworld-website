@@ -20,7 +20,6 @@ export const AzureAuthButton = ({ text, userAction }) => {
     if (typeName === undefined) {
        context.logout(undefined)
     }
-    
   };
   
   return (
