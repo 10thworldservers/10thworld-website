@@ -25,7 +25,6 @@ export const Navigation = () => {
   const { context } = useContext(AuthContext);
   const userAccount = context.getAccount();
 
-
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen)
   }
