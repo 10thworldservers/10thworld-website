@@ -1,7 +1,4 @@
-const AzureActiveDirectoryAppClientId = '7b9232dc-de44-48d6-b490-6a557913ecd2';
-
 //The current guidance from B2C is to use b2clogin.com as the authority. For example, $"https://{your-tenant-name}.b2clogin.com/tfp/{your-tenant-ID}/{policyname}"
-
 
 export const MSAL_CONFIG = {
   auth: {

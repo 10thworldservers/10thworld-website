@@ -36,7 +36,7 @@ const Footer = () => (
 
 const FooterWrapper = styled.footer`
   background-color: ${props => props.theme.color.black.light};
-  margin: 80px 0 0;
+  margin: 0;
   padding: 0 0 80px;
   position: relative;
   width: 100%;
