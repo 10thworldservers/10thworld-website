@@ -4,10 +4,8 @@ export const MSAL_CONFIG = {
   auth: {
     clientId: process.env.GATSBY_AD_CLIENT_ID,
     redirectUri: process.env.GATSBY_REDIRECT_URI,
-    authority: process.env.GATSBY_AUTHORITY,
-    //validateAuthority: false
-    //authority: 'https://10thworldservers.b2clogin.com/10thworldservers.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_nicebeaver'
-
+    // authority: 'https://10thworldservers.b2clogin.com/10thworldservers.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_nicebeaver',
+    validateAuthority: false,
   },
   cache: {
     cacheLocation: "localStorage",
